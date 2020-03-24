@@ -15,17 +15,10 @@ public class DoorTriggerController : MonoBehaviour
         ActionText = ActionTextObject.GetComponent<Text>();
     }
 
-    void Update() {
-        // Update Action Text
-        if(AirLock.IsOpen) {
-            ActionText.text = "Close (E)";
-        }else {
-            ActionText.text = "Open (E)";
-        }
-    }
-
     void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
+            // Update Action Text
+            ActionText.text = "Action (E)";
             // Enable Action Text
             ActionTextObject.SetActive(true);
             AirLock.PlayerNearby = true;
