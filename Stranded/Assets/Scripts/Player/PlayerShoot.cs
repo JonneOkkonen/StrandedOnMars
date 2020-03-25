@@ -10,12 +10,20 @@ public class PlayerShoot : MonoBehaviour
     public int BulletSpeed;
     public float GunCoolDown;
     float Timer;
+    AudioSource GunAudio;
+
+    void Awake() {
+        GunAudio = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         Timer += Time.deltaTime;
         if(Input.GetButtonDown("Fire1") && Timer >= GunCoolDown) {
+            // Play Gun Shot Audio
+            GunAudio.Play();
+
             // Spawn Bullet
             GameObject CurrentBullet = GameObject.Instantiate(Bullet, BulletSpawn.transform.position, BulletSpawn.transform.rotation);
 
