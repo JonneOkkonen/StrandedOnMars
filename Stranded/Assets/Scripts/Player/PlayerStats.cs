@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -13,11 +15,17 @@ public class PlayerStats : MonoBehaviour
     Text OxygenBarText;
     public bool UsingOxygen = true;
     public bool OxygenRegen = false;
+    RigidbodyFirstPersonController PlayerController;
+    PlayerActionController PlayerActionController;
+    public bool IsDead = false;
+    public GameObject DeadScreen;
 
     void Awake()
     {
         OxygenBar = OxygenBarObject.GetComponent<Slider>();
         OxygenBarText = OxygenBarObject.GetComponentInChildren(typeof(Text), true) as Text;
+        PlayerController = GetComponent<RigidbodyFirstPersonController>();
+        PlayerActionController = GetComponent<PlayerActionController>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
@@ -34,6 +42,13 @@ public class PlayerStats : MonoBehaviour
     {
         OxygenBar.value = Oxygen;
         OxygenBarText.text = $"Oxygen: {Oxygen}s";
+
+        // Respawn after Death
+        if(IsDead) {
+            if(Input.GetKeyDown(KeyCode.X)) {
+                SceneManager.LoadScene("Mars");
+            }
+        }
     }
 
     // Oxygen Tick
@@ -56,8 +71,18 @@ public class PlayerStats : MonoBehaviour
             }
         }else {
             Debug.Log("No Oxygen Left");
-            // No Oxygen
+            // Die
+            Die();
         }
         Invoke("OxygenTick", 1f);
+    }
+
+    // Player Died
+    private void Die() {
+        IsDead = true;
+        DeadScreen.SetActive(true);
+        PlayerController.enabled = false;
+        PlayerActionController.enabled = false;
+        Debug.Log("Player has died");
     }
 }

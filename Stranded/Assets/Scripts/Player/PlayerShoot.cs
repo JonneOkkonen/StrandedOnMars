@@ -11,16 +11,18 @@ public class PlayerShoot : MonoBehaviour
     public float GunCoolDown;
     float Timer;
     AudioSource GunAudio;
+    PlayerStats PlayerStats;
 
     void Awake() {
         GunAudio = GetComponent<AudioSource>();
+        PlayerStats = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Timer += Time.deltaTime;
-        if(Input.GetButtonDown("Fire1") && Timer >= GunCoolDown) {
+        if(Input.GetButtonDown("Fire1") && Timer >= GunCoolDown && !PlayerStats.IsDead) {
             // Play Gun Shot Audio
             GunAudio.Play();
 
