@@ -10,8 +10,7 @@ public class EnemyMovement : MonoBehaviour
 	float aggroRange = 10;
 	float collisionRange = 5;
 	//float collideRange = 6;
-	//Animator moveAnim;
-	//public bool moveForward = false;
+	Animator moveAnim;
 	
 	
 	void Awake ()
@@ -19,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag ("Player").transform;
 		//player = GameObject.FindGameObjectWithTag ("Enemy").transform;
         nav = GetComponent <NavMeshAgent> ();
-		//moveAnim = GetComponent <Animator> ();
+		moveAnim = GetComponent <Animator> ();
     }
 	
     void Update ()
@@ -30,18 +29,16 @@ public class EnemyMovement : MonoBehaviour
 		{
 			//Debug.Log("Player in range");
 			nav.SetDestination(player.position);
-			//Animate();	
+			WalkForward();	
+		}
+		
+		if(Vector3.Distance(this.transform.position, player.transform.position) >= aggroRange) 
+		{
+			//Debug.Log("Player in range");
+			ReturnIdle();	
 		}
 		
 		
-		
-		/*if(Vector3.Distance(this.transform.position, enemy.transform.position) <= collisionRange) 
-		{
-			Debug.Log("Enemy in range");
-			Vector3 createDist = transform.position;
-			createDist.x = 10.0f;
-			transform.position = createDist;
-		}*/
 		
 		/*if(player.shoots) 
 		{
@@ -49,8 +46,13 @@ public class EnemyMovement : MonoBehaviour
 		}*/
     }
 	
-	/*void Animate () 
+	void WalkForward () 
 	{
-		moveAnim = true;
-	}*/
+		moveAnim.SetBool("Walk Forward", true);
+	}
+	
+	void ReturnIdle () 
+	{
+		moveAnim.SetBool("Walk Forward", false);
+	}
 }
