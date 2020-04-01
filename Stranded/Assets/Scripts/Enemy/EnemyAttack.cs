@@ -7,12 +7,13 @@ public class EnemyAttack : MonoBehaviour
 	
 	public float timeBetweenMelee = 5f;     // The time in seconds between each melee attack.
 	public float timeBetweenProjectile = 5f;  //The time in seconds between each projectile attack.
-	public int attackDamage = 10;               // The amount of health taken away per attack.
+	public int meleeDamage = 10;               // The amount of health taken away per melee attack.
+	public int shootDamage = 20;				//The amount of health taken away per projectile attack.
 	public int meleeRange = 5;					//The range that the enemy GameObject can melee attack.
 	public int shootRange = 20;					//The range that the enemy GameObject can shoot attack.
 	public bool attackAbility; 					//Allows setting which attack is available for what enemy type.
 	
-	Animator anim;                              // Reference to the animator component.
+	Animator attackAnim;                              // Reference to the animator component.
 	GameObject player;                          // Reference to the player GameObject.
 	//PlayerHealth playerHealth;                  // Reference to the player's health.
 	//EnemyHealth enemyHealth;                    // Reference to this enemy's health.
@@ -28,49 +29,53 @@ public class EnemyAttack : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag ("Player");
 		//playerHealth = player.GetComponent <PlayerHealth> ();
 		//enemyHealth = GetComponent<EnemyHealth>();
-		anim = GetComponent <Animator> ();
+		attackAnim = GetComponent <Animator> ();
 	}
 	
 	void Update ()
 		{
 			// Add the time since Update was last called to the timer.
 			timer += Time.deltaTime;
-			float dist1 = Vector3.Distance(player.transform.position, transform.position);
-			float dist2 = Vector3.Distance(player.transform.position, transform.position);
+			float dist = Vector3.Distance(player.transform.position, transform.position);
 			//Debug.Log(player.transform.position);
 			//print("Distance to enemy: " + dist1);
 			
-			if(dist1 < meleeRange)
+			//Check distance and determine if to engage in melee attack.
+			if(dist < meleeRange)
 			{
 				playerInMeleeRange = true;
 			}
 			
-			if(dist1 > meleeRange) 
+			if(dist > meleeRange) 
 			{
 				playerInMeleeRange = false;
 			}
 			
-			if(dist2 < shootRange) 
+			if(attackAbility) 
 			{
-				playerInShootRange = true;
-			}
+				//Check distance and determine if to engage in shoot attack.
+				if(dist < shootRange) 
+				{
+					playerInShootRange = true;
+				}
 			
-			if(dist2 > shootRange) 
-			{
-				playerInShootRange = false;
+				if(dist > shootRange) 
+				{
+					playerInShootRange = false;
+				}
 			}
 			
 			// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
 			if(timer >= timeBetweenMelee && playerInMeleeRange /*&& enemyHealth.currentHealth > 0*/)
 			{
-				// ... attack.
+				//Attack if in melee range
 				Attack ();
 				
 			}
 			
 			if(timer >= timeBetweenProjectile && playerInShootRange /*&& enemyHealth.currentHealth > 0*/)
 			{
-				// ... attack.
+				//Attack if in shooting range.
 				Attack ();
 				
 			}
@@ -90,9 +95,9 @@ public class EnemyAttack : MonoBehaviour
 			timer = 0f;
 			
 			//Debug.Log("Returns value of melee: " + (melee[Random.Range(0, 2)]));
-			anim.SetTrigger(melee[Random.Range(0, 2)]);
+			attackAnim.SetTrigger(melee[Random.Range(0, 2)]);
 			
-			anim.SetTrigger("Cast Spell");
+			attackAnim.SetTrigger("Cast Spell");
 
 			/*// If the player has health to lose...
 			if(playerHealth.currentHealth > 0)
