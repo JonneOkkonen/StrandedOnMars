@@ -3,23 +3,19 @@ using UnityEngine.AI;
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
-{
-	public Transform player;         // Reference to the player's position.
-	//public Transform enemy;
-	NavMeshAgent nav;               // Reference to the nav mesh agent.	
-	float aggroRange = 10;
-	float collisionRange = 5;
-	//float collideRange = 6;
-	//Animator moveAnim;
-	//public bool moveForward = false;
-	
+{	
+	public int aggroRange;
+	public int collisionRange;
+	public int StoppingDistance;
+	Animator animator;
+	GameObject player;       // Reference to the player's position.
+	NavMeshAgent nav;		// Reference to the nav mesh agent.
 	
 	void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag ("Player").transform;
-		//player = GameObject.FindGameObjectWithTag ("Enemy").transform;
-        nav = GetComponent <NavMeshAgent> ();
-		//moveAnim = GetComponent <Animator> ();
+        player = GameObject.FindGameObjectWithTag("Player");
+        nav = GetComponent<NavMeshAgent>();
+		animator = GetComponent<Animator>();
     }
 	
     void Update ()
@@ -29,28 +25,12 @@ public class EnemyMovement : MonoBehaviour
 		if(Vector3.Distance(this.transform.position, player.transform.position) <= aggroRange) 
 		{
 			//Debug.Log("Player in range");
-			nav.SetDestination(player.position);
-			//Animate();	
+			nav.SetDestination(player.transform.position);
+			if(nav.remainingDistance <= StoppingDistance) {
+				animator.SetBool("Walk Forward", false);
+			}else {
+				animator.SetBool("Walk Forward", true);
+			}
 		}
-		
-		
-		
-		/*if(Vector3.Distance(this.transform.position, enemy.transform.position) <= collisionRange) 
-		{
-			Debug.Log("Enemy in range");
-			Vector3 createDist = transform.position;
-			createDist.x = 10.0f;
-			transform.position = createDist;
-		}*/
-		
-		/*if(player.shoots) 
-		{
-			nav.SetDestination(play.position);
-		}*/
     }
-	
-	/*void Animate () 
-	{
-		moveAnim = true;
-	}*/
 }
