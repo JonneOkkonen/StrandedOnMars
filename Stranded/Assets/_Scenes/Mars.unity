@@ -528,12 +528,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 11400006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
---- !u!1 &330960140 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 102427379, guid: 683162390d7d0e44c9cc2294cdcba14c,
-    type: 3}
-  m_PrefabInstance: {fileID: 363061486}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334975313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ece77dbeea2c542a74f577e9e42bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 330960140}
+  Door: {fileID: 1422586603}
   ActionTextObject: {fileID: 720396421}
 --- !u!1 &720396421
 GameObject:
@@ -4228,6 +4222,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d75129d226b0954baf09ca99b4d826d, type: 3}
+--- !u!1 &1422586603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1360105849, guid: 683162390d7d0e44c9cc2294cdcba14c,
+    type: 3}
+  m_PrefabInstance: {fileID: 363061486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1474126167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4274,7 +4274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InnerDoorObject: {fileID: 454727944}
-  OuterDoorObject: {fileID: 330960140}
+  OuterDoorObject: {fileID: 1422586603}
   Player: {fileID: 382716352}
   InformationTextObject: {fileID: 106839533}
 --- !u!65 &1474126170
