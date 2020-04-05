@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class FabricatorController : MonoBehaviour
 {
     GameObject MainCamera;
-    GameObject FabricatorCamera;
+    public GameObject FabricatorCamera;
     public GameObject Player;
     bool PlayerNearby = false;
     public GameObject ActionTextObject;
     Text ActionText;
+    public GameObject FabricatorUIObject;
 
     void Awake()
     {
         // Get Both Cameras
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        FabricatorCamera = GameObject.FindGameObjectWithTag("FabricatorCamera");
         ActionText = ActionTextObject.GetComponent<Text>();
     }
 
@@ -57,10 +57,14 @@ public class FabricatorController : MonoBehaviour
             FabricatorCamera.SetActive(true);
             // Disable Action Text
             ActionTextObject.SetActive(false);
+            // Enable Fabricator UI
+            FabricatorUIObject.SetActive(true);
         }else {
             Player.SetActive(true);
             FabricatorCamera.SetActive(false);
             MainCamera.SetActive(true);
+            // Disable Fabricator UI
+            FabricatorUIObject.SetActive(false);
         }
     }
 }
