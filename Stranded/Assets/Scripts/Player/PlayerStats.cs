@@ -23,6 +23,8 @@ public class PlayerStats : MonoBehaviour
     public int Points;
     public GameObject PointsTextObject;
     Text PointsText;
+    bool PlayerHasBeacon = false;
+    public GameObject BeaconPanel;
 
     void Awake()
     {
@@ -113,5 +115,11 @@ public class PlayerStats : MonoBehaviour
         var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
         nfi.NumberGroupSeparator = " ";
         PointsText.text = "Points: " + points.ToString("#,0", nfi);
+    }
+
+    // Set PlayerHasBeacon to true
+    public void AddBeacon() {
+        BeaconPanel.SetActive(true);
+        PlayerHasBeacon = true;
     }
 }
