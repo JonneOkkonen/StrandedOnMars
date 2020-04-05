@@ -1156,7 +1156,26 @@ MonoBehaviour:
   DeadScreen: {fileID: 1292369655}
   Points: 768252
   PointsTextObject: {fileID: 1682356430}
+  PlayerHasBeacon: 0
   BeaconPanel: {fileID: 979429319}
+--- !u!114 &382716355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382716352}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f91e28fa406d54197b41505f489747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionTextObject: {fileID: 720396421}
+  Beacon: {fileID: 2443311840261617607, guid: afeaf4e87d07f9544ad0726036e3e87b, type: 3}
+  BeaconPanel: {fileID: 979429319}
+  BeaconOffset: {x: 0, y: 1.3, z: 1.3}
+  GameEndTime: 30
+  BeaconLocationHeight: 35
 --- !u!1 &454727944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 247103231, guid: 683162390d7d0e44c9cc2294cdcba14c,

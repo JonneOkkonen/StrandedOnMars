@@ -23,8 +23,9 @@ public class PlayerStats : MonoBehaviour
     public int Points;
     public GameObject PointsTextObject;
     Text PointsText;
-    bool PlayerHasBeacon = false;
+    public bool PlayerHasBeacon = false;
     public GameObject BeaconPanel;
+    BeaconLocationController BeaconController;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class PlayerStats : MonoBehaviour
         PlayerController = GetComponent<RigidbodyFirstPersonController>();
         PlayerActionController = GetComponent<PlayerActionController>();
         PointsText = PointsTextObject.GetComponent<Text>();
+        BeaconController = GetComponent<BeaconLocationController>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
@@ -121,5 +123,6 @@ public class PlayerStats : MonoBehaviour
     public void AddBeacon() {
         BeaconPanel.SetActive(true);
         PlayerHasBeacon = true;
+        BeaconController.enabled = true;
     }
 }
