@@ -3,22 +3,24 @@ using UnityEngine.AI;
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
-{
-	public Transform player;         // Reference to the player's position.
-	//public Transform enemy;
-	NavMeshAgent nav;               // Reference to the nav mesh agent.	
-	float aggroRange = 10;
-	float collisionRange = 5;
-	//float collideRange = 6;
-	Animator moveAnim;
-	
+{	
+	public int aggroRange;
+	public int StoppingDistance;
+	Animator animator;
+	GameObject player;       // Reference to the player's position.
+	NavMeshAgent nav;		// Reference to the nav mesh agent.
+	Vector3 StartLocation;
+	public float AnimationSpeed;
 	
 	void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag ("Player").transform;
-		//player = GameObject.FindGameObjectWithTag ("Enemy").transform;
-        nav = GetComponent <NavMeshAgent> ();
-		moveAnim = GetComponent <Animator> ();
+		// Set StartLocation
+		StartLocation = transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
+        nav = GetComponent<NavMeshAgent>();
+		animator = GetComponent<Animator>();
+		// Set Animator Speed
+		animator.speed = AnimationSpeed;
     }
 	
     void Update ()
@@ -27,32 +29,16 @@ public class EnemyMovement : MonoBehaviour
 		//Later add a check if player shoots the Enemy GameObject
 		if(Vector3.Distance(this.transform.position, player.transform.position) <= aggroRange) 
 		{
-			//Debug.Log("Player in range");
-			nav.SetDestination(player.position);
-			WalkForward();	
+			nav.SetDestination(player.transform.position);
+		}else {
+			nav.SetDestination(StartLocation);
 		}
-		
-		if(Vector3.Distance(this.transform.position, player.transform.position) >= aggroRange) 
-		{
-			//Debug.Log("Player in range");
-			ReturnIdle();	
+
+		// Start/Stop Walking animation based remainingDistance
+		if(nav.remainingDistance <= StoppingDistance) {
+			animator.SetBool("Walk Forward", false);
+		}else {
+			animator.SetBool("Walk Forward", true);
 		}
-		
-		
-		
-		/*if(player.shoots) 
-		{
-			nav.SetDestination(play.position);
-		}*/
     }
-	
-	void WalkForward () 
-	{
-		moveAnim.SetBool("Walk Forward", true);
-	}
-	
-	void ReturnIdle () 
-	{
-		moveAnim.SetBool("Walk Forward", false);
-	}
 }
