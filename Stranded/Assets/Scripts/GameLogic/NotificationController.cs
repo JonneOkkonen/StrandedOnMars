@@ -7,14 +7,14 @@ public class NotificationController : MonoBehaviour
 {
     public GameObject TextObject;
     Animator animator;
-    Text Text;
-    public bool ShowNotification = true;
+    Text NotificationText;
+    public bool ShowNotification = false;
     public float VisibilityTime = 2f;
     float Timer;
     void Awake()
     {
         animator = GetComponent<Animator>();
-        Text = TextObject.GetComponent<Text>();
+        NotificationText = TextObject.GetComponent<Text>();
     }
 
     void Update() {
@@ -35,6 +35,7 @@ public class NotificationController : MonoBehaviour
     void HidePanel() {
         animator.SetBool("IsVisible", false);
         ShowNotification = false;
+        Timer = 0;
     }
 
     // Show Panel
@@ -43,8 +44,11 @@ public class NotificationController : MonoBehaviour
     }
 
     // Set Objective Text
-    public void SetPanelText(string text) {
-        Text.text = text;
+    public void SetPanelText(string text, float time = 0) {
+        NotificationText.text = text;
+        if(time != 0) {
+            VisibilityTime = time;
+        }
         // Show Notification
         ShowNotification = true;
     }
