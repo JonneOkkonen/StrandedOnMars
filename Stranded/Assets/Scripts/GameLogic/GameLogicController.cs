@@ -6,6 +6,7 @@ public class GameLogicController : MonoBehaviour
 {
     public GameObject NotificationObject;
     public GameObject ObjectiveObject;
+    public GameObject Base;
     List<string> Objectives = new List<string>(){
         "Find the base that we saw during crash landing",
         "Take control of the base",
@@ -21,6 +22,8 @@ public class GameLogicController : MonoBehaviour
     NotificationController NotificationController;
     ObjectiveController ObjectiveController;
     public float FirstObjectiveTime;
+    float Timer;
+    public float UpdateFrequency;
 
     void Awake()
     {
@@ -39,7 +42,18 @@ public class GameLogicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Timer += Time.deltaTime;
+        // Run Checks with UpdateFrequency
+        if(Timer >= UpdateFrequency) {
+            Timer = 0;
+            // Find Base Objective
+            if(CurrentObjective == 0) {
+                float distance = Vector3.Distance(Base.transform.position, transform.position);
+                if(distance <= 120) {
+                    NextObjective();
+                }
+            }
+        }
     }
 
     // Activate next objective
