@@ -7,7 +7,6 @@ public class ObjectiveController : MonoBehaviour
 {
     public GameObject ObjectiveTextObject;
     Animator animator;
-    bool IsVisible = false;
     Text ObjectiveText;
     void Awake()
     {
@@ -17,7 +16,7 @@ public class ObjectiveController : MonoBehaviour
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.Tab)) {
-            UnHideObjectivePanel();
+            ShowObjectivePanel();
         }
         if(Input.GetKeyUp(KeyCode.Tab)) {
             HideObjectivePanel();
@@ -25,12 +24,10 @@ public class ObjectiveController : MonoBehaviour
     }
 
     void HideObjectivePanel() {
-        IsVisible = false;
         animator.SetBool("IsVisible", false);
     }
 
-    void UnHideObjectivePanel() {
-        IsVisible = true;
+    void ShowObjectivePanel() {
         animator.SetBool("IsVisible", true);
     }
 
