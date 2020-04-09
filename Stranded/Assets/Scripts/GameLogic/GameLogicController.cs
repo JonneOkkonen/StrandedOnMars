@@ -7,6 +7,7 @@ public class GameLogicController : MonoBehaviour
     public GameObject NotificationObject;
     public GameObject ObjectiveObject;
     public GameObject Base;
+    public GameObject BaseMetalonGroup;
     List<string> Objectives = new List<string>(){
         "Find the base that we saw during crash landing",
         "Take control of the base",
@@ -50,6 +51,12 @@ public class GameLogicController : MonoBehaviour
             if(CurrentObjective == 0) {
                 float distance = Vector3.Distance(Base.transform.position, transform.position);
                 if(distance <= 120) {
+                    NextObjective();
+                }
+            }
+            // Take Control of the base
+            if(CurrentObjective == 1) {
+                if(BaseMetalonGroup.transform.childCount == 0) {
                     NextObjective();
                 }
             }
