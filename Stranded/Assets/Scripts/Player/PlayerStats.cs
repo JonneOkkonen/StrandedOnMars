@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
+using System.Globalization;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class PlayerStats : MonoBehaviour
     PlayerActionController PlayerActionController;
     public bool IsDead = false;
     public GameObject DeadScreen;
+    public int Points;
+    public GameObject PointsTextObject;
+    Text PointsText;
+    public bool PlayerHasBeacon = false;
+    public GameObject BeaconPanel;
+    BeaconLocationController BeaconController;
 
     void Awake()
     {
@@ -26,12 +33,17 @@ public class PlayerStats : MonoBehaviour
         OxygenBarText = OxygenBarObject.GetComponentInChildren(typeof(Text), true) as Text;
         PlayerController = GetComponent<RigidbodyFirstPersonController>();
         PlayerActionController = GetComponent<PlayerActionController>();
+        PointsText = PointsTextObject.GetComponent<Text>();
+        BeaconController = GetComponent<BeaconLocationController>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
 
         // Set Slider Max Value
         OxygenBar.maxValue = MaxOxygen;
+
+        // Set Points Text
+        SetPointsText(Points);
 
         // Start OxygenTick
         Invoke("OxygenTick", 1f);
@@ -84,5 +96,33 @@ public class PlayerStats : MonoBehaviour
         PlayerController.enabled = false;
         PlayerActionController.enabled = false;
         Debug.Log("Player has died");
+    }
+
+    // Use Points
+    public void UsePoints(int amount) {
+        Points -= amount;
+        // Update PointsText
+        SetPointsText(Points);
+    }
+
+    // Get Points
+    public void GetPoints(int amount) {
+        Points += amount;
+        // Update PointsText
+        SetPointsText(Points);
+    }
+
+    // Set Points Text
+    private void SetPointsText(int points) {
+        var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+        nfi.NumberGroupSeparator = " ";
+        PointsText.text = "Points: " + points.ToString("#,0", nfi);
+    }
+
+    // Set PlayerHasBeacon to true
+    public void AddBeacon() {
+        BeaconPanel.SetActive(true);
+        PlayerHasBeacon = true;
+        BeaconController.enabled = true;
     }
 }
