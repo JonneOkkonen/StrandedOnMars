@@ -2439,7 +2439,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 382716356}
-  enemy: {fileID: 0}
 --- !u!54 &551328537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3480,7 +3479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 382716356}
-  enemy: {fileID: 0}
 --- !u!54 &896879697
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5908,7 +5906,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 382716356}
-  enemy: {fileID: 0}
 --- !u!114 &1881976642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5957,6 +5954,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1881976645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881976639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1de1745e51f9d842b35743dbd7e10dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  amount: 20
+  sinkSpeed: 2
 --- !u!135 &1881976647
 SphereCollider:
   m_ObjectHideFlags: 0

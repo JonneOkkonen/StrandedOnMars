@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
@@ -7,28 +8,30 @@ public class EnemyHealth : MonoBehaviour
     public int startingHealth = 100;                            // The amount of health the enemey starts the game with.
     public int currentHealth;                                   // The current health the enemey has.
 	public int amount = 20;
-	//public float sinkSpeed = 2.5f; 
-
+	public float sinkSpeed = 0.5f;
+	NavMeshAgent nav; 
 
     Animator anim;                                              // Reference to the Animator component.                           // Reference to the EnemyAttacking script.
     bool damaged;                                               // True when the enemey gets damaged.
 	bool isDead;
-	//bool isSinking; 
+	bool sink = false;
 
 
     void Awake ()
     {
 		anim = GetComponent <Animator> ();
+		nav = GetComponent <NavMeshAgent> ();
 		currentHealth = startingHealth;
     }
 
 
     void Update ()
     {
-        /*if(isSinking)
+		if(sink)
 		{
-			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
-		}*/
+			Debug.Log("Enemy is sinking");
+			//transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+		}
     }
 	
 	void OnTriggerEnter(Collider other) {
@@ -55,18 +58,17 @@ public class EnemyHealth : MonoBehaviour
 
     void Death ()
     {
-      isDead = true;
-	  anim.SetTrigger("Die");
+		isDead = true;
+		anim.SetTrigger("Die");
+		Sinking();
     }        
 	
-	/*public void StartSinking ()
+	public void Sinking ()
 	{
-		GetComponent <NavMeshAgent> ().enabled = false;
-
-		GetComponent <Rigidbody> ().isKinematic = true;
-
-		isSinking = true;
-
-		Destroy (gameObject, 2f);
-	}*/
+		//GetComponent <NavMeshAgent> ().enabled = false;
+		nav.enabled = false;
+		//GetComponent <Rigidbody> ().isKinematic = true;
+		sink = true;
+		Destroy (this.gameObject, 3f);
+	}
 }
