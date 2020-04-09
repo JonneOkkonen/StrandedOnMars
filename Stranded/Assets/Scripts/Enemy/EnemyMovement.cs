@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         nav = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
+		//shot = GetComponent<PlayerShoot>();
 		// Set Animator Speed
 		animator.speed = AnimationSpeed;
     }
@@ -43,4 +44,9 @@ public class EnemyMovement : MonoBehaviour
 			}
 		}
     }
+	
+	/*void onBeingShot() 
+	{
+		
+	}*/
 }

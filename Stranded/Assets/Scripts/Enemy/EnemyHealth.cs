@@ -9,16 +9,21 @@ public class EnemyHealth : MonoBehaviour
 	public int currentHealth;                       
 	public int amount = 20;
 	public float sinkSpeed = 0.5f;
+	public int points = 10;
 	NavMeshAgent nav; 
     Animator anim;
+	PlayerStats playerStats;
+	GameObject player;
     bool damaged;              
 	bool isDead;
 	bool sink = false;
 
     void Awake ()
     {
+		player = GameObject.FindGameObjectWithTag ("Player");
 		anim = GetComponent <Animator> ();
 		nav = GetComponent <NavMeshAgent> ();
+		playerStats = player.GetComponent <PlayerStats>();
 		currentHealth = startingHealth;
     }
 
@@ -56,6 +61,7 @@ public class EnemyHealth : MonoBehaviour
     {
 		isDead = true;
 		anim.SetTrigger("Die");
+		playerStats.GetPoints(points);
 		Sinking();
     }        
 	

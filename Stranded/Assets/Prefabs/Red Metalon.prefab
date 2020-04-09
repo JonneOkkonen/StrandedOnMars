@@ -112,6 +112,7 @@ MonoBehaviour:
   meleeRange: 5
   shootRange: 20
   attackAbility: 0
+  enemyAttackDamage: 10
 --- !u!114 &592451749583941820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   currentHealth: 0
   amount: 20
   sinkSpeed: 0.5
+  points: 10000
 --- !u!135 &-107510687932554981
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -26,8 +26,8 @@ public class PlayerStats : MonoBehaviour
     public bool PlayerHasBeacon = false;
     public GameObject BeaconPanel;
     BeaconLocationController BeaconController;
-    int currentHealth;
-    public int startingHealth;
+    public int currentHealth;
+    public int startingHealth = 100;
 
     void Awake()
     {
@@ -96,11 +96,16 @@ public class PlayerStats : MonoBehaviour
 	public void TakeDamage(int amount) 
 	{
 		//damaged = true;
-		currentHealth -= amount;
+		
+		print("Damage taken" + currentHealth);
 		if(currentHealth <= 0 && !IsDead)
         {
             Die ();
-        }
+        } 
+		else 
+		{
+			currentHealth -= amount;
+		}
 	}
 
     // Player Died

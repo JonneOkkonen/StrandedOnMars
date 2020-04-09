@@ -1159,11 +1159,12 @@ MonoBehaviour:
   OxygenRegen: 0
   IsDead: 0
   DeadScreen: {fileID: 1292369655}
-  Points: 768252
+  Points: 0
   PointsTextObject: {fileID: 1682356430}
   PlayerHasBeacon: 0
   BeaconPanel: {fileID: 979429319}
-  startingHealth: 0
+  currentHealth: 0
+  startingHealth: 100
 --- !u!114 &382716355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4798,11 +4799,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 665759133}
     m_Modifications:
-    - target: {fileID: -5261893146831471820, guid: 2943dfd32f3ccce478b48aefca18b3f1,
-        type: 3}
-      propertyPath: m_Radius
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3107722908745565913, guid: 2943dfd32f3ccce478b48aefca18b3f1,
         type: 3}
       propertyPath: m_Name

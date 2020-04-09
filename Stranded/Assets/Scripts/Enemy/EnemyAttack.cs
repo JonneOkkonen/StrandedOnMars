@@ -12,7 +12,8 @@ public class EnemyAttack : MonoBehaviour
 	public int meleeRange = 5;					//The range that the enemy GameObject can melee attack.
 	public int shootRange = 20;					//The range that the enemy GameObject can shoot attack.
 	public bool attackAbility; 					//Allows setting which attack is available for what enemy type.
-	
+	public float enemyAttackDamage = 10f;
+	PlayerStats playerStats;
 	Animator attackAnim;                              // Reference to the animator component.
 	GameObject player;                          // Reference to the player GameObject.
 	//PlayerHealth playerHealth;                  // Reference to the player's health.
@@ -30,6 +31,7 @@ public class EnemyAttack : MonoBehaviour
 		//playerHealth = player.GetComponent <PlayerHealth> ();
 		//enemyHealth = GetComponent<EnemyHealth>();
 		attackAnim = GetComponent <Animator> ();
+		playerStats = player.GetComponent <PlayerStats>();
 	}
 	
 	void Update ()
@@ -66,26 +68,18 @@ public class EnemyAttack : MonoBehaviour
 			}
 			
 			// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-			if(timer >= timeBetweenMelee && playerInMeleeRange /*&& enemyHealth.currentHealth > 0*/)
+			if(timer >= timeBetweenMelee && playerInMeleeRange && playerStats.currentHealth > 0)
 			{
 				//Attack if in melee range
 				Attack ();
 				
 			}
 			
-			if(timer >= timeBetweenProjectile && playerInShootRange /*&& enemyHealth.currentHealth > 0*/)
+			if(timer >= timeBetweenProjectile && playerInShootRange && playerStats.currentHealth > 0)
 			{
 				//Attack if in shooting range.
-				Attack ();
-				
+				//Attack ();	
 			}
-
-			/*// If the player has zero or less health...
-			if(playerHealth.currentHealth <= 0)
-			{
-				// ... tell the animator the player is dead.
-				anim.SetTrigger ("PlayerDead");
-			}*/
 		}
 
 
@@ -98,12 +92,14 @@ public class EnemyAttack : MonoBehaviour
 			attackAnim.SetTrigger(melee[Random.Range(0, 2)]);
 			
 			attackAnim.SetTrigger("Cast Spell");
+			
+			playerStats.TakeDamage(meleeDamage);
 
-			/*// If the player has health to lose...
-			if(playerHealth.currentHealth > 0)
+			// If the player has health to lose...
+			/*if(playerStats.currentHealth > 0)
 			{
 				// ... damage the player.
-				playerHealth.TakeDamage (attackDamage);
+				playerStats.TakeDamage (attackDamage);
 			}*/
 		}
 }

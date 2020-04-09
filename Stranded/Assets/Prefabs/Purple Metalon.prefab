@@ -107,11 +107,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenMelee: 2
   timeBetweenProjectile: 5
-  meleeDamage: 10
-  shootDamage: 20
+  meleeDamage: 30
+  shootDamage: 0
   meleeRange: 5
   shootRange: 20
   attackAbility: 0
+  enemyAttackDamage: 10
 --- !u!114 &6758251693013942046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   currentHealth: 0
   amount: 20
   sinkSpeed: 0.5
+  points: 20000
 --- !u!135 &-5261893146831471820
 SphereCollider:
   m_ObjectHideFlags: 0
