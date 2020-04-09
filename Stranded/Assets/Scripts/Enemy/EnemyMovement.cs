@@ -25,20 +25,22 @@ public class EnemyMovement : MonoBehaviour
 	
     void Update ()
     {
-		//Check if player is in range of destionation
-		//Later add a check if player shoots the Enemy GameObject
-		if(Vector3.Distance(this.transform.position, player.transform.position) <= aggroRange) 
-		{
-			nav.SetDestination(player.transform.position);
-		}else {
-			nav.SetDestination(StartLocation);
-		}
+		if(nav.enabled) {
+			//Check if player is in range of destionation
+			//Later add a check if player shoots the Enemy GameObject
+			if(Vector3.Distance(this.transform.position, player.transform.position) <= aggroRange) 
+			{
+				nav.SetDestination(player.transform.position);
+			}else {
+				nav.SetDestination(StartLocation);
+			}
 
-		// Start/Stop Walking animation based remainingDistance
-		if(nav.remainingDistance <= StoppingDistance) {
-			animator.SetBool("Walk Forward", false);
-		}else {
-			animator.SetBool("Walk Forward", true);
+			// Start/Stop Walking animation based remainingDistance
+			if(nav.remainingDistance <= StoppingDistance) {
+				animator.SetBool("Walk Forward", false);
+			}else {
+				animator.SetBool("Walk Forward", true);
+			}
 		}
     }
 }

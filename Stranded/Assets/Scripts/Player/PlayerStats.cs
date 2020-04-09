@@ -26,6 +26,8 @@ public class PlayerStats : MonoBehaviour
     public bool PlayerHasBeacon = false;
     public GameObject BeaconPanel;
     BeaconLocationController BeaconController;
+    int currentHealth;
+    public int startingHealth;
 
     void Awake()
     {
@@ -91,11 +93,11 @@ public class PlayerStats : MonoBehaviour
         Invoke("OxygenTick", 1f);
     }
 	
-	public void takeDamage(int amount) 
+	public void TakeDamage(int amount) 
 	{
 		//damaged = true;
 		currentHealth -= amount;
-		if(currentHealth <= 0 && !isDead)
+		if(currentHealth <= 0 && !IsDead)
         {
             Die ();
         }

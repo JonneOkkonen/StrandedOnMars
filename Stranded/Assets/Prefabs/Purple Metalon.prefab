@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3107722908745565916}
   - component: {fileID: 3107722908745565919}
   - component: {fileID: 3107722908745565906}
+  - component: {fileID: 6758251693013942046}
+  - component: {fileID: -5261893146831471820}
   m_Layer: 0
   m_Name: Purple Metalon
   m_TagString: Untagged
@@ -110,6 +112,49 @@ MonoBehaviour:
   meleeRange: 5
   shootRange: 20
   attackAbility: 0
+--- !u!114 &6758251693013942046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3107722908745565913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1de1745e51f9d842b35743dbd7e10dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 200
+  currentHealth: 0
+  amount: 20
+  sinkSpeed: 0.5
+--- !u!135 &-5261893146831471820
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3107722908745565913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &3107722909926648802
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108980200262731144}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
 --- !u!54 &3107722909066570979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,20 +187,6 @@ MonoBehaviour:
   RotationMinAngle: 0
   OriginOffset: {x: 0, y: 0.41, z: 0}
   DistanceFromGround: 0.42
---- !u!64 &3107722909926648802
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108980200262731144}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
 --- !u!1001 &3107722909066570990
 PrefabInstance:
   m_ObjectHideFlags: 0
