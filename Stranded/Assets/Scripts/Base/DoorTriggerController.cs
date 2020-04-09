@@ -16,7 +16,7 @@ public class DoorTriggerController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if(other.tag == "Player") {
+        if(other.tag == "Player" && AirLock.CanBeOpened) {
             // Update Action Text
             ActionText.text = "Action (E)";
             // Enable Action Text

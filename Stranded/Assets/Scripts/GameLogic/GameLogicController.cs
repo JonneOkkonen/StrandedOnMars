@@ -8,10 +8,15 @@ public class GameLogicController : MonoBehaviour
     public GameObject ObjectiveObject;
     public GameObject Base;
     public GameObject BaseMetalonGroup;
+    public GameObject ElectricCable;
+    public GameObject AirlockOuterDoor;
+    ElectricCableController ElectricCableController;
+    AirlockDoorController AirlockDoorController;
     List<string> Objectives = new List<string>(){
-        "Find the base that we saw during crash landing",
-        "Take control of the base",
-        "Restore power to the base"
+        "Go the base that we saw during crash landing",
+        "Take control of the base, by taking out all the metalon's",
+        "Restore power to the base. Check power cable for damages",
+        "Go inside base"
     };
 
     List<string> Notifications = new List<string>(){
@@ -30,6 +35,8 @@ public class GameLogicController : MonoBehaviour
     {
         NotificationController = NotificationObject.GetComponent<NotificationController>();
         ObjectiveController = ObjectiveObject.GetComponent<ObjectiveController>();
+        ElectricCableController = ElectricCable.GetComponent<ElectricCableController>();
+        AirlockDoorController = AirlockOuterDoor.GetComponent<AirlockDoorController>();
     }
 
     void Start() {
@@ -60,6 +67,18 @@ public class GameLogicController : MonoBehaviour
                     NextObjective();
                 }
             }
+            // Restore power to base
+            if(CurrentObjective == 2) {
+                if(ElectricCableController.CableFixed) {
+                    // Enable ElectricCableController
+                    ElectricCableController.enabled = false;
+                    // Enable ElectricCableCollider
+                    ElectricCable.GetComponent<SphereCollider>().enabled = true;
+                    // Enable AirlockDoor
+                    AirlockDoorController.CanBeOpened = true;
+                    NextObjective();
+                }
+            }
         }
     }
 
@@ -71,6 +90,14 @@ public class GameLogicController : MonoBehaviour
         NotificationController.SetPanelText(Notifications[1]);
         // Set Objective Description text
         ObjectiveController.SetObjective(Objectives[CurrentObjective]);
+
+        // Addional Stuff needed to initialize objective
+        if(CurrentObjective == 2) {
+            // Enable ElectricCableController
+            ElectricCableController.enabled = true;
+            // Enable ElectricCableCollider
+            ElectricCable.GetComponent<SphereCollider>().enabled = true;
+        }
     }
 
     // Start First Objective
