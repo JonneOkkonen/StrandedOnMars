@@ -19,6 +19,11 @@ public class PlayerStats : MonoBehaviour
     PlayerActionController PlayerActionController;
     public bool IsDead = false;
     public GameObject DeadScreen;
+	public int startingHealth = 100;
+	public int currentHealth;
+	
+	bool isDead;                                             
+    //bool damaged;
 
     void Awake()
     {
@@ -35,6 +40,8 @@ public class PlayerStats : MonoBehaviour
 
         // Start OxygenTick
         Invoke("OxygenTick", 1f);
+		
+		currentHealth = startingHealth;
     }
 
     // Update is called once per frame
@@ -76,6 +83,16 @@ public class PlayerStats : MonoBehaviour
         }
         Invoke("OxygenTick", 1f);
     }
+	
+	public void takeDamage(int amount) 
+	{
+		//damaged = true;
+		currentHealth -= amount;
+		if(currentHealth <= 0 && !isDead)
+        {
+            Die ();
+        }
+	}
 
     // Player Died
     private void Die() {

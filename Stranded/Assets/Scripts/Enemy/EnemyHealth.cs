@@ -6,7 +6,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 100;                            // The amount of health the enemey starts the game with.
-    public int currentHealth;                                   // The current health the enemey has.
+	public int currentHealth;                                   // The current health the enemey has.
 	public int amount = 20;
 	public float sinkSpeed = 0.5f;
 	NavMeshAgent nav; 
