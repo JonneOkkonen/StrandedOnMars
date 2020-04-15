@@ -97,15 +97,13 @@ public class PlayerStats : MonoBehaviour
 	{
 		//damaged = true;
 		
-		print("Damage taken" + currentHealth);
+		currentHealth -= amount;
+		print("Damage taken " + currentHealth);
 		if(currentHealth <= 0 && !IsDead)
         {
-            Die ();
-        } 
-		else 
-		{
-			currentHealth -= amount;
-		}
+			Debug.Log("No health left");
+            Die();
+        } 		
 	}
 
     // Player Died
