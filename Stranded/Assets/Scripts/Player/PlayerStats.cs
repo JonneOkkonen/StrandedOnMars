@@ -31,6 +31,11 @@ public class PlayerStats : MonoBehaviour
 	public GameObject HealthBarObject;
 	Slider HealthBar;
 	Text HealthBarText;
+	public GameObject StaminaBarObject;
+	public float PlayerStamina;
+	Slider StaminaBar;
+
+	
 
     void Awake()
     {
@@ -39,6 +44,9 @@ public class PlayerStats : MonoBehaviour
 		
 		HealthBar = HealthBarObject.GetComponent<Slider>();
 		HealthBarText = HealthBarObject.GetComponentInChildren(typeof(Text), true) as Text;
+		
+		StaminaBar = StaminaBarObject.GetComponent<Slider>();
+		PlayerStamina = GetComponent<RigidbodyFirstPersonController>();
 		
         PlayerController = GetComponent<RigidbodyFirstPersonController>();
         PlayerActionController = GetComponent<PlayerActionController>();
@@ -57,6 +65,7 @@ public class PlayerStats : MonoBehaviour
         // Start OxygenTick
         Invoke("OxygenTick", 1f);
 		
+		// Initialize Player Health
 		currentHealth = startingHealth;
     }
 
@@ -64,7 +73,9 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         OxygenBar.value = Oxygen;
-        OxygenBarText.text = $"Oxygen: {Oxygen}s";
+        OxygenBarText.text = $"Oxygen: {Oxygen} s";
+		
+		StaminaBar.value = PlayerStamina;
 
 		if(currentHealth < 0) 
 		{
@@ -110,10 +121,13 @@ public class PlayerStats : MonoBehaviour
         Invoke("OxygenTick", 1f);
     }
 	
+	// Player takes damage
 	public void TakeDamage(int amount) 
 	{	
+		// Substract amount of damage taken
 		currentHealth -= amount;
 		print("Damage taken " + currentHealth);
+		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
         {
 			Debug.Log("No health left");
