@@ -35,8 +35,6 @@ public class PlayerStats : MonoBehaviour
 	public float PlayerStamina;
 	Slider StaminaBar;
 
-	
-
     void Awake()
     {
         OxygenBar = OxygenBarObject.GetComponent<Slider>();
@@ -45,10 +43,9 @@ public class PlayerStats : MonoBehaviour
 		HealthBar = HealthBarObject.GetComponent<Slider>();
 		HealthBarText = HealthBarObject.GetComponentInChildren(typeof(Text), true) as Text;
 		
-		StaminaBar = StaminaBarObject.GetComponent<Slider>();
-		PlayerStamina = GetComponent<RigidbodyFirstPersonController>();
-		
+		StaminaBar = StaminaBarObject.GetComponent<Slider>();		
         PlayerController = GetComponent<RigidbodyFirstPersonController>();
+        
         PlayerActionController = GetComponent<PlayerActionController>();
         PointsText = PointsTextObject.GetComponent<Text>();
         BeaconController = GetComponent<BeaconLocationController>();
@@ -56,8 +53,11 @@ public class PlayerStats : MonoBehaviour
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
 
-        // Set Slider Max Value
+        // Set Oxygen Slider Max Value
         OxygenBar.maxValue = MaxOxygen;
+
+        // Set Health Slider Max Value
+        HealthBar.maxValue = startingHealth;
 
         // Set Points Text
         SetPointsText(Points);
