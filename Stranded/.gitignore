@@ -10,7 +10,10 @@
 #/[Bb]uild/
 #/[Bb]uilds/
 /[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+/[Uu]ser[Ss]ettingis/
+
+#LightMaps
+/Assets/_Scenes/Mars
 
 /Assets/_Scenes/Mars/
 

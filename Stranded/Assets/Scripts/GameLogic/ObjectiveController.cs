@@ -12,6 +12,9 @@ public class ObjectiveController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         ObjectiveText = ObjectiveTextObject.GetComponent<Text>();
+
+        // Set Objective Description text
+        SetObjective("No Objectives");
     }
 
     void Update() {
