@@ -8,6 +8,11 @@ public class SlopeHandler : MonoBehaviour
     public int RotationMinAngle;    
 	public Vector3 OriginOffset;
     public float DistanceFromGround;
+    EnemyHealth Health;
+
+    void Awake() {
+        Health = transform.parent.gameObject.GetComponent<EnemyHealth>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,7 +28,7 @@ public class SlopeHandler : MonoBehaviour
         RaycastHit GroundHit;
 
         // Cast Ray to Ground
-        if(Physics.Raycast(origin + OriginOffset, Vector3.down, out GroundHit, 50, layerMask)) {
+        if(Physics.Raycast(origin + OriginOffset, Vector3.down, out GroundHit, 50, layerMask) && !Health.isDead) {
             // Calculate new Rotatation based on ground angle
             Quaternion newRotation = Quaternion.FromToRotation(transform.up, GroundHit.normal) * transform.rotation;
             

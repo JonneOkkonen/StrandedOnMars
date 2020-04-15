@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
 	PlayerStats playerStats;
 	GameObject player;
     bool damaged;              
-	bool isDead;
+	public bool isDead;
 	bool sink = false;
 
     void Awake ()
@@ -67,9 +67,7 @@ public class EnemyHealth : MonoBehaviour
 	
 	public void Sinking ()
 	{
-		//GetComponent <NavMeshAgent> ().enabled = false;
 		nav.enabled = false;
-		//GetComponent <Rigidbody> ().isKinematic = true;
 		sink = true;
 		Destroy (this.gameObject, 3f);
 	}

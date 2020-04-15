@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ElectricCableController : MonoBehaviour
 {
     public GameObject ActionTextObject;
+    public GameObject Sparks;
     Text ActionText;
     public bool CableFixed = false;
     public float TimeToFix;
@@ -34,6 +35,8 @@ public class ElectricCableController : MonoBehaviour
                 Repairing = false;
                 // Disable Action Text
                 ActionTextObject.SetActive(false);
+                // Disable Particle Effect
+                Sparks.SetActive(false);
                 CableFixed = true;
             }
         }else {

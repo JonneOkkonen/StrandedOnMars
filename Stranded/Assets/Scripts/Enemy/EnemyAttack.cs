@@ -22,16 +22,15 @@ public class EnemyAttack : MonoBehaviour
 	bool playerInShootRange;                         // Whether player is within the trigger collider and can be attacked.
 	float timer;                				// Timer counting next attack.
 	string[] melee = {"Stab Attack", "Smash Attack"}; //Create array to randomize between 2 attack animations.
-	
-	
+	EnemyHealth Health;
+
 	void Awake () 
 	{
 		// Setting up the references.
 		player = GameObject.FindGameObjectWithTag ("Player");
-		//playerHealth = player.GetComponent <PlayerHealth> ();
-		//enemyHealth = GetComponent<EnemyHealth>();
 		attackAnim = GetComponent <Animator> ();
 		playerStats = player.GetComponent <PlayerStats>();
+		Health = GetComponent<EnemyHealth>();
 	}
 	
 	void Update ()
@@ -68,7 +67,7 @@ public class EnemyAttack : MonoBehaviour
 			}
 			
 			// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-			if(timer >= timeBetweenMelee && playerInMeleeRange && playerStats.currentHealth > 0)
+			if(timer >= timeBetweenMelee && playerInMeleeRange && playerStats.currentHealth > 0 && !Health.isDead)
 			{
 				//Attack if in melee range
 				Attack ();
@@ -94,12 +93,5 @@ public class EnemyAttack : MonoBehaviour
 			attackAnim.SetTrigger("Cast Spell");
 			
 			playerStats.TakeDamage(meleeDamage);
-
-			// If the player has health to lose...
-			/*if(playerStats.currentHealth > 0)
-			{
-				// ... damage the player.
-				playerStats.TakeDamage (attackDamage);
-			}*/
 		}
 }
