@@ -28,11 +28,18 @@ public class PlayerStats : MonoBehaviour
     BeaconLocationController BeaconController;
     public int currentHealth;
     public int startingHealth = 100;
+	public GameObject HealthBarObject;
+	Slider HealthBar;
+	Text HealthBarText;
 
     void Awake()
     {
         OxygenBar = OxygenBarObject.GetComponent<Slider>();
         OxygenBarText = OxygenBarObject.GetComponentInChildren(typeof(Text), true) as Text;
+		
+		HealthBar = HealthBarObject.GetComponent<Slider>();
+		HealthBarText = HealthBarObject.GetComponentInChildren(typeof(Text), true) as Text;
+		
         PlayerController = GetComponent<RigidbodyFirstPersonController>();
         PlayerActionController = GetComponent<PlayerActionController>();
         PointsText = PointsTextObject.GetComponent<Text>();
@@ -59,6 +66,16 @@ public class PlayerStats : MonoBehaviour
         OxygenBar.value = Oxygen;
         OxygenBarText.text = $"Oxygen: {Oxygen}s";
 
+		if(currentHealth < 0) 
+		{
+			HealthBar.value = currentHealth;
+			HealthBarText.text = $"Health: 0 HP";
+		} else
+		{
+			HealthBar.value = currentHealth;
+			HealthBarText.text = $"Health: {currentHealth} HP";
+		}
+
         // Respawn after Death
         if(IsDead) {
             if(Input.GetKeyDown(KeyCode.X)) {
@@ -71,7 +88,7 @@ public class PlayerStats : MonoBehaviour
     private void OxygenTick()  {
         if(Oxygen > 0) {
             // Use Oxygen
-            if(UsingOxygen) {
+            if(UsingOxygen && !IsDead) {
                 Oxygen--;
             }
             // Regen Oxygen Supply
@@ -94,9 +111,7 @@ public class PlayerStats : MonoBehaviour
     }
 	
 	public void TakeDamage(int amount) 
-	{
-		//damaged = true;
-		
+	{	
 		currentHealth -= amount;
 		print("Damage taken " + currentHealth);
 		if(currentHealth <= 0 && !IsDead)
