@@ -5648,6 +5648,10 @@ PrefabInstance:
       propertyPath: movementSettings.JumpForce
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: movementSettings.RunMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: Camera
       value: 
@@ -6100,7 +6104,8 @@ MonoBehaviour:
   startingHealth: 100
   HealthBarObject: {fileID: 1030058124}
   StaminaBarObject: {fileID: 327868476}
-  PlayerStamina: 5
+  MaxStamina: 5
+  StaminaRegenSpeed: 0.5
 --- !u!114 &382716355
 MonoBehaviour:
   m_ObjectHideFlags: 0

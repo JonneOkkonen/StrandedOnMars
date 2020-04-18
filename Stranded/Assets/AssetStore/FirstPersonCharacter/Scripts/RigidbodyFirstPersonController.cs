@@ -8,6 +8,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+        public static bool AllowedToRun = true;
         [Serializable]
         public class MovementSettings
         {
@@ -44,7 +45,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
-	            if (Input.GetKey(RunKey))
+	            if (Input.GetKey(RunKey) && AllowedToRun)
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -55,7 +56,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 	            }
 #endif
             }
-
 #if !MOBILE_INPUT
             public bool Running
             {

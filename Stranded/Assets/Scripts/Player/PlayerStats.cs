@@ -32,8 +32,10 @@ public class PlayerStats : MonoBehaviour
 	Slider HealthBar;
 	Text HealthBarText;
 	public GameObject StaminaBarObject;
-	public float PlayerStamina;
+    public float MaxStamina;
+	float PlayerStamina;
 	Slider StaminaBar;
+    public float StaminaRegenSpeed;
 
     void Awake()
     {
@@ -43,8 +45,8 @@ public class PlayerStats : MonoBehaviour
 		HealthBar = HealthBarObject.GetComponent<Slider>();
 		HealthBarText = HealthBarObject.GetComponentInChildren(typeof(Text), true) as Text;
 		
-		StaminaBar = StaminaBarObject.GetComponent<Slider>();		
-        PlayerController = GetComponent<RigidbodyFirstPersonController>();
+		StaminaBar = StaminaBarObject.GetComponent<Slider>();	
+        PlayerController = GetComponent<RigidbodyFirstPersonController>();	
         
         PlayerActionController = GetComponent<PlayerActionController>();
         PointsText = PointsTextObject.GetComponent<Text>();
@@ -59,6 +61,9 @@ public class PlayerStats : MonoBehaviour
         // Set Health Slider Max Value
         HealthBar.maxValue = startingHealth;
 
+        // Set Stamina Slider Max Value
+        StaminaBar.maxValue = MaxStamina;
+
         // Set Points Text
         SetPointsText(Points);
 
@@ -67,6 +72,9 @@ public class PlayerStats : MonoBehaviour
 		
 		// Initialize Player Health
 		currentHealth = startingHealth;
+
+        // Initialize Stamina
+        PlayerStamina = MaxStamina;
     }
 
     // Update is called once per frame
@@ -91,6 +99,34 @@ public class PlayerStats : MonoBehaviour
         if(IsDead) {
             if(Input.GetKeyDown(KeyCode.X)) {
                 SceneManager.LoadScene("Mars");
+            }
+        }
+
+        // Change Run Multiplier
+        if(PlayerStamina > 0) {
+            RigidbodyFirstPersonController.AllowedToRun = true;
+        }else {
+            RigidbodyFirstPersonController.AllowedToRun = false;
+        }
+
+        // Use Stamina when running
+        if(Input.GetKey(KeyCode.LeftShift)) {
+            if(PlayerStamina > 0) {
+                PlayerStamina -= Time.deltaTime;
+                // Don't go under 0
+                if(PlayerStamina < 0) {
+                    PlayerStamina = 0;
+                }
+                // Update Stamina Bar
+                StaminaBar.value = PlayerStamina;
+            }
+        }else {
+            // Regen Stamina when not running
+            if(PlayerStamina < MaxStamina) {
+                PlayerStamina += Time.deltaTime * StaminaRegenSpeed;
+                if(PlayerStamina > MaxStamina) {
+                    PlayerStamina = MaxStamina;
+                }
             }
         }
     }
