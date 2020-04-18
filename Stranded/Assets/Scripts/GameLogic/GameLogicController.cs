@@ -13,8 +13,9 @@ public class GameLogicController : MonoBehaviour
     ElectricCableController ElectricCableController;
     AirlockDoorController AirlockDoorController;
     List<string> Objectives = new List<string>(){
-        "Go the base that we saw during crash landing",
+        "Find a place to shelter",
         "Take control of the base, by taking out all the metalon's",
+        "Go inside base",
         "Restore power to the base. Check power cable for damages",
         "Go inside base"
     };
@@ -30,6 +31,10 @@ public class GameLogicController : MonoBehaviour
     public float FirstObjectiveTime;
     float Timer;
     public float UpdateFrequency;
+    AudioSource VoiceLines;
+    bool VoiceLine3Triggered = false;
+    bool VoiceLine4Triggered = false;
+    bool VoiceLine7Triggered = false;
 
     void Awake()
     {
@@ -37,6 +42,7 @@ public class GameLogicController : MonoBehaviour
         ObjectiveController = ObjectiveObject.GetComponent<ObjectiveController>();
         ElectricCableController = ElectricCable.GetComponent<ElectricCableController>();
         AirlockDoorController = AirlockOuterDoor.GetComponent<AirlockDoorController>();
+        VoiceLines = GetComponent<AudioSource>();
     }
 
     void Start() {
@@ -57,18 +63,42 @@ public class GameLogicController : MonoBehaviour
             // Find Base Objective
             if(CurrentObjective == 0) {
                 float distance = Vector3.Distance(Base.transform.position, transform.position);
+                // Play Voiceline when seeing base
+                if(distance <= 250) {
+                    if(!VoiceLine3Triggered) {
+                        PlayVoiceLine(3);
+                        VoiceLine3Triggered = true;
+                    }
+                }
+                // Play Trigger Next objective when base found
                 if(distance <= 120) {
                     NextObjective();
+                    if(!VoiceLine4Triggered) {
+                        PlayVoiceLine(4);
+                        VoiceLine4Triggered = true;
+                    }
                 }
             }
             // Take Control of the base
             if(CurrentObjective == 1) {
                 if(BaseMetalonGroup.transform.childCount == 0) {
                     NextObjective();
+                    PlayVoiceLine(5);
+                }
+            }
+            // Try to get inside base
+            if(CurrentObjective == 2) {
+                if(AirlockDoorController.PlayerNearby) {
+                    PlayVoiceLine(6);
+                    NextObjective();
                 }
             }
             // Restore power to base
-            if(CurrentObjective == 2) {
+            if(CurrentObjective == 3) {
+                if(!VoiceLine7Triggered && !VoiceLines.isPlaying) {
+                    PlayVoiceLine(7);
+                    VoiceLine7Triggered = true;
+                }
                 if(ElectricCableController.CableFixed) {
                     // Enable ElectricCableController
                     ElectricCableController.enabled = false;
@@ -77,6 +107,7 @@ public class GameLogicController : MonoBehaviour
                     // Enable AirlockDoor
                     AirlockDoorController.CanBeOpened = true;
                     NextObjective();
+                    PlayVoiceLine(8);
                 }
             }
         }
@@ -105,6 +136,7 @@ public class GameLogicController : MonoBehaviour
     {
         yield return new WaitForSeconds(FirstObjectiveTime);
         NextObjective();
+        PlayVoiceLine(2);
     }
 
     // Show first notification at start of the game
@@ -112,5 +144,16 @@ public class GameLogicController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         NotificationController.SetPanelText(Notifications[0], 10);
+        PlayVoiceLine(1);
+    }
+
+    // Play selected VoiceLine
+    void PlayVoiceLine(int voiceline) {
+        // Stop If Playing
+        if(VoiceLines.isPlaying) {
+            VoiceLines.Stop();
+        }
+        var newClip = Resources.Load<AudioClip>("VoiceLines/VoiceLine" + voiceline.ToString());
+        VoiceLines.PlayOneShot(newClip);
     }
 }
