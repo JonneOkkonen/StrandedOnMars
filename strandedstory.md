@@ -18,22 +18,17 @@ T: - Wait. What is that? Is that an old mining structure of some kind? It seems 
 T: - But wait. What are those things? It looks like they are surrounding that structure and they look hostile. I might have to take them down.
 
 // Upon clearing the base from the enemies and trying to enter the building but failing.
-T: - Ugh. I can not seem to get in. I need to find a way to fix the doors and it seems like the pipe on the left of the structure is broken.
+T: - Now that those are gone. Let's try to get into the base.
+T: - Ugh. I can not seem to get in. I need to find a way to restore power to the base. I should check the power cable.
 
 // Continues...
-T: - I need to find a way to fix this base. I think I saw some kind of device when I was crash landing on the mountains West of the base. I should go check it out.
-
-// Upon obtaining the item.
-T: - This seems like a perfect fit, I should go try installing it to the pipe and see if that would fix it.
+T: - I think I saw part of the cable when I was crash landing on the mountains West of the base. I should go check it out.
 
 // Upon fixing the pipleline.
-T: - There we go, the base is operational! But ugh, when I fixed the base a splinter flew out and damaged my equipment more, now I am draining oxygen out extra fast.
-
-// Continues:
-T: - I should get inside quickly and see what supplies I can find.
+T: - There we go, the base should have power again! Let's go and try to get in.
 
 // When player pressures air and gets inside.
-T: - Ahhh. Fresh air. Phew. That was a close one but it seems like this base is giving me free supply of air when I need it.
+T: - Ahhh. Fresh air. That was a close one but it seems like this base is giving me free supply of air when I need it.
 
 // When the player approaches the plants.
 T: - I am hungry and I seem to have gotten some wounds. By the manual description next to these plants, it read these plants have some nourishment and healing properties. I should eat them.
