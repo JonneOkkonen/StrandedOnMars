@@ -15,7 +15,7 @@ T: - Looks like my equipment was damaged and I am leaking oxygen. At least I hav
 T: - Wait. What is that? Is that an old mining structure of some kind? It seems abandoned.
 
 // Very soon after the player also notices the monsters.
-T: - But wait. What are those things? It looks like they are surrounding that structure and they look hostile.
+T: - But wait. What are those things? It looks like they are surrounding that structure and they look hostile. I might have to take them down.
 
 // Upon clearing the base from the enemies and trying to enter the building but failing.
 T: - Ugh. I can not seem to get in. I need to find a way to fix the doors and it seems like the pipe on the left of the structure is broken.
