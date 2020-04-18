@@ -9,7 +9,7 @@ The traveller crashlanded into Mars and was Stranded there.
 T: - I. I survived! But. But where am I? What is this place?
 
 // Upon walking a bit further.
-T: - Looks like my equipment was damaged and I am leaking oxygen. I am glad my pistol is still with me in case I need it. I need to find some kind of shelter.
+T: - Looks like my equipment was damaged and I am leaking oxygen. At least I have a pistol still with me in case I need it. But now I have to find some kind of shelter.
 
 // Upon approaching the base.
 T: - Wait. What is that? Is that an old mining structure of some kind? It seems abandoned.
