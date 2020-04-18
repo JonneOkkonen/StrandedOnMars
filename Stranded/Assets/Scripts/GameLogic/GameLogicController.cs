@@ -17,7 +17,8 @@ public class GameLogicController : MonoBehaviour
         "Take control of the base, by taking out all the metalon's",
         "Go inside base",
         "Restore power to the base. Check power cable for damages",
-        "Go inside base"
+        "Go inside base",
+        "Test fabricator"
     };
 
     List<string> Notifications = new List<string>(){
@@ -35,6 +36,8 @@ public class GameLogicController : MonoBehaviour
     bool VoiceLine3Triggered = false;
     bool VoiceLine4Triggered = false;
     bool VoiceLine7Triggered = false;
+    public GameObject AirlockTrigger;
+    AirlockPressurisationController AirlockPressurisationController;
 
     void Awake()
     {
@@ -43,6 +46,7 @@ public class GameLogicController : MonoBehaviour
         ElectricCableController = ElectricCable.GetComponent<ElectricCableController>();
         AirlockDoorController = AirlockOuterDoor.GetComponent<AirlockDoorController>();
         VoiceLines = GetComponent<AudioSource>();
+        AirlockPressurisationController = AirlockTrigger.GetComponent<AirlockPressurisationController>();
     }
 
     void Start() {
@@ -108,6 +112,13 @@ public class GameLogicController : MonoBehaviour
                     AirlockDoorController.CanBeOpened = true;
                     NextObjective();
                     PlayVoiceLine(8);
+                }
+            }
+            // Go to base
+            if(CurrentObjective == 4) {
+                if(AirlockPressurisationController.IsPressurized) {
+                    NextObjective();
+                    PlayVoiceLine(9);
                 }
             }
         }

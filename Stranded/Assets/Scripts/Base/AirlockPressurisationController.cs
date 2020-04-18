@@ -10,7 +10,7 @@ public class AirlockPressurisationController : MonoBehaviour
     public GameObject Player;
     AirlockDoorController InnerDoor;
     AirlockDoorController OuterDoor;
-    bool IsPressurized = false;
+    public bool IsPressurized = false;
     bool PlayerNearby = false;
     bool Ready = false;
     public GameObject InformationTextObject;

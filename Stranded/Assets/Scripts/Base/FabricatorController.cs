@@ -18,6 +18,8 @@ public class FabricatorController : MonoBehaviour
     bool Buying = false;
     float Timer;
     bool BeaconBought = false;
+    public GameObject Fabricator;
+    AudioSource FabricatorAudio;
 
     void Awake()
     {
@@ -26,6 +28,7 @@ public class FabricatorController : MonoBehaviour
         ActionText = ActionTextObject.GetComponent<Text>();
         PlayerStats = Player.GetComponent<PlayerStats>();
         BuyText = FabricatorUIObject.transform.GetChild(3).gameObject.GetComponent<Text>();
+        FabricatorAudio = Fabricator.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -78,6 +81,8 @@ public class FabricatorController : MonoBehaviour
 
     void OnTriggerExit(Collider other) {
         if(other.tag == "Player") {
+            // Stpp Welcome Message
+            FabricatorAudio.Stop();
             // Disable Action Text
             ActionTextObject.SetActive(false);
             PlayerNearby = false;
@@ -88,6 +93,8 @@ public class FabricatorController : MonoBehaviour
     void SwitchCameras() {
         print("Switching cameras" + MainCamera.activeSelf);
         if(MainCamera.activeSelf) {
+            // Play Welcome Message
+            FabricatorAudio.Play();
             Player.SetActive(false);
             MainCamera.SetActive(false);
             FabricatorCamera.SetActive(true);
