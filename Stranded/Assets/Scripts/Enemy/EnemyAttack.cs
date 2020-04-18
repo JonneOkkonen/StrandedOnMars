@@ -34,64 +34,63 @@ public class EnemyAttack : MonoBehaviour
 	}
 	
 	void Update ()
+	{
+		// Add the time since Update was last called to the timer.
+		timer += Time.deltaTime;
+		float dist = Vector3.Distance(player.transform.position, transform.position);
+		//Debug.Log(player.transform.position);
+		//print("Distance to enemy: " + dist1);
+		
+		//Check distance and determine if to engage in melee attack.
+		if(dist < meleeRange)
 		{
-			// Add the time since Update was last called to the timer.
-			timer += Time.deltaTime;
-			float dist = Vector3.Distance(player.transform.position, transform.position);
-			//Debug.Log(player.transform.position);
-			//print("Distance to enemy: " + dist1);
-			
-			//Check distance and determine if to engage in melee attack.
-			if(dist < meleeRange)
+			playerInMeleeRange = true;
+		}
+		
+		if(dist > meleeRange) 
+		{
+			playerInMeleeRange = false;
+		}
+		
+		if(attackAbility) 
+		{
+			//Check distance and determine if to engage in shoot attack.
+			if(dist < shootRange) 
 			{
-				playerInMeleeRange = true;
+				playerInShootRange = true;
 			}
-			
-			if(dist > meleeRange) 
+		
+			if(dist > shootRange) 
 			{
-				playerInMeleeRange = false;
-			}
-			
-			if(attackAbility) 
-			{
-				//Check distance and determine if to engage in shoot attack.
-				if(dist < shootRange) 
-				{
-					playerInShootRange = true;
-				}
-			
-				if(dist > shootRange) 
-				{
-					playerInShootRange = false;
-				}
-			}
-			
-			// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-			if(timer >= timeBetweenMelee && playerInMeleeRange && playerStats.currentHealth > 0 && !Health.isDead)
-			{
-				//Attack if in melee range
-				Attack ();
-				
-			}
-			
-			if(timer >= timeBetweenProjectile && playerInShootRange && playerStats.currentHealth > 0)
-			{
-				//Attack if in shooting range.
-				//Attack ();	
+				playerInShootRange = false;
 			}
 		}
-
-
-		void Attack ()
+		
+		// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
+		if(timer >= timeBetweenMelee && playerInMeleeRange && playerStats.currentHealth > 0 && !Health.isDead)
 		{
-			// Reset the timer.
-			timer = 0f;
+			//Attack if in melee range
+			Attack ();
 			
-			//Debug.Log("Returns value of melee: " + (melee[Random.Range(0, 2)]));
-			attackAnim.SetTrigger(melee[Random.Range(0, 2)]);
-			
-			attackAnim.SetTrigger("Cast Spell");
-			
-			playerStats.TakeDamage(meleeDamage);
 		}
+		
+		if(timer >= timeBetweenProjectile && playerInShootRange && playerStats.currentHealth > 0)
+		{
+			//Attack if in shooting range.
+			//Attack ();	
+		}
+	}
+
+	void Attack ()
+	{
+		// Reset the timer.
+		timer = 0f;
+		
+		//Debug.Log("Returns value of melee: " + (melee[Random.Range(0, 2)]));
+		attackAnim.SetTrigger(melee[Random.Range(0, 2)]);
+		
+		attackAnim.SetTrigger("Cast Spell");
+		
+		playerStats.TakeDamage(meleeDamage);
+	}
 }
