@@ -67,6 +67,8 @@ public class EnemyHealth : MonoBehaviour
 		SlopeHandler.enabled = false;
 		// Set isDead to true
 		isDead = true;
+		// Disable Nav
+		nav.enabled = false;
 		// Play Die Animation
 		anim.SetTrigger("Die");
 		// Give Player points

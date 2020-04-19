@@ -164,6 +164,9 @@ public class PlayerStats : MonoBehaviour
             // Substract amount of damage taken
             currentHealth -= amount;
         }
+        if(currentHealth < 0) {
+            currentHealth = 0;
+        }
 		
 		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
