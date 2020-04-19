@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
 	public bool isDead;
 	bool sink = false;
 	EnemyMovement EnemyMovement;
+	SlopeHandler SlopeHandler;
 
     void Awake ()
     {
@@ -27,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
 		playerStats = player.GetComponent <PlayerStats>();
 		currentHealth = startingHealth;
 		EnemyMovement = GetComponent<EnemyMovement>();
+		SlopeHandler = GetComponentInChildren(typeof(SlopeHandler), true) as SlopeHandler;
     }
 
     void Update ()
@@ -53,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
 			currentHealth -= amount;
 		}
 	
-		if(currentHealth <= 0)
+		if(currentHealth <= 0 && !isDead)
 		{
 			Death ();
 		}
@@ -61,10 +63,17 @@ public class EnemyHealth : MonoBehaviour
 
     void Death ()
     {
+		// Disable Slope Handler
+		SlopeHandler.enabled = false;
+		// Set isDead to true
 		isDead = true;
+		// Play Die Animation
 		anim.SetTrigger("Die");
+		// Give Player points
 		playerStats.GetPoints(points);
+		// Destroy Gameobject with delay
 		Destroy (this.gameObject, 4f);
+		// Start sinking
 		sink = true;
     }        
 }

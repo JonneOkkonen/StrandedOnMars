@@ -131,7 +131,6 @@ public class GameLogicController : MonoBehaviour
             }
             // Look what fabricator has to offer
             if(CurrentObjective == 5) {
-                print(FabricatorController.FabricatorActive);
                 if(FabricatorController.FabricatorActive) {
                     NextObjective();
                     PlayVoiceLine(11);
