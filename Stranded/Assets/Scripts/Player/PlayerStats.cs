@@ -105,7 +105,7 @@ public class PlayerStats : MonoBehaviour
 
         // Respawn after Death
         if(IsDead) {
-            if(Input.GetButtonDown("Action")) {
+            if(Input.GetButtonDown("Respawn")) {
                 SceneManager.LoadScene("Mars");
             }
         }
@@ -207,6 +207,13 @@ public class PlayerStats : MonoBehaviour
         var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
         nfi.NumberGroupSeparator = " ";
         PointsText.text = "Points: " + points.ToString("#,0", nfi);
+    }
+
+    // Add Health
+    public void AddHealth(int amount) {
+        if(currentHealth < startingHealth) {
+            currentHealth += amount;
+        }
     }
 
     // Set PlayerHasBeacon to true

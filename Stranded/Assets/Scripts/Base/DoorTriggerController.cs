@@ -19,7 +19,7 @@ public class DoorTriggerController : MonoBehaviour
         if(other.tag == "Player") {
             if(AirLock.CanBeOpened) {
                 // Update Action Text
-                ActionText.text = "Action (E)";
+                ActionText.text = "Action E (Y)";
                 // Enable Action Text
                 ActionTextObject.SetActive(true);
             }
