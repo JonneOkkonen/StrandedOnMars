@@ -4,7 +4,7 @@
 1. [Pelin Tarina](#pelin-tarina)
 1. [Keybinds](#keybinds)
 1. [Gameloop](#gameloop)
-1. [Peli vs. demo](peli-vs.-demo)
+1. [Peli vs. demo](#peli-vs-demo)
 1. [Käytetyt teknologiat](#käytetyt-teknologiat)
 1. [Optimointi](#optimointi) 
 1. [Ilmaiset resurssit](#käytetyt-teknologiat)
