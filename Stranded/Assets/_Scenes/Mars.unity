@@ -7237,7 +7237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Oxygen: 30
-  MaxOxygen: 300
+  MaxOxygen: 10
   OxygenRegenSpeed: 50
   OxygenBarObject: {fileID: 1384650126}
   UsingOxygen: 1

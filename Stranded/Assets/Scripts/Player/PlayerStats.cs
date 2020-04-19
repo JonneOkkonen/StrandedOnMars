@@ -93,15 +93,8 @@ public class PlayerStats : MonoBehaviour
 		StaminaBar.value = PlayerStamina;
 
         // Update HealthBar
-		if(currentHealth < 0) 
-		{
-			HealthBar.value = currentHealth;
-			HealthBarText.text = $"Health: 0 HP";
-		} else
-		{
-			HealthBar.value = currentHealth;
-			HealthBarText.text = $"Health: {currentHealth} HP";
-		}
+		HealthBar.value = currentHealth;
+		HealthBarText.text = $"Health: {currentHealth} HP";
 
         // Respawn after Death
         if(IsDead) {
@@ -158,18 +151,19 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }else {
-            Debug.Log("No Oxygen Left");
-            // Die
-            Die();
+            // Degrease Health
+            TakeDamage(20);
         }
-        Invoke("OxygenTick", 1f);
+        if(!IsDead) Invoke("OxygenTick", 1f);
     }
 	
 	// Player takes damage
 	public void TakeDamage(int amount) 
 	{	
-		// Substract amount of damage taken
-		currentHealth -= amount;
+        if(currentHealth > 0) {
+            // Substract amount of damage taken
+            currentHealth -= amount;
+        }
 		
 		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
