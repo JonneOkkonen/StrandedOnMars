@@ -9,7 +9,7 @@ The traveller crashlanded into Mars and was Stranded there.
 T: - I. I survived! But. But where am I? What is this place?
 
 // Upon walking a bit further.
-T: - Looks like my equipment was damaged and I am leaking oxygen. At least I have a pistol still with me in case I need it. But now I have to find some kind of shelter.
+T: - Looks like my equipment wasn't damaged and I have a pistol still with me in case I need it. But now I have to find some kind of shelter.
 
 // Upon approaching the base.
 T: - Wait. What is that? Is that an old mining structure of some kind? It seems abandoned.
@@ -31,28 +31,22 @@ T: - There we go, the base should have power again! Let's go and try to get in.
 T: - Ahhh. Fresh air. That was a close one but it seems like this base is giving me free supply of air when I need it.
 
 // When the player approaches the plants.
-T: - I am hungry and I seem to have gotten some wounds. By the manual description next to these plants, it read these plants have some nourishment and healing properties. I should eat them.
+T: - I am hungry and I seem to have gotten some wounds. I should check if there's something to eat.
 
 // When the player enters the vending machine, the vending machine goes:
 T: - Welcome! Welcome! Welcome to the MinersMerch Corporation! Here you can browse all the products your hearts desperately desire. No refunds!
 
 // When the player finds the vending machine.
-T: - There is not much in stock but it appears it sells ammo and there are two flares. 
-I can probably use those flares to get out from this planet but they are expensive and I can not afford them yet.
-However it seems like those monsters drop currency for this machine. I wonder what happened to the miners?
+T: - There is not much in stock but it appears it sells ammo and beacons. 
+I can probably use that beacon to get out of this planet but they are expensive and I can not afford them yet.
+However it seems like I get points from those monsters. I wonder what happened to the miners?
 
-// When the player obtains the flare.
-T: - I should go and find somewhere to shoot this flare. It will take a while for the rescue team to come so I will have to survive before then.
+// When player goes to kill monsters for points
+T: - I should go and start looking for those monsters and get the rest of the points for that beacon and get out of this planet.
 
-// If the player survived but did not shoot the flare high enough.
-T: - Where are they! Why did no-one come? It seems like I shot the flare too low and it did not reach high enough into the atmosphere and nobody saw my flare.
-I have to go and boy another one and shoot it from higher up in the mountains.
-
-// If the player shot both of the flares and did not shoot them high enough.
-T: - Oh no, the base is no longer accessible and I am all out of flares. I am going to die here! But if I am going down, I am going down fighting!
-// Player proceeds to play final stand where they run out of HP or Oxygen and then they die.
-
+// When the player obtains the beacon.
+T: - I should go and find a spot from high ground to set this beacon. It will take a while for the rescue team to come so I will have to survive before then.
 
 // If the player successfully survived and shot the flare high enough in terrain.
-T: - I did it! I survived! Here comes the rescure party!
+T: - I did it! I survived! Here comes the rescue party!
 // Play victory screen.
