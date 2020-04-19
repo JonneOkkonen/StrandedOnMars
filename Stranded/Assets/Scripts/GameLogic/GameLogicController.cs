@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogicController : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class GameLogicController : MonoBehaviour
         "Get enough points to buy beacon",
         "Buy beacon",
         "Set Beacon to high ground",
-        "Get out of the planet"
+        "Wait for the rescue party to arrive and try not to die",
+        "No Objective"
     };
 
     List<string> Notifications = new List<string>(){
@@ -45,6 +47,10 @@ public class GameLogicController : MonoBehaviour
     AirlockPressurisationController AirlockPressurisationController;
     public GameObject FabricatorTrigger;
     FabricatorController FabricatorController;
+    PlayerStats PlayerStats;
+    BeaconLocationController BeaconLocationController;
+    public float RescueTime;
+    float RescueTimer;
 
     void Awake()
     {
@@ -55,6 +61,8 @@ public class GameLogicController : MonoBehaviour
         VoiceLines = GetComponent<AudioSource>();
         AirlockPressurisationController = AirlockTrigger.GetComponent<AirlockPressurisationController>();
         FabricatorController = FabricatorTrigger.GetComponent<FabricatorController>();
+        PlayerStats = GetComponent<PlayerStats>();
+        BeaconLocationController = GetComponent<BeaconLocationController>();
     }
 
     void Start() {
@@ -142,6 +150,30 @@ public class GameLogicController : MonoBehaviour
                     PlayVoiceLine(12);
                     VoiceLine12Triggered = true;
                 }
+                if(PlayerStats.Points >= FabricatorController.BeaconPrize) {
+                    NextObjective();
+                }
+            }
+            // Buy beacon
+            if(CurrentObjective == 7) {
+                if(PlayerStats.PlayerHasBeacon) {
+                    NextObjective();
+                    PlayVoiceLine(13);
+                }
+            }
+            // Set Beacon to high ground
+            if(CurrentObjective == 8) {
+                if(BeaconLocationController.BeaconSet) {
+                    NextObjective();
+                }
+            }
+            // Wait for the rescue party to arrive
+            if(CurrentObjective == 9) {
+                RescueTimer = Time.deltaTime;
+                if(RescueTimer >= RescueTime) {
+                    PlayVoiceLine(14);
+                    StartCoroutine("GameEnd");
+                }
             }
         }
     }
@@ -178,6 +210,12 @@ public class GameLogicController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         NotificationController.SetPanelText(Notifications[0], 10);
         PlayVoiceLine(1);
+    }
+
+    // End Game
+    IEnumerator GameEnd() {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Menu");
     }
 
     // Play selected VoiceLine

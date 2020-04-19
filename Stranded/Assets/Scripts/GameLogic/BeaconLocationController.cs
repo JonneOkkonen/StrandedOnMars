@@ -13,7 +13,7 @@ public class BeaconLocationController : MonoBehaviour
     Text ActionText;
     public float GameEndTime;
     bool PlayerInArea = false;
-    bool BeaconSet = false;
+    public bool BeaconSet = false;
     float Timer;
     public int BeaconLocationHeight;
 
