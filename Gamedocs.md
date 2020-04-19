@@ -1,3 +1,12 @@
+# Stranded peli
+
+V1.0.0.0 Pre-Alpha Demo
+TTOS0700 Peliohjelmointi
+Jyväskylän ammattikorkeakoulu (JAMK)
+Kevät 2020
+Julkaistu 26.4.2020
+Tekijät: Jonne Okkonen (M2235) ja Joonas Niinimäki (M3268)
+
 ## Sisällysluettelo 
 
 1. [Johdanto](#johdanto)
@@ -15,7 +24,9 @@
 ## Johdanto
 
 Stranded peli on sekä FPS, että survival shooter kategorian peli, jossa pelaajan tavoitteena on päästä pelaustautua vieraalta planeetalta, johon hän on tehnyt hätärikon.
-Vieraalla planeetalla on mysteerinen tyhjä rakennus ja jokapuolella on outoja tuntemattomia hirviöitä. Pelaajamme on keksittävä tapa päästä planeetalta pois ehjin nahoin.
+Vieraalla planeetalla on mysteerinen tyhjä rakennus ja jokapuolella on outoja tuntemattomia hirviöitä. Pelaajamme on keksittävä tapa päästä planeetalta pois ehjin nahoin. 
+Stranded peli on kevään 2020 aikana kehitetty peliprojekti osana TTOS0700 peliohjelmoinnin kurssia. Se on kehittänyt Jyväskylän Ammattikorkeakoulun kaksi 2. vuoden
+ohjelmistotekniikan opiskelijaa Jonne Okkonen (M2235) ja Joonas Niinimäki (M3268).
 
 ## Pelin tarina
 
@@ -60,6 +71,14 @@ Tämä aloittaa loppuskenaarion, jossa kaikki viholliset agroutuu höykkäämä�
 loppuskenaarion pelaaja voittaa pelin.
 
 ## Peli vs. demo
+
+Tässä osiossa käsitellään pelidemon suunnitelmallisia perusteluita, peliprojektin ratkaisuja ja muita suunnitteluun ja toteutukseen liittyviä asioita.  
+Koska kyseessä on pelin demoversio, tarkoitus ei ole suunnitella kaikkia pelin arvoja sellaiseen muotoon, joka julkaisuversiossa olisi. Toisaalta pelattavuuden ja pelin loopin 
+sisäiset arvot on pyritty asettamaan sellaisiksi, että niistä näkee jo suoraan pelimekaniikkoja sellaisenaan kuin ne julkaisuversiossa olisi.
+
+Tästä esimerkkinä toimii se ero, että demoversiossa pistoolien lippaiden hinta on suunnitelmallisesti ja tarkoituksella jätetty pieneksi, jotta testaaja pystyy pelaamana pelin
+kohtuullisen vaivattomasti läpi. Toisaalta pelaajan omat resurssit, kuten elämäpisteet, happi ja stamina, kuten myös vihollisten tekemä vahinko on laskettu vastaamaan sellaisia 
+arvoja, joita ne olisi julkaisuversiossakin.
 
 ## Käytetyt teknologiat
 
