@@ -6,7 +6,7 @@
 1. [Gameloop](#gameloop)
 1. [Käytetyt teknologiat](#käytetyt-teknologiat)
 1. [Optimointi](#optimointi) 
-1. [Ilmaiset resurssit](#ilmaiset resurssit)
+1. [Ilmaiset resurssit](#käytetyt-teknologiat)
 1. [Itsearviointi](#itsearviointi)
 
 
