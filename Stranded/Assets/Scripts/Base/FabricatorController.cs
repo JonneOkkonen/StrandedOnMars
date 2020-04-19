@@ -20,6 +20,7 @@ public class FabricatorController : MonoBehaviour
     bool BeaconBought = false;
     public GameObject Fabricator;
     AudioSource FabricatorAudio;
+    public bool FabricatorActive = false;
 
     void Awake()
     {
@@ -93,18 +94,28 @@ public class FabricatorController : MonoBehaviour
     void SwitchCameras() {
         print("Switching cameras" + MainCamera.activeSelf);
         if(MainCamera.activeSelf) {
+            // Activate Fabricator
+            FabricatorActive = true;
             // Play Welcome Message
             FabricatorAudio.Play();
-            Player.SetActive(false);
+            // Pause Player
+            PlayerStats.Pause();
+            // Disable Main Camera
             MainCamera.SetActive(false);
+            // Enable Fabricator Camera
             FabricatorCamera.SetActive(true);
             // Disable Action Text
             ActionTextObject.SetActive(false);
             // Enable Fabricator UI
             FabricatorUIObject.SetActive(true);
         }else {
-            Player.SetActive(true);
+            // Disable Fabricator
+            FabricatorActive = false;
+            // Enable Player
+            PlayerStats.Continue();
+            // Disable Fabricator Camera
             FabricatorCamera.SetActive(false);
+            // Enable Main Camera
             MainCamera.SetActive(true);
             // Disable Fabricator UI
             FabricatorUIObject.SetActive(false);

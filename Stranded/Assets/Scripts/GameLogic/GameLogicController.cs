@@ -15,10 +15,14 @@ public class GameLogicController : MonoBehaviour
     List<string> Objectives = new List<string>(){
         "Find a place to shelter",
         "Take control of the base, by taking out all the metalon's",
-        "Go inside base",
+        "Try to get to the base",
         "Restore power to the base. Check power cable for damages",
         "Go inside base",
-        "Test fabricator"
+        "Look what fabricator has to offer",
+        "Get enough points to buy beacon",
+        "Buy beacon",
+        "Set Beacon to high ground",
+        "Get out of the planet"
     };
 
     List<string> Notifications = new List<string>(){
@@ -36,8 +40,11 @@ public class GameLogicController : MonoBehaviour
     bool VoiceLine3Triggered = false;
     bool VoiceLine4Triggered = false;
     bool VoiceLine7Triggered = false;
+    bool VoiceLine12Triggered = false;
     public GameObject AirlockTrigger;
     AirlockPressurisationController AirlockPressurisationController;
+    public GameObject FabricatorTrigger;
+    FabricatorController FabricatorController;
 
     void Awake()
     {
@@ -47,6 +54,7 @@ public class GameLogicController : MonoBehaviour
         AirlockDoorController = AirlockOuterDoor.GetComponent<AirlockDoorController>();
         VoiceLines = GetComponent<AudioSource>();
         AirlockPressurisationController = AirlockTrigger.GetComponent<AirlockPressurisationController>();
+        FabricatorController = FabricatorTrigger.GetComponent<FabricatorController>();
     }
 
     void Start() {
@@ -119,6 +127,21 @@ public class GameLogicController : MonoBehaviour
                 if(AirlockPressurisationController.IsPressurized) {
                     NextObjective();
                     PlayVoiceLine(9);
+                }
+            }
+            // Look what fabricator has to offer
+            if(CurrentObjective == 5) {
+                print(FabricatorController.FabricatorActive);
+                if(FabricatorController.FabricatorActive) {
+                    NextObjective();
+                    PlayVoiceLine(11);
+                }
+            }
+            // Get enough points to buy beacon
+            if(CurrentObjective == 6) {
+                if(!VoiceLine12Triggered && !VoiceLines.isPlaying) {
+                    PlayVoiceLine(12);
+                    VoiceLine12Triggered = true;
                 }
             }
         }

@@ -80,11 +80,14 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update OxygenBar
         OxygenBar.value = Oxygen;
         OxygenBarText.text = $"Oxygen: {Oxygen} s";
 		
+        // Update StaminaBar
 		StaminaBar.value = PlayerStamina;
 
+        // Update HealthBar
 		if(currentHealth < 0) 
 		{
 			HealthBar.value = currentHealth;
@@ -162,7 +165,7 @@ public class PlayerStats : MonoBehaviour
 	{	
 		// Substract amount of damage taken
 		currentHealth -= amount;
-		print("Damage taken " + currentHealth);
+		
 		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
         {
@@ -206,5 +209,21 @@ public class PlayerStats : MonoBehaviour
         BeaconPanel.SetActive(true);
         PlayerHasBeacon = true;
         BeaconController.enabled = true;
+    }
+
+    // Disable Player Controll temporarily
+    public void Pause() {
+        // Disable Player Movement
+        PlayerController.enabled = false;
+        // Disable Gun
+        PlayerActionController.enabled = false;
+    }
+
+    // Enable Player Controll
+    public void Continue() {
+        // Disable Player Movement
+        PlayerController.enabled = true;
+        // Disable Gun
+        PlayerActionController.enabled = true;
     }
 }
