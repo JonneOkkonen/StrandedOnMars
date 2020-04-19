@@ -7,10 +7,12 @@ public class PlayerActionController : MonoBehaviour
     public GameObject Gun;
     Animator GunAnimator;
     bool IsGunVisible;
+    public GameObject Crosshair;
 
     void Awake() {
         GunAnimator = Gun.GetComponent<Animator>();
         Gun.SetActive(false);
+        Crosshair.SetActive(false);
         GunAnimator.SetBool("IsVisible", false);
         IsGunVisible = false;
     }
@@ -29,6 +31,8 @@ public class PlayerActionController : MonoBehaviour
             }else {
                 // Enable Gun
                 Gun.SetActive(true);
+                // Enable Crosshair
+                Crosshair.SetActive(true);
                 // Start Gun UnHide Animation
                 GunAnimator.SetBool("IsVisible", true);
                 IsGunVisible = true;
@@ -40,6 +44,8 @@ public class PlayerActionController : MonoBehaviour
     IEnumerator DisableGun() 
     {
         yield return new WaitForSeconds(.8f);
+        // Disable Crosshair
+        Crosshair.SetActive(false);
         Gun.SetActive(false);
     }
 }
