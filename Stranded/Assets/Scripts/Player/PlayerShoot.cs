@@ -10,8 +10,6 @@ public class PlayerShoot : MonoBehaviour
     Rigidbody BulletRB;
     public int BulletSpeed;
     public float GunCoolDown;
-    public int Ammo;
-    public int MagazineSize;
     public float ReloadTime;
     int Magazine;
     float Timer;
@@ -31,10 +29,10 @@ public class PlayerShoot : MonoBehaviour
         ActionText = ActionTextObject.GetComponent<Text>();
 
         // Initialize Magazine
-        Magazine = MagazineSize;
+        Magazine = PlayerStats.MagazineSize;
 
         // Initialize AmmoText
-        AmmoText.text = $"({Magazine.ToString()}) {Ammo.ToString()}";
+        AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
     }
 
     // Update is called once per frame
@@ -61,7 +59,7 @@ public class PlayerShoot : MonoBehaviour
             Magazine -= 1;
 
             // Update AmmoText
-            AmmoText.text = $"({Magazine.ToString()}) {Ammo.ToString()}";
+            AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
         }
 
         // Reload Weapon
@@ -74,15 +72,15 @@ public class PlayerShoot : MonoBehaviour
             ActionTextObject.SetActive(true);
             ActionText.text = "Reloading...";
             ReloadTimer += Time.deltaTime;
-            if(Ammo > 0 && Magazine < MagazineSize) {
-                Ammo -= 1;
+            if(PlayerStats.Ammo > 0 && Magazine < PlayerStats.MagazineSize) {
+                PlayerStats.Ammo -= 1;
                 Magazine += 1;
             }
             if(ReloadTimer >= ReloadTime) {
                 ReloadTimer = 0;
                 Reloading = false;
                 // Update AmmoText
-                AmmoText.text = $"({Magazine.ToString()}) {Ammo.ToString()}";
+                AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
                 // Clear ActionText
                 ActionText.text = "";
                 ActionTextObject.SetActive(false);

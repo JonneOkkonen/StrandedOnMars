@@ -36,6 +36,10 @@ public class PlayerStats : MonoBehaviour
 	float PlayerStamina;
 	Slider StaminaBar;
     public float StaminaRegenSpeed;
+    public int Ammo;
+    public int MagazineSize;
+    public GameObject AmmoTextObject;
+    Text AmmoText;
 
     void Awake()
     {
@@ -51,6 +55,7 @@ public class PlayerStats : MonoBehaviour
         PlayerActionController = GetComponent<PlayerActionController>();
         PointsText = PointsTextObject.GetComponent<Text>();
         BeaconController = GetComponent<BeaconLocationController>();
+        AmmoText = AmmoTextObject.GetComponent<Text>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
@@ -225,5 +230,13 @@ public class PlayerStats : MonoBehaviour
         PlayerController.enabled = true;
         // Disable Gun
         PlayerActionController.enabled = true;
+    }
+
+    // Add Ammo
+    public void AddAmmo(int amount) {
+        // Add Ammo
+        Ammo += amount;
+        // Update AmmoText
+        AmmoText.text = $"(0) {Ammo.ToString()}";
     }
 }
