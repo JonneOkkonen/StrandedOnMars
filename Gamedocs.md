@@ -1,7 +1,7 @@
 ## Sisällysluettelo 
 
 1. [Johdanto](#johdanto)
-1. [Pelin Tarina](#pelin-tarina)
+1. [Pelin Tarina](##pelin-tarina)
 1. [Keybinds](#keybinds)
 1. [Gameloop](#gameloop)
 1. [Käytetyt teknologiat](#käytetyt-teknologiat)
