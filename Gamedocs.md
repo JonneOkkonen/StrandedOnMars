@@ -92,6 +92,13 @@ Peli ohjeistaa pelaajaa reaaliajassa sekä audion avulla, että tabulaattorista 
 
 __Ilmaisten resurssien kirjasto:__
 
+* [Metalon hirviö](https://assetstore.unity.com/packages/3d/characters/creatures/meshtint-free-polygonal-metalon-151383)
+* [Mars](https://assetstore.unity.com/packages/3d/environments/landscapes/mars-landscape-49808)
+* [Tukikohta](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-styled-modular-pack-82913)
+* [Pistooli](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872)
+* [Avaruusalus](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872)
+* [Avaruusaluksen savu-efekti](https://assetstore.unity.com/packages/vfx/particles/white-smoke-particle-system-20404)
+* [ATM](https://assetstore.unity.com/packages/3d/environments/sci-fi/atm-95057)
 
 
 ## Itsearviointi
