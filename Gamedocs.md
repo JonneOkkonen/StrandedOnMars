@@ -109,15 +109,28 @@ Pelaajan UI näyttää reaaliajassa pelaajalla käytettävät resurssit, joita p
 happiluukun onnistuneesti ja menee sisälle tukikohtaan. Elämäpisteitä pelaaja saa lisää menemällä kasvien luokse, painamalla toimintonäppäintä syödäkseen kasveja. Ne kasvavat
 takaisin tietyn ajan kuluttua.
 
+Mikäli pelaaja kokee vahinkoa, renderöidään pelaajan ruutuun punainen välähdys indikoimaan vahingon saantia. Tämä helpottaa tilanteen lukemista vahngon saadessa. Sen lisäksi 
+peli huomauttaa pelaajalle kun tämän jokin resurssi on loppumassa stamina baarin resurssia lukuunottamma. Mikäli pelaaja kuolee, pelaajalle renderöidään näytölle punainen
+kuolemis-ruutu ja pelaaja joutuu aloittamaan pelin uudestaan.
+
 Tukikohdan sisällä on myös ostoautomaatti, josta pelaaja voi ostaa lisää pistoolin ammuksia tai pakoon tavittavan pelastusmajakan (beacon). ATM UI renderöidään pelaajalle
 toisella kameralla, joka aktivoituu kun pelaaja vuorovaikuttaa ostoautomaatin kanssa ja siihen on lisätty ohjeistus myös sen käytöstä, jotta pelaaja tietää miten ostaa itselleen 
-resursseja ja miten poistua ostoautomaatista.
+resursseja ja miten poistua ostoautomaatista. Pelastusmajakan (beacon) ostettua pelastusmajakka liimautuu ja renderöidään pelaajan UI:ssa indikoimaan, että pelaajalla on nyt se 
+objekti mukana.
 
-Metalon vihollishirviöt ovat animoitu kävelemään, hyökkäämään ja kuolemaan riippuen pelaajan ja niiden vuorovaikutuksesta. Niille on tehty kontrolleri, joka mahdollistaa myös
+Metalon vihollishirviöt ovat animoitu kävelemään, hyökkäämään kahdella eri animaatiolla ja kuolemaan riippuen pelaajan ja niiden vuorovaikutuksesta. Niille on tehty kontrolleri, joka mahdollistaa myös
 vaihtoehtoisessa maastokorkeudessa liikkumisen suhteellisen sulavasti ja näin pelaaja ei voi hyväksikäyttää maastoa päästäkseen vihollisten ulottumattomiin. Tästä poikkeuksena
-on itse tukikohta, jonka katto on erikseen maalattu kulkemattomaksi alueeksi keneltäkään.
+on itse tukikohta, jonka katto on erikseen maalattu kulkemattomaksi alueeksi keneltäkään. Jokaiselle Metalonille on annettu eri arvot ja esiintymismäärät, joiden tarkoitus on 
+lisätä vihollistyypin monipuolisuutta.
 
+Pelastusmajakka (beacon) elementti voidaan ainoastaan laittaa tietyllä korkeudella, eli sen laiton UI-kehotetta ei renderöidä ennen kuin peli saa tarkistettua, että pelaaja on 
+tarpeaksi korkealla, eikä pelaaja voi vuorovaikuttaa sen objektin kanssa ennen kuin tämä tarkistus palauttaa oikean arvon. Asetettuaan pelastusmajakan peli renderöi sen
+peliobjektin kentälle ja se alkaa renderöimään signaalia indikoivia renkaita. Samalla pelaajan alle tulee valokeila indikoimaan pelastusaluksen saapumista. Kun pelaaja pelastuu 
+pelaajan objekti alkaa nousemaan ylöspäin ja pelaajalle renderöidään voittonäkymä.
 
+Liikkumisaluetta on rajattu näkymättömien seinien avulla niin, että pelaaja ei voi vahingossakaan liikkua pelimaailman ulkopuolelle ja tippua ulos pelikentästä.
+Lisäksi rajaus on asetettu niin, että se ei kata koko kenttää, jotta se luo hieman sellaista illuusiota, ettei pelaaja kävelekkään vain pienellä maaston keinotekoisella
+saarella vaan planeetan näkymä jatkuu horisonttiin. Näin luodaan isomman maailman illuusiota.
 
 ## Optimointi
 
