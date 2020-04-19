@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameLogicController : MonoBehaviour
 {
@@ -43,12 +42,14 @@ public class GameLogicController : MonoBehaviour
     bool VoiceLine4Triggered = false;
     bool VoiceLine7Triggered = false;
     bool VoiceLine12Triggered = false;
+    bool Rescued = false;
     public GameObject AirlockTrigger;
     AirlockPressurisationController AirlockPressurisationController;
     public GameObject FabricatorTrigger;
     FabricatorController FabricatorController;
     PlayerStats PlayerStats;
     BeaconLocationController BeaconLocationController;
+    RescueController RescueController;
     public float RescueTime;
     float RescueTimer;
 
@@ -63,6 +64,7 @@ public class GameLogicController : MonoBehaviour
         FabricatorController = FabricatorTrigger.GetComponent<FabricatorController>();
         PlayerStats = GetComponent<PlayerStats>();
         BeaconLocationController = GetComponent<BeaconLocationController>();
+        RescueController = GetComponent<RescueController>();
     }
 
     void Start() {
@@ -91,7 +93,7 @@ public class GameLogicController : MonoBehaviour
                     }
                 }
                 // Play Trigger Next objective when base found
-                if(distance <= 120) {
+                if(distance <= 180) {
                     NextObjective();
                     if(!VoiceLine4Triggered) {
                         PlayVoiceLine(4);
@@ -164,15 +166,18 @@ public class GameLogicController : MonoBehaviour
             // Set Beacon to high ground
             if(CurrentObjective == 8) {
                 if(BeaconLocationController.BeaconSet) {
+                    // Set all enemies to attack player
+                    EnemyMovement.GroupAttack = true;
                     NextObjective();
                 }
             }
             // Wait for the rescue party to arrive
             if(CurrentObjective == 9) {
-                RescueTimer = Time.deltaTime;
-                if(RescueTimer >= RescueTime) {
+                RescueTimer += 2;
+                if(RescueTimer >= RescueTime && !Rescued) {
+                    Rescued = true;
                     PlayVoiceLine(14);
-                    StartCoroutine("GameEnd");
+                    RescueController.RescuePlayer();
                 }
             }
         }
@@ -210,12 +215,6 @@ public class GameLogicController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         NotificationController.SetPanelText(Notifications[0], 10);
         PlayVoiceLine(1);
-    }
-
-    // End Game
-    IEnumerator GameEnd() {
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("Menu");
     }
 
     // Play selected VoiceLine
