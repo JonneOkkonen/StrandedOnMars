@@ -1,11 +1,13 @@
 # Stranded peli
 
-V1.0.0.0 Pre-Alpha Demo  
-TTOS0700 Peliohjelmointi  
-Jyväskylän ammattikorkeakoulu (JAMK)  
-Kevät 2020  
-Julkaistu 26.4.2020  
-Tekijät: Jonne Okkonen (M2235) ja Joonas Niinimäki (M3268)  
+* V1.0.0.0 Pre-Alpha Demo  
+* TTOS0700 Peliohjelmointi  
+* Jyväskylän ammattikorkeakoulu (JAMK)  
+* Kevät 2020  
+* Julkaistu 26.4.2020  
+* Tekijät: Jonne Okkonen (M2235) ja Joonas Niinimäki (M3268)  
+* Copyright (C) 
+
 
 ## Sisällysluettelo 
 
