@@ -25,14 +25,20 @@ pakoon. Matkaajamme haaksirikkoutui Marssiin ja on Jätetty sinne.
 
 ## Keybinds
 
-W = Liiku eteenpäin
-A = Liiku vasemmalle
-S = Liiku taaksepäin
-D = Liiku oikealle
-Q = Toimenpide
-R = Lataa ase
-Tab = Näytä tehtäväruutu
-Shift = Juokse
+W = Liiku eteenpäin  
+A = Liiku vasemmalle  
+S = Liiku taaksepäin  
+D = Liiku oikealle  
+Nuoli ylos = Liiku eteenpäin  
+Nuoli vasemmalle = Liiku vasemmalle
+Nuoli alas = Liiku taaksepäin
+Nuoli oikealle = Liiku oikealle
+Q = Toimenpide  
+R = Lataa ase  
+E = Käytä ostoautomaattia/poistu ostoautomaatista/aseta pelastusmajakka (beacon)  
+Pidä B = Osta beacon  
+Tab = Näytä tehtäväruutu  
+Shift = Juokse  
 
 ## Gameloop
 
