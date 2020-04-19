@@ -7298,7 +7298,7 @@ MonoBehaviour:
   UpdateFrequency: 2
   AirlockTrigger: {fileID: 1474126167}
   FabricatorTrigger: {fileID: 797550528}
-  RescueTime: 15
+  RescueTime: 30
 --- !u!82 &382716357
 AudioSource:
   m_ObjectHideFlags: 0

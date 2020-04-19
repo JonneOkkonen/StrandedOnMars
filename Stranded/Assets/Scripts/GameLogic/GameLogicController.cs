@@ -18,6 +18,7 @@ public class GameLogicController : MonoBehaviour
         "Try to get to the base",
         "Restore power to the base. Check power cable for damages",
         "Go inside base",
+        "Find something to eat and heal youself to full HP",
         "Look what fabricator has to offer",
         "Get enough points to buy beacon",
         "Buy beacon",
@@ -41,6 +42,7 @@ public class GameLogicController : MonoBehaviour
     bool VoiceLine3Triggered = false;
     bool VoiceLine4Triggered = false;
     bool VoiceLine7Triggered = false;
+    bool VoiceLine10Triggered = false;
     bool VoiceLine12Triggered = false;
     bool Rescued = false;
     public GameObject AirlockTrigger;
@@ -139,15 +141,25 @@ public class GameLogicController : MonoBehaviour
                     PlayVoiceLine(9);
                 }
             }
-            // Look what fabricator has to offer
+            // Find something to eat
             if(CurrentObjective == 5) {
+                if(!VoiceLine10Triggered && !VoiceLines.isPlaying) {
+                    PlayVoiceLine(10);
+                    VoiceLine10Triggered = true;
+                }
+                if(PlayerStats.currentHealth == PlayerStats.startingHealth) {
+                    NextObjective();
+                }
+            }
+            // Look what fabricator has to offer
+            if(CurrentObjective == 6) {
                 if(FabricatorController.FabricatorActive) {
                     NextObjective();
                     PlayVoiceLine(11);
                 }
             }
             // Get enough points to buy beacon
-            if(CurrentObjective == 6) {
+            if(CurrentObjective == 7) {
                 if(!VoiceLine12Triggered && !VoiceLines.isPlaying) {
                     PlayVoiceLine(12);
                     VoiceLine12Triggered = true;
@@ -157,14 +169,14 @@ public class GameLogicController : MonoBehaviour
                 }
             }
             // Buy beacon
-            if(CurrentObjective == 7) {
+            if(CurrentObjective == 8) {
                 if(PlayerStats.PlayerHasBeacon) {
                     NextObjective();
                     PlayVoiceLine(13);
                 }
             }
             // Set Beacon to high ground
-            if(CurrentObjective == 8) {
+            if(CurrentObjective == 9) {
                 if(BeaconLocationController.BeaconSet) {
                     // Set all enemies to attack player
                     EnemyMovement.GroupAttack = true;
@@ -172,7 +184,7 @@ public class GameLogicController : MonoBehaviour
                 }
             }
             // Wait for the rescue party to arrive
-            if(CurrentObjective == 9) {
+            if(CurrentObjective == 10) {
                 RescueTimer += 2;
                 if(RescueTimer >= RescueTime && !Rescued) {
                     Rescued = true;

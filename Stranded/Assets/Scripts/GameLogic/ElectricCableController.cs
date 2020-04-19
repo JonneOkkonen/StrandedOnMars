@@ -13,8 +13,10 @@ public class ElectricCableController : MonoBehaviour
     bool PlayerNearby = false;
     float Timer;
     bool Repairing = false;
+    PlayerStats PlayerStats;
 
     void Awake() {
+        PlayerStats = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStats>();
         ActionText = ActionTextObject.GetComponent<Text>();
     }
 
@@ -31,13 +33,15 @@ public class ElectricCableController : MonoBehaviour
         if(Repairing) {
             // Update Action Text
             ActionText.text = "Repairing...";
-            if(Timer >= TimeToFix) {
+            if(Timer >= TimeToFix && !CableFixed) {
                 Repairing = false;
                 // Disable Action Text
                 ActionTextObject.SetActive(false);
                 // Disable Particle Effect
                 Sparks.SetActive(false);
                 CableFixed = true;
+                // Give little electric shock to player
+                PlayerStats.TakeDamage(5);
             }
         }else {
             // Update Action Text
