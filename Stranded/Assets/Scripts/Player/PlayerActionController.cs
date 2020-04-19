@@ -21,7 +21,7 @@ public class PlayerActionController : MonoBehaviour
     void Update()
     {
         // Hide Gun with Q-key
-        if(Input.GetKeyDown(KeyCode.Q)) {
+        if(Input.GetButtonDown("Gun")) {
             if(IsGunVisible) {
                 // Disable Gun
                 StartCoroutine("DisableGun");

@@ -27,8 +27,8 @@ public class GameLogicController : MonoBehaviour
     };
 
     List<string> Notifications = new List<string>(){
-        "Move using (W,A,S,D or ArrowKeys). Press Q to take out your huge gun and shoot with left mouse button.",
-        "You have a new objective in your objective menu. Open it with TAB-key."
+        "Move using (W,A,S,D, ArrowKeys or LeftStick). Press Q (LB) to take out your huge gun and shoot with left mouse (RB) button.",
+        "You have a new objective in your objective menu. Open it with TAB-key (RT)."
     };
 
     int CurrentObjective = -1;

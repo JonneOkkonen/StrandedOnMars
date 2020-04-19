@@ -44,11 +44,11 @@ public class FabricatorController : MonoBehaviour
         // Check that player is nearby
         if(PlayerNearby) {
             // Switch Cameras with E-key
-            if(Input.GetKeyDown(KeyCode.E)) {
+            if(Input.GetButtonDown("Action")) {
                 SwitchCameras();
             }
             // Buy beacon with holding B
-            if(Input.GetKey(KeyCode.B)) {
+            if(Input.GetButton("BuyRight") || Input.GetAxis("BuyRight") > 0.5) {
                 BuyingBeacon = true;
                 Timer += Time.deltaTime;
             }else {
@@ -56,11 +56,11 @@ public class FabricatorController : MonoBehaviour
                 Timer = 0;
             }
             // Buy Magazine with holding M
-            if(Input.GetKey(KeyCode.M)) {
+            if(Input.GetButton("BuyLeft") || Input.GetAxis("BuyLeft") < -0.5) {
                 BuyingMagazine = true;
                 Timer2 += Time.deltaTime;
             }else {
-                MagazineBuyText.text = "Buy magazine by holding M-key";
+                MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
                 BuyingMagazine = false;
                 MagazineBougth = false;
                 Timer2 = 0;
@@ -95,8 +95,8 @@ public class FabricatorController : MonoBehaviour
                 }
             }
             else {
-                BeaconBuyText.text = "Buy Beacon by holding B-key";
-                MagazineBuyText.text = "Buy magazine by holding M-key";
+                BeaconBuyText.text = "Buy Beacon by holding B (Right)-button";
+                MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
             }
         }
     }
@@ -104,7 +104,7 @@ public class FabricatorController : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
             // Update Action Text
-            ActionText.text = "Use Fabricator (E)";
+            ActionText.text = "Use Fabricator E (Y)";
             // Enable Action Text
             ActionTextObject.SetActive(true);
             PlayerNearby = true;

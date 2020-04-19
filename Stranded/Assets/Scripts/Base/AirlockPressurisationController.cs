@@ -32,9 +32,9 @@ public class AirlockPressurisationController : MonoBehaviour
         if(InnerDoor.IsOpen == false && OuterDoor.IsOpen == false) {
             Ready = true;
             if(IsPressurized) {
-                InformationText.text = "Airlock Ready. Press F to depressurize.)";
+                InformationText.text = "Airlock Ready. Press F (B) to depressurize.)";
             }else {
-                InformationText.text = "Airlock Ready. Press F to pressurize.)";
+                InformationText.text = "Airlock Ready. Press F (B) to pressurize.)";
             }
         }else {
             Ready = false;
@@ -42,7 +42,7 @@ public class AirlockPressurisationController : MonoBehaviour
         }
         // If airlock is ready and player is nearby enable airlock control
         if(Ready && PlayerNearby) {
-            if(Input.GetKeyDown(KeyCode.F)) {
+            if(Input.GetButtonDown("Action2")) {
                 // Depressurize Airlock
                 if(IsPressurized) {
                     IsPressurized = false;

@@ -18,10 +18,10 @@ public class ObjectiveController : MonoBehaviour
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Tab)) {
+        if(Input.GetButtonDown("Objective") || Input.GetAxis("Objective") > 0.5) {
             ShowObjectivePanel();
         }
-        if(Input.GetKeyUp(KeyCode.Tab)) {
+        if(Input.GetButtonUp("Objective") || Input.GetAxis("Objective") < 0.5) {
             HideObjectivePanel();
         }
     }

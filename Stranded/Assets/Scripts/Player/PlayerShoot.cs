@@ -63,7 +63,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
         // Reload Weapon
-        if(Input.GetKeyDown(KeyCode.R) && !Reloading) {
+        if(Input.GetButtonDown("Reload") && !Reloading) {
             Reloading = true;
         }
 

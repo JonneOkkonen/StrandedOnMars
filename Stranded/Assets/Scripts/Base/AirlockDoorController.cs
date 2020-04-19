@@ -20,7 +20,7 @@ public class AirlockDoorController : MonoBehaviour
     void Update()
     {
         // Press E to Open/Close Door
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetButtonDown("Action"))
         {
             if(IsOpen) {
                 CloseDoor();

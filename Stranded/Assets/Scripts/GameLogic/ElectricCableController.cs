@@ -20,7 +20,7 @@ public class ElectricCableController : MonoBehaviour
 
     void Update() {
         if(PlayerNearby) {
-            if(Input.GetKey(KeyCode.E)) {
+            if(Input.GetButton("Action")) {
                 Repairing = true;
                 Timer += Time.deltaTime;
             }else {
@@ -41,14 +41,14 @@ public class ElectricCableController : MonoBehaviour
             }
         }else {
             // Update Action Text
-            ActionText.text = "Repair Cable (E)";
+            ActionText.text = "Repair Cable E (Y)";
         }
     }
 
     void OnTriggerEnter(Collider other) {
         if(other.tag == "Player" && !CableFixed) {
             // Update Action Text
-            ActionText.text = "Repair Cable (E)";
+            ActionText.text = "Repair Cable E (Y)";
             // Enable Action Text
             ActionTextObject.SetActive(true);
             PlayerNearby = true;

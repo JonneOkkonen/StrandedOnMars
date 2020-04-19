@@ -105,7 +105,7 @@ public class PlayerStats : MonoBehaviour
 
         // Respawn after Death
         if(IsDead) {
-            if(Input.GetKeyDown(KeyCode.X)) {
+            if(Input.GetButtonDown("Action")) {
                 SceneManager.LoadScene("Mars");
             }
         }
@@ -118,7 +118,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         // Use Stamina when running
-        if(Input.GetKey(KeyCode.LeftShift)) {
+        if(Input.GetButton("Run") || Input.GetAxis("Run") > 0.5) {
             if(PlayerStamina > 0) {
                 PlayerStamina -= Time.deltaTime;
                 // Don't go under 0
