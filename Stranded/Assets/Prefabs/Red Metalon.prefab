@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -107510687932554981}
   m_Layer: 0
   m_Name: Red Metalon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   aggroRange: 50
   StoppingDistance: 4
   AnimationSpeed: 1
+  AttackingPlayer: 0
 --- !u!114 &2533833734676901617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 10000
+  isDead: 0
 --- !u!135 &-107510687932554981
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -5261893146831471820}
   m_Layer: 0
   m_Name: Purple Metalon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   aggroRange: 30
   StoppingDistance: 4
   AnimationSpeed: 1
+  AttackingPlayer: 0
 --- !u!114 &3107722908745565906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 20000
+  isDead: 0
 --- !u!135 &-5261893146831471820
 SphereCollider:
   m_ObjectHideFlags: 0
