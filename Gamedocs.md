@@ -99,6 +99,7 @@ __Ilmaisten resurssien kirjasto:__
 * [Avaruusalus](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872)
 * [Avaruusaluksen savu-efekti](https://assetstore.unity.com/packages/vfx/particles/white-smoke-particle-system-20404)
 * [ATM](https://assetstore.unity.com/packages/3d/environments/sci-fi/atm-95057)
+* [Text-to-speech NaturalReaders-sivu](https://www.naturalreaders.com/online/)
 
 
 ## Itsearviointi
@@ -108,3 +109,9 @@ __Ilmaisten resurssien kirjasto:__
 ### Joonas Niinimaki (M3268)
 
 ## Tunnetut bugit
+
+Tässä osioissa dokumentoidaan peliprojektissa tunnistetut bugit:
+
+* 
+
+
