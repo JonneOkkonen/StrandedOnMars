@@ -4,10 +4,12 @@
 1. [Pelin Tarina](#pelin-tarina)
 1. [Keybinds](#keybinds)
 1. [Gameloop](#gameloop)
+1. [Peli vs. demo](peli-vs.-demo)
 1. [Käytetyt teknologiat](#käytetyt-teknologiat)
 1. [Optimointi](#optimointi) 
 1. [Ilmaiset resurssit](#käytetyt-teknologiat)
 1. [Itsearviointi](#itsearviointi)
+1. [Tunnetut bugit](#tunnetut-bugit)
 
 
 ## Johdanto
@@ -51,6 +53,8 @@ Pelastusmerkkimajakka voidaan ainoastaan kutsua kun pelaaja pääsee tarpeaksi k
 Tämä aloittaa loppuskenaarion, jossa kaikki viholliset agroutuu höykkäämään pelaajaa päin ja pelaajan on selvittävä kunnes pelastusryhmä saapuu ja pelastaa. Selvitessään
 loppuskenaarion pelaaja voittaa pelin.
 
+## Peli vs. demo
+
 ## Käytetyt teknologiat
 
 Peli ohjeistaa pelaajaa reaaliajassa sekä audion avulla, että tabulaattorista saatavalla näytä tehtäväruudulla näppäimellä.
@@ -68,3 +72,5 @@ __Ilmaisten resurssien kirjasto:__
 ### Jonne Okkonen (M2235)
 
 ### Joonas Niinimaki (M3268)
+
+## Tunnetut bugit
