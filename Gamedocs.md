@@ -38,15 +38,16 @@ pakoon. Matkaajamme haaksirikkoutui Marssiin ja on Jätetty sinne.
 
 ## Keybinds
 
-__W/Nuoli ylos__ = Liiku eteenpäin  
-__A/Nuoli vasemmalle__ = Liiku vasemmalle  
-__S/Nuoli alas__ = Liiku taaksepäin  
-__D/Nuoli oikealle__ = Liiku oikealle  
+__W__ = Liiku eteenpäin  
+__A__ = Liiku vasemmalle  
+__S__ = Liiku taaksepäin  
+__D__ = Liiku oikealle  
 __Nuoli ylos__ = Liiku eteenpäin  
 __Nuoli vasemmalle__ = Liiku vasemmalle  
 __Nuoli alas__ = Liiku taaksepäin  
-__Nuoli oikealle__ = Liiku oikealle  
-__Q__ = Toimenpide  
+__Nuoli oikealle__ = Liiku oikealle
+__Q__ = Toimenpide/Nosta ase näkyville ja laskle se pois näkyvistä
+__Oikea hiiren klikkaus__ = Ammu pistoolilla  
 __R__ = Lataa ase  
 __E__ = Käytä ostoautomaattia/poistu ostoautomaatista/aseta pelastusmajakka (beacon)  
 __Pidä B__ = Osta beacon  
@@ -84,7 +85,39 @@ arvoja, joita ne olisi julkaisuversiossakin.
 
 ## Käytetyt teknologiat
 
-Peli ohjeistaa pelaajaa reaaliajassa sekä audion avulla, että tabulaattorista saatavalla näytä tehtäväruudulla näppäimellä.
+Aloitusnäkymässä pelaajan aloitettua pelin hän katsoo hätäpelastuskapselia päin, johon on visuaaliseksi efekteiksi tehty kipinöitä ja lisätty savu-efekti näyttämään
+hätäkapsulin kohtaamaa vahinkoa pakkolaskun seurauksena.
+
+Pelaaja on käytännössä pelkästään kamera, joka seuraa pelaajan näkymää ensimmäisestä persoonasta ja pelaajaobjekti itse on renderöimätön kapsuli. Painamalla Q-näppäintä pelaaja 
+voi nostaa pistoolin näkymäänsä, jolloinka pistooli renderöidään näkyviin ja pois näkyvistä nappia painamalla. Samalla kun pistooli renderöidään näkyviin, pelaajan ruudun
+keskelle renderöidään crosshair-tähtäin, jonka mukaan pelaaja voi navigoida tähtäintään ampuakseen kohdetta.
+
+Pelaajan muita UI elementtejä on elkkupisteet, joiden arvot riippuvat pelaajan ottamasta vahingosta, jatkuvasti laskeva happimittari, sekä stamina baari, joista ainoastaan
+staminabaari generoi arvoaan itsestään tiettyä vauhtia sen jälkeen kun pelaaja päästää Shfit-näppäimestä irti. Muita pelaajan ja UI:n elementtien arvojen manipulaatiota
+käsitellään möyhemmässä vaiheessa tätä osiota.
+
+Peli ohjeistaa pelaajaa reaaliajassa sekä audion avulla, että tabulaattorista saatavalla näytä tehtäväruudulla näppäimellä. Pelitehtävistä peli vielä erikseen ilmoittaa ruudun 
+yläkulmalla keskellä, että pelaajalle on tullut uusi tehtävä. Sen ja triggereiden avulla toimivien audio-ohjeistuksen avulla pelaajalle ohjeistetaan mitä hänen tulisi tehdä
+edetäkseen pelissä eteenpäin.
+
+Ensimmäisenä tehtävänä pelaajan on löydettävä tukikohta ja pelaajan on ammuttava sen ympäriltä kaikki hirviöt ja koodi käy läpi ja tsekkaa, että pelaaja on onnistuneesti tehnyt
+tehtävät kuten pitää ennen seuraavan antamista. Moni toiminto vaatii pelaajalta nappulan pitämistä pohjaan hetken ja pelaaja saa tästä UI:hin näytetyn näppäin-kehotuksen ja
+ohjeistuksen tarpeen mukaan. Esimerkiksi asetta ladatessa näytetään ruudulla teksti "reloading...", jotta pelaaja tietää mitä tehdään, ja pelin UI päivittää pelaajan lippaan 
+ammusmäärän ja varastossa olevien luotien määrän reaaliaikaisesti näkymässä.
+
+Pelaajan UI näyttää reaaliajassa pelaajalla käytettävät resurssit, joita pelaaja saa lisää tukikohdasta lisää. Happilukema päivittyy samantien kun pelaaja paineistaa
+happiluukun onnistuneesti ja menee sisälle tukikohtaan. Elämäpisteitä pelaaja saa lisää menemällä kasvien luokse, painamalla toimintonäppäintä syödäkseen kasveja. Ne kasvavat
+takaisin tietyn ajan kuluttua.
+
+Tukikohdan sisällä on myös ostoautomaatti, josta pelaaja voi ostaa lisää pistoolin ammuksia tai pakoon tavittavan pelastusmajakan (beacon). ATM UI renderöidään pelaajalle
+toisella kameralla, joka aktivoituu kun pelaaja vuorovaikuttaa ostoautomaatin kanssa ja siihen on lisätty ohjeistus myös sen käytöstä, jotta pelaaja tietää miten ostaa itselleen 
+resursseja ja miten poistua ostoautomaatista.
+
+Metalon vihollishirviöt ovat animoitu kävelemään, hyökkäämään ja kuolemaan riippuen pelaajan ja niiden vuorovaikutuksesta. Niille on tehty kontrolleri, joka mahdollistaa myös
+vaihtoehtoisessa maastokorkeudessa liikkumisen suhteellisen sulavasti ja näin pelaaja ei voi hyväksikäyttää maastoa päästäkseen vihollisten ulottumattomiin. Tästä poikkeuksena
+on itse tukikohta, jonka katto on erikseen maalattu kulkemattomaksi alueeksi keneltäkään.
+
+
 
 ## Optimointi
 
@@ -98,7 +131,7 @@ __Ilmaisten resurssien kirjasto:__
 * [Pistooli](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872)
 * [Avaruusalus](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872)
 * [Avaruusaluksen savu-efekti](https://assetstore.unity.com/packages/vfx/particles/white-smoke-particle-system-20404)
-* [ATM](https://assetstore.unity.com/packages/3d/environments/sci-fi/atm-95057)
+* [ATM ostoautomaatti](https://assetstore.unity.com/packages/3d/environments/sci-fi/atm-95057)
 * [Text-to-speech NaturalReaders-sivu](https://www.naturalreaders.com/online/)
 
 
