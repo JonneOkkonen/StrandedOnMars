@@ -38,10 +38,10 @@ pakoon. Matkaajamme haaksirikkoutui Marssiin ja on Jätetty sinne.
 
 ## Keybinds
 
-__W__ = Liiku eteenpäin  
-__A__ = Liiku vasemmalle  
-__S__ = Liiku taaksepäin  
-__D__ = Liiku oikealle  
+__W/Nuoli ylos__ = Liiku eteenpäin  
+__A/Nuoli vasemmalle__ = Liiku vasemmalle  
+__S/Nuoli alas__ = Liiku taaksepäin  
+__D/Nuoli oikealle__ = Liiku oikealle  
 __Nuoli ylos__ = Liiku eteenpäin  
 __Nuoli vasemmalle__ = Liiku vasemmalle  
 __Nuoli alas__ = Liiku taaksepäin  
