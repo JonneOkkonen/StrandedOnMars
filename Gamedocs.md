@@ -38,6 +38,8 @@ pakoon. Matkaajamme haaksirikkoutui Marssiin ja on Jätetty sinne.
 
 ## Keybinds
 
+### Näppäimistö
+
 __W__ = Liiku eteenpäin  
 __A__ = Liiku vasemmalle  
 __S__ = Liiku taaksepäin  
@@ -46,13 +48,31 @@ __Nuoli ylos__ = Liiku eteenpäin
 __Nuoli vasemmalle__ = Liiku vasemmalle  
 __Nuoli alas__ = Liiku taaksepäin  
 __Nuoli oikealle__ = Liiku oikealle  
-__Q__ = Toimenpide/Nosta ase näkyville ja laskle se pois näkyvistä  
-__Oikea hiiren klikkaus__ = Ammu pistoolilla  
+__Q__ = Nosta ase näkyville ja laske se pois näkyvistä  
+__Vasen hiiren klikkaus__ = Ammu pistoolilla  
 __R__ = Lataa ase  
-__E__ = Käytä ostoautomaattia/poistu ostoautomaatista/aseta pelastusmajakka (beacon)  
+__E__ = Action (Käytä ostoautomaattia/poistu ostoautomaatista/aseta pelastusmajakka) (beacon)  
 __Pidä B__ = Osta beacon  
+__Pidä M__ = Osta magazine  
+__F__ = Paineista ilmalukko  
 __Tab__ = Näytä tehtäväruutu  
-__Shift__ = Juokse  
+__LeftShift__ = Juokse  
+__X__ = Respawn  
+
+### Xbox Ohjain
+
+__VasenSauva__ = Liiku  
+__OikeaSauva__ = Kamera  
+__Y__ = Action (Käytä ostoautomaattia/poistu ostoautomaatista/aseta pelastusmajakka) (beacon)  
+__B__ = Paineista ilmalukko  
+__A__ = Hyppää  
+__X__ = Lataa ase/Respawn   
+__Pidä OikeaNuoli__ = Osta beacon   
+__Pidä VasenNuoli__ = Osta magazine  
+__RT__ = Näytä tehtäväruutu  
+__RB__ = Ammu pistoolilla  
+__LT__ = Juokse  
+__LB__ = Nosta ase näkyville ja laske se pois näkyvistä  
 
 ## Gameloop
 
