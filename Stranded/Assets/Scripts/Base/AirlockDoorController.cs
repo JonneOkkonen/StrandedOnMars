@@ -8,10 +8,14 @@ public class AirlockDoorController : MonoBehaviour
     public bool IsOpen;
     public bool PlayerNearby = false;
     public bool CanBeOpened;
+    public AudioClip OpenSound;
+    public AudioClip CloseSound;
+    AudioSource SoundEffect;
     
     void Awake()
     {
         Animator = GetComponent<Animator>();
+        SoundEffect = GetComponent<AudioSource>();
         Animator.SetBool("IsOpen", false);
         IsOpen = false;
     }
@@ -34,6 +38,7 @@ public class AirlockDoorController : MonoBehaviour
     void OpenDoor() {
         // Make sure Player is nearby and door can be opened
         if(PlayerNearby && CanBeOpened) {
+            SoundEffect.PlayOneShot(OpenSound);
             Animator.SetBool("IsOpen", true);
             IsOpen = true;
         }
@@ -44,6 +49,7 @@ public class AirlockDoorController : MonoBehaviour
         // Make sure Player is nearby
         if(PlayerNearby) {
             Animator.SetBool("IsOpen", false);
+            SoundEffect.PlayOneShot(CloseSound);
             IsOpen = false;
         }
     }
