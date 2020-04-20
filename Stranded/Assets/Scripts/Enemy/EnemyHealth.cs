@@ -17,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
     bool damaged;              
 	public bool isDead;
 	bool sink = false;
+	EnemyMovement EnemyMovement;
+	SlopeHandler SlopeHandler;
 
     void Awake ()
     {
@@ -25,12 +27,16 @@ public class EnemyHealth : MonoBehaviour
 		nav = GetComponent <NavMeshAgent> ();
 		playerStats = player.GetComponent <PlayerStats>();
 		currentHealth = startingHealth;
+		EnemyMovement = GetComponent<EnemyMovement>();
+		SlopeHandler = GetComponentInChildren(typeof(SlopeHandler), true) as SlopeHandler;
     }
 
     void Update ()
     {
 		if(sink)
 		{
+			// Disable NavMesh
+			nav.enabled = false;
 			Debug.Log("Enemy is sinking");
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
 		}
@@ -38,20 +44,18 @@ public class EnemyHealth : MonoBehaviour
 	
 	void OnTriggerEnter(Collider other) {
         if(other.tag == "Bullet"){
-			Debug.Log("Bullet hits the target");
 			TakeDamage();
+			EnemyMovement.AttackingPlayer = true;
         }
-		
     }
 
     public void TakeDamage ()
     {
-		currentHealth -= amount;
-		
-		if(isDead)
-			return;
+		if(!isDead) {
+			currentHealth -= amount;
+		}
 	
-       if(currentHealth <= 0)
+		if(currentHealth <= 0 && !isDead)
 		{
 			Death ();
 		}
@@ -59,16 +63,19 @@ public class EnemyHealth : MonoBehaviour
 
     void Death ()
     {
+		// Disable Slope Handler
+		SlopeHandler.enabled = false;
+		// Set isDead to true
 		isDead = true;
-		anim.SetTrigger("Die");
-		playerStats.GetPoints(points);
-		Sinking();
-    }        
-	
-	public void Sinking ()
-	{
+		// Disable Nav
 		nav.enabled = false;
+		// Play Die Animation
+		anim.SetTrigger("Die");
+		// Give Player points
+		playerStats.GetPoints(points);
+		// Destroy Gameobject with delay
+		Destroy (this.gameObject, 4f);
+		// Start sinking
 		sink = true;
-		Destroy (this.gameObject, 3f);
-	}
+    }        
 }

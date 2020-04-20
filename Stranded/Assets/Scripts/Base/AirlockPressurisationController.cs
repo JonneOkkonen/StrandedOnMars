@@ -10,12 +10,16 @@ public class AirlockPressurisationController : MonoBehaviour
     public GameObject Player;
     AirlockDoorController InnerDoor;
     AirlockDoorController OuterDoor;
-    bool IsPressurized = false;
+    public bool IsPressurized = false;
+    bool Pressurizing = false;
     bool PlayerNearby = false;
     bool Ready = false;
     public GameObject InformationTextObject;
     Text InformationText;
     PlayerStats PlayerStats;
+    AudioSource SoundEffect;
+    public float PressurizationTime;
+    float Timer;
 
     void Awake()
     {
@@ -23,18 +27,19 @@ public class AirlockPressurisationController : MonoBehaviour
         OuterDoor = OuterDoorObject.GetComponent<AirlockDoorController>();
         InformationText = InformationTextObject.GetComponent<Text>();
         PlayerStats = Player.GetComponent<PlayerStats>();
+        SoundEffect = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // If Doors are closed Airlock is ready to be pressurized
-        if(InnerDoor.IsOpen == false && OuterDoor.IsOpen == false) {
+        if(InnerDoor.IsOpen == false && OuterDoor.IsOpen == false && !Pressurizing) {
             Ready = true;
             if(IsPressurized) {
-                InformationText.text = "Airlock Ready. Press F to depressurize.)";
+                InformationText.text = "Airlock Ready. Press F (B) to depressurize.)";
             }else {
-                InformationText.text = "Airlock Ready. Press F to pressurize.)";
+                InformationText.text = "Airlock Ready. Press F (B) to pressurize.)";
             }
         }else {
             Ready = false;
@@ -42,7 +47,18 @@ public class AirlockPressurisationController : MonoBehaviour
         }
         // If airlock is ready and player is nearby enable airlock control
         if(Ready && PlayerNearby) {
-            if(Input.GetKeyDown(KeyCode.F)) {
+            if(Input.GetButtonDown("Action2") && !Pressurizing) {
+                Pressurizing = true;
+                SoundEffect.Play();
+                Timer = 0;
+            }
+        }
+
+        // Pressurizing
+        if(Pressurizing) {
+            InformationText.text = "Airlock Pressurizing...";
+            Timer += Time.deltaTime;
+            if(Timer >= PressurizationTime) {
                 // Depressurize Airlock
                 if(IsPressurized) {
                     IsPressurized = false;
@@ -66,6 +82,8 @@ public class AirlockPressurisationController : MonoBehaviour
                     PlayerStats.UsingOxygen = false;
                     PlayerStats.OxygenRegen = true;
                 }
+                Pressurizing = false;
+                Timer = 0;
             }
         }
     }

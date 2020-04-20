@@ -28,7 +28,7 @@ public class SlopeHandler : MonoBehaviour
         RaycastHit GroundHit;
 
         // Cast Ray to Ground
-        if(Physics.Raycast(origin + OriginOffset, Vector3.down, out GroundHit, 50, layerMask) && !Health.isDead) {
+        if(Physics.Raycast(origin + OriginOffset, Vector3.down, out GroundHit, 20, layerMask) && !Health.isDead) {
             // Calculate new Rotatation based on ground angle
             Quaternion newRotation = Quaternion.FromToRotation(transform.up, GroundHit.normal) * transform.rotation;
             

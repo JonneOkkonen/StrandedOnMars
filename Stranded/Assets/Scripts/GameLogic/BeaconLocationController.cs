@@ -13,7 +13,7 @@ public class BeaconLocationController : MonoBehaviour
     Text ActionText;
     public float GameEndTime;
     bool PlayerInArea = false;
-    bool BeaconSet = false;
+    public bool BeaconSet = false;
     float Timer;
     public int BeaconLocationHeight;
 
@@ -27,7 +27,7 @@ public class BeaconLocationController : MonoBehaviour
     {
         // Player is in area and has beacon
         if(PlayerInArea && PlayerStats.PlayerHasBeacon) {
-            if(Input.GetKeyDown(KeyCode.E) && BeaconSet == false) {
+            if(Input.GetButtonDown("Action") && BeaconSet == false) {
                 BeaconSet = true;
                 Instantiate(Beacon, transform.position - BeaconOffset, Quaternion.Euler(-90,0,0));
                 BeaconPanel.SetActive(false);
@@ -47,7 +47,7 @@ public class BeaconLocationController : MonoBehaviour
             ActionTextObject.SetActive(false);
         }else {
             // Update Action Text
-            ActionText.text = "Set Beacon (E)";
+            ActionText.text = "Set Beacon E (Y)";
             // Enable Action Text
             ActionTextObject.SetActive(true);
         }

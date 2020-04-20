@@ -4,6 +4,7 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {	
+	public static bool GroupAttack = false;
 	public int aggroRange;
 	public int StoppingDistance;
 	Animator animator;
@@ -11,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
 	NavMeshAgent nav;		// Reference to the nav mesh agent.
 	Vector3 StartLocation;
 	public float AnimationSpeed;
+	public bool AttackingPlayer = false;
 	
 	void Awake ()
     {
@@ -29,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
 		if(nav.enabled) {
 			//Check if player is in range of destionation
 			//Later add a check if player shoots the Enemy GameObject
-			if(Vector3.Distance(this.transform.position, player.transform.position) <= aggroRange) 
+			if(Vector3.Distance(this.transform.position, player.transform.position) <= aggroRange || AttackingPlayer || GroupAttack) 
 			{
 				nav.SetDestination(player.transform.position);
 			}else {
@@ -44,9 +46,4 @@ public class EnemyMovement : MonoBehaviour
 			}
 		}
     }
-	
-	/*void onBeingShot() 
-	{
-		
-	}*/
 }

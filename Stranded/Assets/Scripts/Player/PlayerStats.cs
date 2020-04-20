@@ -32,8 +32,14 @@ public class PlayerStats : MonoBehaviour
 	Slider HealthBar;
 	Text HealthBarText;
 	public GameObject StaminaBarObject;
-	public float PlayerStamina;
+    public float MaxStamina;
+	float PlayerStamina;
 	Slider StaminaBar;
+    public float StaminaRegenSpeed;
+    public int Ammo;
+    public int MagazineSize;
+    public GameObject AmmoTextObject;
+    Text AmmoText;
 
     void Awake()
     {
@@ -43,12 +49,13 @@ public class PlayerStats : MonoBehaviour
 		HealthBar = HealthBarObject.GetComponent<Slider>();
 		HealthBarText = HealthBarObject.GetComponentInChildren(typeof(Text), true) as Text;
 		
-		StaminaBar = StaminaBarObject.GetComponent<Slider>();		
-        PlayerController = GetComponent<RigidbodyFirstPersonController>();
+		StaminaBar = StaminaBarObject.GetComponent<Slider>();	
+        PlayerController = GetComponent<RigidbodyFirstPersonController>();	
         
         PlayerActionController = GetComponent<PlayerActionController>();
         PointsText = PointsTextObject.GetComponent<Text>();
         BeaconController = GetComponent<BeaconLocationController>();
+        AmmoText = AmmoTextObject.GetComponent<Text>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
@@ -59,6 +66,9 @@ public class PlayerStats : MonoBehaviour
         // Set Health Slider Max Value
         HealthBar.maxValue = startingHealth;
 
+        // Set Stamina Slider Max Value
+        StaminaBar.maxValue = MaxStamina;
+
         // Set Points Text
         SetPointsText(Points);
 
@@ -67,30 +77,57 @@ public class PlayerStats : MonoBehaviour
 		
 		// Initialize Player Health
 		currentHealth = startingHealth;
+
+        // Initialize Stamina
+        PlayerStamina = MaxStamina;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Update OxygenBar
         OxygenBar.value = Oxygen;
         OxygenBarText.text = $"Oxygen: {Oxygen} s";
 		
+        // Update StaminaBar
 		StaminaBar.value = PlayerStamina;
 
-		if(currentHealth < 0) 
-		{
-			HealthBar.value = currentHealth;
-			HealthBarText.text = $"Health: 0 HP";
-		} else
-		{
-			HealthBar.value = currentHealth;
-			HealthBarText.text = $"Health: {currentHealth} HP";
-		}
+        // Update HealthBar
+		HealthBar.value = currentHealth;
+		HealthBarText.text = $"Health: {currentHealth} HP";
 
         // Respawn after Death
         if(IsDead) {
-            if(Input.GetKeyDown(KeyCode.X)) {
+            if(Input.GetButtonDown("Respawn")) {
                 SceneManager.LoadScene("Mars");
+            }
+        }
+
+        // Change Run Multiplier
+        if(PlayerStamina > 0) {
+            RigidbodyFirstPersonController.AllowedToRun = true;
+        }else {
+            RigidbodyFirstPersonController.AllowedToRun = false;
+        }
+
+        // Use Stamina when running
+        if(Input.GetButton("Run") || Input.GetAxis("Run") > 0.5) {
+            if(PlayerStamina > 0) {
+                PlayerStamina -= Time.deltaTime;
+                // Don't go under 0
+                if(PlayerStamina < 0) {
+                    PlayerStamina = 0;
+                }
+                // Update Stamina Bar
+                StaminaBar.value = PlayerStamina;
+            }
+        }else {
+            // Regen Stamina when not running
+            if(PlayerStamina < MaxStamina) {
+                PlayerStamina += Time.deltaTime * StaminaRegenSpeed;
+                if(PlayerStamina > MaxStamina) {
+                    PlayerStamina = MaxStamina;
+                }
             }
         }
     }
@@ -114,19 +151,23 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }else {
-            Debug.Log("No Oxygen Left");
-            // Die
-            Die();
+            // Degrease Health
+            TakeDamage(20);
         }
-        Invoke("OxygenTick", 1f);
+        if(!IsDead) Invoke("OxygenTick", 1f);
     }
 	
 	// Player takes damage
 	public void TakeDamage(int amount) 
 	{	
-		// Substract amount of damage taken
-		currentHealth -= amount;
-		print("Damage taken " + currentHealth);
+        if(currentHealth > 0) {
+            // Substract amount of damage taken
+            currentHealth -= amount;
+        }
+        if(currentHealth < 0) {
+            currentHealth = 0;
+        }
+		
 		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
         {
@@ -165,10 +206,41 @@ public class PlayerStats : MonoBehaviour
         PointsText.text = "Points: " + points.ToString("#,0", nfi);
     }
 
+    // Add Health
+    public void AddHealth(int amount) {
+        if(currentHealth < startingHealth) {
+            currentHealth += amount;
+        }
+    }
+
     // Set PlayerHasBeacon to true
     public void AddBeacon() {
         BeaconPanel.SetActive(true);
         PlayerHasBeacon = true;
         BeaconController.enabled = true;
+    }
+
+    // Disable Player Controll temporarily
+    public void Pause() {
+        // Disable Player Movement
+        PlayerController.enabled = false;
+        // Disable Gun
+        PlayerActionController.enabled = false;
+    }
+
+    // Enable Player Controll
+    public void Continue() {
+        // Disable Player Movement
+        PlayerController.enabled = true;
+        // Disable Gun
+        PlayerActionController.enabled = true;
+    }
+
+    // Add Ammo
+    public void AddAmmo(int amount) {
+        // Add Ammo
+        Ammo += amount;
+        // Update AmmoText
+        AmmoText.text = $"(0) {Ammo.ToString()}";
     }
 }

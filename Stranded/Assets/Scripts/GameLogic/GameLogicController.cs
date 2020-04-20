@@ -13,15 +13,23 @@ public class GameLogicController : MonoBehaviour
     ElectricCableController ElectricCableController;
     AirlockDoorController AirlockDoorController;
     List<string> Objectives = new List<string>(){
-        "Go the base that we saw during crash landing",
+        "Find a place to shelter",
         "Take control of the base, by taking out all the metalon's",
+        "Try to get to the base",
         "Restore power to the base. Check power cable for damages",
-        "Go inside base"
+        "Go inside base",
+        "Find something to eat and heal youself to full HP",
+        "Look what fabricator has to offer",
+        "Get enough points to buy beacon",
+        "Buy beacon",
+        "Set Beacon to high ground",
+        "Wait for the rescue party to arrive and try not to die",
+        "No Objective"
     };
 
     List<string> Notifications = new List<string>(){
-        "Move using (W,A,S,D or ArrowKeys). Press Q to take out your huge gun and shoot with left mouse button.",
-        "You have a new objective in your objective menu. Open it with TAB-key."
+        "Move using (W,A,S,D, ArrowKeys or LeftStick). Press Q (LB) to take out your huge gun and shoot with left mouse (RB) button.",
+        "You have a new objective in your objective menu. Open it with TAB-key (RT)."
     };
 
     int CurrentObjective = -1;
@@ -30,6 +38,22 @@ public class GameLogicController : MonoBehaviour
     public float FirstObjectiveTime;
     float Timer;
     public float UpdateFrequency;
+    AudioSource VoiceLines;
+    bool VoiceLine3Triggered = false;
+    bool VoiceLine4Triggered = false;
+    bool VoiceLine7Triggered = false;
+    bool VoiceLine10Triggered = false;
+    bool VoiceLine12Triggered = false;
+    bool Rescued = false;
+    public GameObject AirlockTrigger;
+    AirlockPressurisationController AirlockPressurisationController;
+    public GameObject FabricatorTrigger;
+    FabricatorController FabricatorController;
+    PlayerStats PlayerStats;
+    BeaconLocationController BeaconLocationController;
+    RescueController RescueController;
+    public float RescueTime;
+    float RescueTimer;
 
     void Awake()
     {
@@ -37,6 +61,12 @@ public class GameLogicController : MonoBehaviour
         ObjectiveController = ObjectiveObject.GetComponent<ObjectiveController>();
         ElectricCableController = ElectricCable.GetComponent<ElectricCableController>();
         AirlockDoorController = AirlockOuterDoor.GetComponent<AirlockDoorController>();
+        VoiceLines = GetComponent<AudioSource>();
+        AirlockPressurisationController = AirlockTrigger.GetComponent<AirlockPressurisationController>();
+        FabricatorController = FabricatorTrigger.GetComponent<FabricatorController>();
+        PlayerStats = GetComponent<PlayerStats>();
+        BeaconLocationController = GetComponent<BeaconLocationController>();
+        RescueController = GetComponent<RescueController>();
     }
 
     void Start() {
@@ -57,18 +87,42 @@ public class GameLogicController : MonoBehaviour
             // Find Base Objective
             if(CurrentObjective == 0) {
                 float distance = Vector3.Distance(Base.transform.position, transform.position);
-                if(distance <= 120) {
+                // Play Voiceline when seeing base
+                if(distance <= 250) {
+                    if(!VoiceLine3Triggered) {
+                        PlayVoiceLine(3);
+                        VoiceLine3Triggered = true;
+                    }
+                }
+                // Play Trigger Next objective when base found
+                if(distance <= 180) {
                     NextObjective();
+                    if(!VoiceLine4Triggered) {
+                        PlayVoiceLine(4);
+                        VoiceLine4Triggered = true;
+                    }
                 }
             }
             // Take Control of the base
             if(CurrentObjective == 1) {
                 if(BaseMetalonGroup.transform.childCount == 0) {
                     NextObjective();
+                    PlayVoiceLine(5);
+                }
+            }
+            // Try to get inside base
+            if(CurrentObjective == 2) {
+                if(AirlockDoorController.PlayerNearby) {
+                    PlayVoiceLine(6);
+                    NextObjective();
                 }
             }
             // Restore power to base
-            if(CurrentObjective == 2) {
+            if(CurrentObjective == 3) {
+                if(!VoiceLine7Triggered && !VoiceLines.isPlaying) {
+                    PlayVoiceLine(7);
+                    VoiceLine7Triggered = true;
+                }
                 if(ElectricCableController.CableFixed) {
                     // Enable ElectricCableController
                     ElectricCableController.enabled = false;
@@ -77,6 +131,65 @@ public class GameLogicController : MonoBehaviour
                     // Enable AirlockDoor
                     AirlockDoorController.CanBeOpened = true;
                     NextObjective();
+                    PlayVoiceLine(8);
+                }
+            }
+            // Go to base
+            if(CurrentObjective == 4) {
+                if(AirlockPressurisationController.IsPressurized) {
+                    NextObjective();
+                    PlayVoiceLine(9);
+                }
+            }
+            // Find something to eat
+            if(CurrentObjective == 5) {
+                if(!VoiceLine10Triggered && !VoiceLines.isPlaying) {
+                    PlayVoiceLine(10);
+                    VoiceLine10Triggered = true;
+                }
+                if(PlayerStats.currentHealth == PlayerStats.startingHealth) {
+                    NextObjective();
+                }
+            }
+            // Look what fabricator has to offer
+            if(CurrentObjective == 6) {
+                if(FabricatorController.FabricatorActive) {
+                    NextObjective();
+                    PlayVoiceLine(11);
+                }
+            }
+            // Get enough points to buy beacon
+            if(CurrentObjective == 7) {
+                if(!VoiceLine12Triggered && !VoiceLines.isPlaying) {
+                    PlayVoiceLine(12);
+                    VoiceLine12Triggered = true;
+                }
+                if(PlayerStats.Points >= FabricatorController.BeaconPrize) {
+                    NextObjective();
+                }
+            }
+            // Buy beacon
+            if(CurrentObjective == 8) {
+                if(PlayerStats.PlayerHasBeacon) {
+                    NextObjective();
+                    PlayVoiceLine(13);
+                }
+            }
+            // Set Beacon to high ground
+            if(CurrentObjective == 9) {
+                if(BeaconLocationController.BeaconSet) {
+                    // Set all enemies to attack player
+                    EnemyMovement.GroupAttack = true;
+                    NextObjective();
+                }
+            }
+            // Wait for the rescue party to arrive
+            if(CurrentObjective == 10) {
+                RescueTimer += 2;
+                if(RescueTimer >= RescueTime && !Rescued) {
+                    Rescued = true;
+                    PlayVoiceLine(14);
+                    RescueController.RescuePlayer();
                 }
             }
         }
@@ -105,6 +218,7 @@ public class GameLogicController : MonoBehaviour
     {
         yield return new WaitForSeconds(FirstObjectiveTime);
         NextObjective();
+        PlayVoiceLine(2);
     }
 
     // Show first notification at start of the game
@@ -112,5 +226,16 @@ public class GameLogicController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         NotificationController.SetPanelText(Notifications[0], 10);
+        PlayVoiceLine(1);
+    }
+
+    // Play selected VoiceLine
+    void PlayVoiceLine(int voiceline) {
+        // Stop If Playing
+        if(VoiceLines.isPlaying) {
+            VoiceLines.Stop();
+        }
+        var newClip = Resources.Load<AudioClip>("VoiceLines/VoiceLine" + voiceline.ToString());
+        VoiceLines.PlayOneShot(newClip);
     }
 }

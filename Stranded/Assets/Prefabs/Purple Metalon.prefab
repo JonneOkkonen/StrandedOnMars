@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -5261893146831471820}
   m_Layer: 0
   m_Name: Purple Metalon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.3
-  m_Speed: 2
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -90,9 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7552923e2d543a14185f272e57fbf38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroRange: 30
+  aggroRange: 70
   StoppingDistance: 4
   AnimationSpeed: 1
+  AttackingPlayer: 0
 --- !u!114 &3107722908745565906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +113,6 @@ MonoBehaviour:
   meleeRange: 5
   shootRange: 20
   attackAbility: 0
-  enemyAttackDamage: 10
 --- !u!114 &6758251693013942046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 20000
+  isDead: 0
 --- !u!135 &-5261893146831471820
 SphereCollider:
   m_ObjectHideFlags: 0
