@@ -49,6 +49,11 @@ public class AirlockPressurisationController : MonoBehaviour
         if(Ready && PlayerNearby) {
             if(Input.GetButtonDown("Action2") && !Pressurizing) {
                 Pressurizing = true;
+                if(IsPressurized) {
+                    InnerDoor.CanBeOpened = false;
+                }else {
+                    OuterDoor.CanBeOpened = false;
+                }
                 SoundEffect.Play();
                 Timer = 0;
             }
