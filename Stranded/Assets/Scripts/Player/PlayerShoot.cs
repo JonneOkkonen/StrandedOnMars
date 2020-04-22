@@ -19,14 +19,14 @@ public class PlayerShoot : MonoBehaviour
     Text AmmoText;
     bool Reloading = false;
     float ReloadTimer;
-    public GameObject ActionTextObject;
+    public GameObject ReloadingTextObject;
     Text ActionText;
 
     void Awake() {
         GunAudio = GetComponent<AudioSource>();
         PlayerStats = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStats>();
         AmmoText = AmmoTextObject.GetComponent<Text>();
-        ActionText = ActionTextObject.GetComponent<Text>();
+        ActionText = ReloadingTextObject.GetComponent<Text>();
 
         // Initialize Magazine
         Magazine = PlayerStats.MagazineSize;
@@ -69,7 +69,7 @@ public class PlayerShoot : MonoBehaviour
 
         // Reload
         if(Reloading) {
-            ActionTextObject.SetActive(true);
+            ReloadingTextObject.SetActive(true);
             ActionText.text = "Reloading...";
             ReloadTimer += Time.deltaTime;
             if(PlayerStats.Ammo > 0 && Magazine < PlayerStats.MagazineSize) {
@@ -83,7 +83,7 @@ public class PlayerShoot : MonoBehaviour
                 AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
                 // Clear ActionText
                 ActionText.text = "";
-                ActionTextObject.SetActive(false);
+                ReloadingTextObject.SetActive(false);
             }
         }
     }
