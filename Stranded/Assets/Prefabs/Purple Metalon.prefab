@@ -50,7 +50,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -130,6 +130,7 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 20000
+  sinkDelay: 1
   isDead: 0
 --- !u!135 &-5261893146831471820
 SphereCollider:
@@ -1726,7 +1727,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95980759410839360, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
 --- !u!1 &3109150409310245382 stripped
 GameObject:

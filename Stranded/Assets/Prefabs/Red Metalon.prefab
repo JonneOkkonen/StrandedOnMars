@@ -46,11 +46,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533833734676901616}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8b293a3eb76e69e41adf2e2cb14ea626, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
   m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -130,6 +130,7 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 10000
+  sinkDelay: 1
   isDead: 0
 --- !u!135 &-107510687932554981
 SphereCollider:

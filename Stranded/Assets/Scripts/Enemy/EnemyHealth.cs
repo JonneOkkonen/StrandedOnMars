@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
 	public int amount = 20;
 	public float sinkSpeed = 0.5f;
 	public int points = 10;
+	public float sinkDelay;
+	float Timer;
 	NavMeshAgent nav; 
     Animator anim;
 	PlayerStats playerStats;
@@ -35,10 +37,10 @@ public class EnemyHealth : MonoBehaviour
     {
 		if(sink)
 		{
-			// Disable NavMesh
-			nav.enabled = false;
-			Debug.Log("Enemy is sinking");
-			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Timer += Time.deltaTime;
+			if(Timer >= sinkDelay) {
+				transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+			}
 		}
     }
 	

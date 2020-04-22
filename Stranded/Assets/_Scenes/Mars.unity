@@ -1201,7 +1201,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green Metalon (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7680994686622808101, guid: 7abc0c6435f3b0e47ad731ef59c9404a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7abc0c6435f3b0e47ad731ef59c9404a, type: 3}
 --- !u!4 &223809657 stripped
 Transform:
@@ -25862,7 +25863,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Metalon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2483846555606264610, guid: b92c102ae3282f341a6e8ce2be80ba39, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b92c102ae3282f341a6e8ce2be80ba39, type: 3}
 --- !u!4 &2129009749 stripped
 Transform:
