@@ -53,7 +53,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 12
     m_Resolution: 2
@@ -6826,6 +6826,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1332837392517387761, guid: 683162390d7d0e44c9cc2294cdcba14c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2ebe83c5f3c079f49a78eec292582598, type: 2}
+    - target: {fileID: 1332837392522661455, guid: 683162390d7d0e44c9cc2294cdcba14c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: e497b40124d368543a1971d44952f2d5, type: 3}
+    - target: {fileID: 1332837392524929719, guid: 683162390d7d0e44c9cc2294cdcba14c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332837392524955191, guid: 683162390d7d0e44c9cc2294cdcba14c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.416
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332837392527841069, guid: 683162390d7d0e44c9cc2294cdcba14c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: b3b88c627c794d0468531a164197c8a7, type: 3}
     - target: {fileID: 1720465958721967016, guid: 683162390d7d0e44c9cc2294cdcba14c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6888,6 +6913,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683162390d7d0e44c9cc2294cdcba14c, type: 3}
+--- !u!1 &363061487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3980686427202010992, guid: 683162390d7d0e44c9cc2294cdcba14c,
+    type: 3}
+  m_PrefabInstance: {fileID: 363061486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &370792427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7125,7 +7156,7 @@ MonoBehaviour:
   Base: {fileID: 1387566041}
   BaseMetalonGroup: {fileID: 665759132}
   ElectricCable: {fileID: 1222361474}
-  AirlockOuterDoor: {fileID: 1422586603}
+  AirlockOuterDoor: {fileID: 363061487}
   FirstObjectiveTime: 12
   UpdateFrequency: 2
   AirlockTrigger: {fileID: 1474126167}
@@ -8623,7 +8654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ece77dbeea2c542a74f577e9e42bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1422586603}
+  Door: {fileID: 363061487}
   ActionTextObject: {fileID: 720396421}
 --- !u!1 &665759132
 GameObject:
@@ -16984,12 +17015,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1422586603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1360105849, guid: 683162390d7d0e44c9cc2294cdcba14c,
-    type: 3}
-  m_PrefabInstance: {fileID: 363061486}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1448954587
 GameObject:
   m_ObjectHideFlags: 0
@@ -17318,7 +17343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InnerDoorObject: {fileID: 454727944}
-  OuterDoorObject: {fileID: 1422586603}
+  OuterDoorObject: {fileID: 363061487}
   Player: {fileID: 382716352}
   IsPressurized: 0
   InformationTextObject: {fileID: 106839533}
@@ -17356,7 +17381,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ba769c5366f3bee4381a177a2d641899, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -18369,7 +18394,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 0342d55bcc1e03141b1a7e6dcf41ddf1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 123
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0342d55bcc1e03141b1a7e6dcf41ddf1, type: 3}
