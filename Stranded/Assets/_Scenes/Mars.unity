@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 5f6a7b83d87229d43b22184e9803ed0d
+  m_OcclusionCullingData: {fileID: 36300000, guid: 6be03e419eb17334f9c1ee1f879e9e1c,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -9521,7 +9522,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0c9d23947d9c6b8409d7fddd168a4a92, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16900,7 +16901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 153272, guid: 8d75129d226b0954baf09ca99b4d826d, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967263
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 153272, guid: 8d75129d226b0954baf09ca99b4d826d, type: 3}
       propertyPath: m_IsActive
