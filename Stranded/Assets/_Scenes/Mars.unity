@@ -763,6 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthAmount: 5
   ActionTextObject: {fileID: 720396421}
+  EatCoolDown: 1.5
 --- !u!65 &160017445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9250,6 +9251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthAmount: 5
   ActionTextObject: {fileID: 720396421}
+  EatCoolDown: 1.5
 --- !u!82 &789443775
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16105,6 +16107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthAmount: 5
   ActionTextObject: {fileID: 720396421}
+  EatCoolDown: 1.5
 --- !u!65 &1257250968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24485,6 +24488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthAmount: 5
   ActionTextObject: {fileID: 720396421}
+  EatCoolDown: 1.5
 --- !u!65 &1828373863
 BoxCollider:
   m_ObjectHideFlags: 0
