@@ -20,13 +20,13 @@ public class PlayerShoot : MonoBehaviour
     bool Reloading = false;
     float ReloadTimer;
     public GameObject ReloadingTextObject;
-    Text ActionText;
+    Text ReloadingText;
 
     void Awake() {
         GunAudio = GetComponent<AudioSource>();
         PlayerStats = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStats>();
         AmmoText = AmmoTextObject.GetComponent<Text>();
-        ActionText = ReloadingTextObject.GetComponent<Text>();
+        ReloadingText = ReloadingTextObject.GetComponent<Text>();
 
         // Initialize Magazine
         Magazine = PlayerStats.MagazineSize;
@@ -62,6 +62,12 @@ public class PlayerShoot : MonoBehaviour
             AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
         }
 
+        // Tip to reload text
+        if(Magazine == 0 && !Reloading) {
+            ReloadingTextObject.SetActive(true);
+            ReloadingText.text = "Reload using R (X)-button";
+        }
+
         // Reload Weapon
         if(Input.GetButtonDown("Reload") && !Reloading) {
             Reloading = true;
@@ -70,7 +76,7 @@ public class PlayerShoot : MonoBehaviour
         // Reload
         if(Reloading) {
             ReloadingTextObject.SetActive(true);
-            ActionText.text = "Reloading...";
+            ReloadingText.text = "Reloading...";
             ReloadTimer += Time.deltaTime;
             if(PlayerStats.Ammo > 0 && Magazine < PlayerStats.MagazineSize) {
                 PlayerStats.Ammo -= 1;
@@ -82,9 +88,14 @@ public class PlayerShoot : MonoBehaviour
                 // Update AmmoText
                 AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
                 // Clear ActionText
-                ActionText.text = "";
+                ReloadingText.text = "";
                 ReloadingTextObject.SetActive(false);
             }
         }
+    }
+
+    public void HideGun() {
+        // Disable Reloading Text
+        ReloadingTextObject.SetActive(false);
     }
 }

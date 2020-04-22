@@ -7101,6 +7101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Oxygen: 30
+  LowOxygenWarning: 60
   MaxOxygen: 300
   OxygenRegenSpeed: 50
   OxygenBarObject: {fileID: 1384650126}
@@ -7113,6 +7114,7 @@ MonoBehaviour:
   PlayerHasBeacon: 0
   BeaconPanel: {fileID: 979429319}
   currentHealth: 0
+  LowHealthWarning: 10
   startingHealth: 100
   HealthBarObject: {fileID: 1030058124}
   StaminaBarObject: {fileID: 327868476}
@@ -7121,6 +7123,7 @@ MonoBehaviour:
   Ammo: 100
   MagazineSize: 20
   AmmoTextObject: {fileID: 990717637}
+  NotificationObject: {fileID: 1397758936}
 --- !u!114 &382716355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18964,7 +18967,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -20, y: 60}
-  m_SizeDelta: {x: 300, y: 60}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681897960
 MonoBehaviour:
