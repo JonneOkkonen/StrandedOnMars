@@ -79,22 +79,24 @@ public class FabricatorController : MonoBehaviour
                 }else {
                     BeaconBuyText.text = "You don't have enough points";
                 }
-            }else if(BuyingMagazine) {
-                // Check that player has enough points
-                if(PlayerStats.Points >= MagazinePrize) {
-                    MagazineBuyText.text = "Buying Magazine";
-                    if(Timer2 >= 0.5) {
-                        BuyMagazine();
-                        Timer2 = 0;
-                    }
-                }else {
-                    MagazineBuyText.text = "You don't have enough points";
-                }
-            }
-            else {
+            }else {
                 BeaconBuyText.text = "Buy Beacon by holding B (Right)-button";
-                MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
             }
+        }
+        if(BuyingMagazine) {
+            // Check that player has enough points
+            if(PlayerStats.Points >= MagazinePrize) {
+                MagazineBuyText.text = "Buying Magazine";
+                if(Timer2 >= 0.5) {
+                    BuyMagazine();
+                    Timer2 = 0;
+                }
+            }else {
+                MagazineBuyText.text = "You don't have enough points";
+            }
+        }
+        else {
+            MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
         }
     }
 
