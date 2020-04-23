@@ -17,12 +17,10 @@ public class DoorTriggerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
-            if(AirLock.CanBeOpened) {
-                // Update Action Text
-                ActionText.text = "Action E (Y)";
-                // Enable Action Text
-                ActionTextObject.SetActive(true);
-            }
+            // Update Action Text
+            ActionText.text = "Action E (Y)";
+            // Enable Action Text
+            ActionTextObject.SetActive(true);
             AirLock.PlayerNearby = true;
         }
     }

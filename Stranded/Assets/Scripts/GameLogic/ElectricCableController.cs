@@ -29,24 +29,25 @@ public class ElectricCableController : MonoBehaviour
                 Repairing = false;
                 Timer = 0;
             }
-        }
-        if(Repairing) {
-            // Update Action Text
-            ActionText.text = "Repairing...";
-            if(Timer >= TimeToFix && !CableFixed) {
-                Repairing = false;
-                // Disable Action Text
-                ActionTextObject.SetActive(false);
-                // Disable Particle Effect
-                Sparks.SetActive(false);
-                CableFixed = true;
-                // Give little electric shock to player
-                PlayerStats.TakeDamage(5);
+            if(Repairing) {
+                // Update Action Text
+                ActionText.text = "Repairing...";
+                if(Timer >= TimeToFix && !CableFixed) {
+                    Repairing = false;
+                    // Disable Action Text
+                    ActionTextObject.SetActive(false);
+                    // Disable Particle Effect
+                    Sparks.SetActive(false);
+                    CableFixed = true;
+                    // Give little electric shock to player
+                    PlayerStats.TakeDamage(5);
+                }
+            }else {
+                // Update Action Text
+                ActionText.text = "Repair Cable E (Y)";
             }
-        }else {
-            // Update Action Text
-            ActionText.text = "Repair Cable E (Y)";
         }
+
     }
 
     void OnTriggerEnter(Collider other) {
