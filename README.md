@@ -5,6 +5,7 @@ Peliohjelmointi kurssin lopputyö. Peli testattavissa Unityn WebGL ja Standalone
 :warning: **Huomio**: Peli on sen verran graafisesti vaativa, joten se toimii parhaiten erillisellä näytönohjaimella. Se saattaa kyllä myös toimia tehokkaammilla integroiduilla näytönohjaimilla.
 
 * Linkki peliin: [https://student.labranet.jamk.fi/~M2235/Stranded/v1.0/](https://student.labranet.jamk.fi/~M2235/Stranded/v1.0/)  
+* Lataa Standalone PC versio täältä: [https://student.labranet.jamk.fi/~M2235/Stranded/](https://student.labranet.jamk.fi/~M2235/Stranded/)
 * [Pelin tarina](strandedstory.md) 
 * [Dokumentaatio](Gamedocs.md)  
 
