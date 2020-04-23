@@ -8,6 +8,7 @@ public class PlayerActionController : MonoBehaviour
     Animator GunAnimator;
     bool IsGunVisible;
     public GameObject Crosshair;
+    PlayerShoot PlayerShoot;
 
     void Awake() {
         GunAnimator = Gun.GetComponent<Animator>();
@@ -15,6 +16,7 @@ public class PlayerActionController : MonoBehaviour
         Crosshair.SetActive(false);
         GunAnimator.SetBool("IsVisible", false);
         IsGunVisible = false;
+        PlayerShoot = Gun.GetComponent<PlayerShoot>();
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class PlayerActionController : MonoBehaviour
         yield return new WaitForSeconds(.8f);
         // Disable Crosshair
         Crosshair.SetActive(false);
+        PlayerShoot.HideGun();
         Gun.SetActive(false);
     }
 }

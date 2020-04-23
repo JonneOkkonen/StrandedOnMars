@@ -42,6 +42,8 @@ public class SlopeHandler : MonoBehaviour
                 // Set new Rotation
                 transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * SlopeAdjustSpeed);
             }
+        }else if(!Health.isDead) {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f , transform.position.z);
         }
     }
 }

@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3107722908745565913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -64.24289, y: 13.05, z: -52.8573}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3112061982604469816}
   m_Father: {fileID: 0}
@@ -50,7 +50,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -66,7 +66,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.3
-  m_Speed: 3
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -130,7 +130,10 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 20000
+  sinkDelay: 1
   isDead: 0
+  Bloodspat: {fileID: 7463946506507918685, guid: 2c42b6f28fa841b449f202cf92c8edbb,
+    type: 3}
 --- !u!135 &-5261893146831471820
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -139,7 +142,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3107722908745565913}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.5
@@ -1726,7 +1729,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95980759410839360, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
 --- !u!1 &3109150409310245382 stripped
 GameObject:

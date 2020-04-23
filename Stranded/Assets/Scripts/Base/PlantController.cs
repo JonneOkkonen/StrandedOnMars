@@ -11,21 +11,27 @@ public class PlantController : MonoBehaviour
     public GameObject ActionTextObject;
     Text ActionText;
     AudioSource SoundEffect;
+    public float EatCoolDown;
+    float Timer;
 
     void Awake() {
         PlayerStats = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStats>();
         ActionText = ActionTextObject.GetComponent<Text>();
         SoundEffect = GetComponent<AudioSource>();
+        // Set Timer to EatCoolDown so there is no delay on first time
+        Timer = EatCoolDown;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(PlayerNearby) {
+            Timer += Time.deltaTime;
             // Eat with E-key
-            if(Input.GetButtonDown("Action")) {
+            if(Input.GetButtonDown("Action") && Timer >= EatCoolDown) {
                 SoundEffect.Play();
                 PlayerStats.AddHealth(HealthAmount);
+                Timer = 0;
             }
         }
     }

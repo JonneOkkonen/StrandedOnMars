@@ -19,14 +19,14 @@ public class PlayerShoot : MonoBehaviour
     Text AmmoText;
     bool Reloading = false;
     float ReloadTimer;
-    public GameObject ActionTextObject;
-    Text ActionText;
+    public GameObject ReloadingTextObject;
+    Text ReloadingText;
 
     void Awake() {
         GunAudio = GetComponent<AudioSource>();
         PlayerStats = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerStats>();
         AmmoText = AmmoTextObject.GetComponent<Text>();
-        ActionText = ActionTextObject.GetComponent<Text>();
+        ReloadingText = ReloadingTextObject.GetComponent<Text>();
 
         // Initialize Magazine
         Magazine = PlayerStats.MagazineSize;
@@ -62,6 +62,12 @@ public class PlayerShoot : MonoBehaviour
             AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
         }
 
+        // Tip to reload text
+        if(Magazine == 0 && !Reloading) {
+            ReloadingTextObject.SetActive(true);
+            ReloadingText.text = "Reload using R (X)-button";
+        }
+
         // Reload Weapon
         if(Input.GetButtonDown("Reload") && !Reloading) {
             Reloading = true;
@@ -69,8 +75,8 @@ public class PlayerShoot : MonoBehaviour
 
         // Reload
         if(Reloading) {
-            ActionTextObject.SetActive(true);
-            ActionText.text = "Reloading...";
+            ReloadingTextObject.SetActive(true);
+            ReloadingText.text = "Reloading...";
             ReloadTimer += Time.deltaTime;
             if(PlayerStats.Ammo > 0 && Magazine < PlayerStats.MagazineSize) {
                 PlayerStats.Ammo -= 1;
@@ -82,9 +88,14 @@ public class PlayerShoot : MonoBehaviour
                 // Update AmmoText
                 AmmoText.text = $"({Magazine.ToString()}) {PlayerStats.Ammo.ToString()}";
                 // Clear ActionText
-                ActionText.text = "";
-                ActionTextObject.SetActive(false);
+                ReloadingText.text = "";
+                ReloadingTextObject.SetActive(false);
             }
         }
+    }
+
+    public void HideGun() {
+        // Disable Reloading Text
+        ReloadingTextObject.SetActive(false);
     }
 }

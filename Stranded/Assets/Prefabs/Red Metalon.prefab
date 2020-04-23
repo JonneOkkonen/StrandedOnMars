@@ -46,11 +46,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533833734676901616}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8b293a3eb76e69e41adf2e2cb14ea626, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
   m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -66,7 +66,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3.5
-  m_Speed: 2
+  m_Speed: 3.5
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -130,7 +130,10 @@ MonoBehaviour:
   amount: 20
   sinkSpeed: 0.5
   points: 10000
+  sinkDelay: 1
   isDead: 0
+  Bloodspat: {fileID: 7463946506507918685, guid: 2c42b6f28fa841b449f202cf92c8edbb,
+    type: 3}
 --- !u!135 &-107510687932554981
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -139,7 +142,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533833734676901616}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2
@@ -231,7 +234,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95025375702580604, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
 --- !u!1 &2534962277270061092 stripped
 GameObject:

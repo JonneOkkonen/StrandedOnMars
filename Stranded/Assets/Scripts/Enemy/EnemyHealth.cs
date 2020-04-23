@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
 	public int amount = 20;
 	public float sinkSpeed = 0.5f;
 	public int points = 10;
+	public float sinkDelay;
+	float Timer;
 	NavMeshAgent nav; 
     Animator anim;
 	PlayerStats playerStats;
@@ -19,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
 	bool sink = false;
 	EnemyMovement EnemyMovement;
 	SlopeHandler SlopeHandler;
+	public GameObject Bloodspat;
 
     void Awake ()
     {
@@ -35,19 +38,29 @@ public class EnemyHealth : MonoBehaviour
     {
 		if(sink)
 		{
-			// Disable NavMesh
-			nav.enabled = false;
-			Debug.Log("Enemy is sinking");
-			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Timer += Time.deltaTime;
+			if(Timer >= sinkDelay) {
+				transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+			}
 		}
     }
-	
-	void OnTriggerEnter(Collider other) {
-        if(other.tag == "Bullet"){
+
+	// Get Collision Point
+	void OnCollisionEnter(Collision collision){
+		// Count as damage if magnitude is more than 20
+		if(collision.relativeVelocity.magnitude > 20) {
+			// Take Damage
 			TakeDamage();
+			// Attack Player on hit
 			EnemyMovement.AttackingPlayer = true;
-        }
-    }
+			// Get collision Point
+			ContactPoint contact = collision.GetContact(0);
+			// Instantiate Bloodspat
+			GameObject blood = GameObject.Instantiate(Bloodspat, contact.point, new Quaternion(0,0,0,0));
+			// Destroy it after 1.5s
+			Destroy(blood.gameObject, 1.5f);
+		}
+	}
 
     public void TakeDamage ()
     {

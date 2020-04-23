@@ -25,7 +25,7 @@ public class FabricatorController : MonoBehaviour
     public GameObject Fabricator;
     AudioSource FabricatorAudio;
     public bool FabricatorActive = false;
-    bool MagazineBougth = false;
+    public bool FirstTimeOpening = true;
 
     void Awake()
     {
@@ -62,7 +62,6 @@ public class FabricatorController : MonoBehaviour
             }else {
                 MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
                 BuyingMagazine = false;
-                MagazineBougth = false;
                 Timer2 = 0;
             }
         }
@@ -80,24 +79,24 @@ public class FabricatorController : MonoBehaviour
                 }else {
                     BeaconBuyText.text = "You don't have enough points";
                 }
-            }else if(BuyingMagazine) {
-                // Check that player has enough points
-                if(PlayerStats.Points >= MagazinePrize) {
-                    if(!MagazineBougth) {
-                        MagazineBuyText.text = "Buying Magazine";
-                        if(Timer2 >= 1) {
-                            BuyingMagazine = false;
-                            BuyMagazine();
-                        }
-                    }
-                }else {
-                    MagazineBuyText.text = "You don't have enough points";
-                }
-            }
-            else {
+            }else {
                 BeaconBuyText.text = "Buy Beacon by holding B (Right)-button";
-                MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
             }
+        }
+        if(BuyingMagazine) {
+            // Check that player has enough points
+            if(PlayerStats.Points >= MagazinePrize) {
+                MagazineBuyText.text = "Buying Magazine";
+                if(Timer2 >= 0.5) {
+                    BuyMagazine();
+                    Timer2 = 0;
+                }
+            }else {
+                MagazineBuyText.text = "You don't have enough points";
+            }
+        }
+        else {
+            MagazineBuyText.text = "Buy magazine by holding M (Left)-button";
         }
     }
 
@@ -127,8 +126,12 @@ public class FabricatorController : MonoBehaviour
         if(MainCamera.activeSelf) {
             // Activate Fabricator
             FabricatorActive = true;
-            // Play Welcome Message
-            FabricatorAudio.Play();
+            if(!FirstTimeOpening) {
+                // Play Welcome Message
+                FabricatorAudio.Play();
+            }else {
+                FirstTimeOpening = false;
+            }
             // Pause Player
             PlayerStats.Pause();
             // Disable Main Camera
@@ -163,8 +166,6 @@ public class FabricatorController : MonoBehaviour
 
     // Buy Magazine
     public void BuyMagazine() {
-        MagazineBougth = true;
-        MagazineBuyText.text = "You just bought a magazine";
         PlayerStats.UsePoints(MagazinePrize);
         PlayerStats.AddAmmo(PlayerStats.MagazineSize);
     }

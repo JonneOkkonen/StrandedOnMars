@@ -9,6 +9,7 @@ using System.Globalization;
 public class PlayerStats : MonoBehaviour
 {
     public float Oxygen;
+    public float LowOxygenWarning;
     public float MaxOxygen;
     public int OxygenRegenSpeed;
     public GameObject OxygenBarObject;
@@ -27,6 +28,7 @@ public class PlayerStats : MonoBehaviour
     public GameObject BeaconPanel;
     BeaconLocationController BeaconController;
     public int currentHealth;
+    public int LowHealthWarning;
     public int startingHealth = 100;
 	public GameObject HealthBarObject;
 	Slider HealthBar;
@@ -40,6 +42,15 @@ public class PlayerStats : MonoBehaviour
     public int MagazineSize;
     public GameObject AmmoTextObject;
     Text AmmoText;
+    public GameObject NotificationObject;
+    NotificationController Notifications;
+    bool NoAmmoNotificationShown = false;
+    bool LowOxygenNotificationShown = false;
+    bool LowHealthNotificationShown = false;
+    public AudioClip Hurt1;
+    public AudioClip Hurt2;
+    public AudioClip Death;
+    AudioSource SoundEffect;
 
     void Awake()
     {
@@ -56,6 +67,8 @@ public class PlayerStats : MonoBehaviour
         PointsText = PointsTextObject.GetComponent<Text>();
         BeaconController = GetComponent<BeaconLocationController>();
         AmmoText = AmmoTextObject.GetComponent<Text>();
+        Notifications = NotificationObject.GetComponent<NotificationController>();
+        SoundEffect = GetComponent<AudioSource>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
@@ -108,6 +121,30 @@ public class PlayerStats : MonoBehaviour
             RigidbodyFirstPersonController.AllowedToRun = true;
         }else {
             RigidbodyFirstPersonController.AllowedToRun = false;
+        }
+
+        // Notify User when running out of ammo
+        if(Ammo == 0 && !NoAmmoNotificationShown) {
+            Notifications.SetPanelText("You can purchase more ammo in base", 4);
+            NoAmmoNotificationShown = true;
+        }else if (Ammo > 0) {
+            NoAmmoNotificationShown = false;
+        }
+
+        // Oxygen low warning
+        if(Oxygen < LowOxygenWarning && !LowOxygenNotificationShown) {
+            Notifications.SetPanelText("Your oxygen is running low. Return to base immediately", 4);
+            LowOxygenNotificationShown = true;
+        }else if (Oxygen > LowOxygenWarning) {
+            LowOxygenNotificationShown = false;
+        }
+
+        // Health low warning
+        if(currentHealth < LowHealthWarning && !LowHealthNotificationShown) {
+            Notifications.SetPanelText("Your health is dangerously low. Return to base to heal yourself", 4);
+            LowHealthNotificationShown = true;
+        }else if (currentHealth > LowHealthWarning) {
+            LowHealthNotificationShown = false;
         }
 
         // Use Stamina when running
@@ -167,6 +204,14 @@ public class PlayerStats : MonoBehaviour
         if(currentHealth < 0) {
             currentHealth = 0;
         }
+
+        // Play sound effect
+        int random = Random.Range(0, 2);
+        if(random == 0) {
+            SoundEffect.PlayOneShot(Hurt1);
+        }else if(random == 1) {
+            SoundEffect.PlayOneShot(Hurt2);
+        }
 		
 		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
@@ -178,6 +223,7 @@ public class PlayerStats : MonoBehaviour
 
     // Player Died
     private void Die() {
+        SoundEffect.PlayOneShot(Death);
         IsDead = true;
         DeadScreen.SetActive(true);
         PlayerController.enabled = false;
