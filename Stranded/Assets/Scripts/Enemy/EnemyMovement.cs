@@ -37,13 +37,15 @@ public class EnemyMovement : MonoBehaviour
 			}else {
 				nav.SetDestination(StartLocation);
 			}
-
+			
 			// Start/Stop Walking animation based remainingDistance
 			if(nav.remainingDistance <= StoppingDistance) {
 				animator.SetBool("Walk Forward", false);
 			}else {
 				animator.SetBool("Walk Forward", true);
 			}
+		}else {
+			animator.SetBool("Walk Forward", false);
 		}
     }
 }

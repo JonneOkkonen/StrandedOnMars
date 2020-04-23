@@ -10768,6 +10768,7 @@ MonoBehaviour:
   MagazinePrize: 1000
   Fabricator: {fileID: 350658104}
   FabricatorActive: 0
+  FirstTimeOpening: 1
 --- !u!1 &808340687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3832703582600972128, guid: bceefb2a39f6db74d9bc9d006687b7f1,
