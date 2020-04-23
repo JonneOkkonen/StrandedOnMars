@@ -7,8 +7,12 @@ Peliohjelmointi kurssin lopputyö. Peli testattavissa Unityn WebGL ja Standalone
 * Linkki peliin: [https://student.labranet.jamk.fi/~M2235/Stranded/v1.0/](https://student.labranet.jamk.fi/~M2235/Stranded/v1.0/)  
 * [Pelin tarina](strandedstory.md) 
 * [Dokumentaatio](Gamedocs.md)  
+
+**Tekijät:**  
+- Jonne Okkonen, M2235, TTV18S3
+- Joonas Niinimäki, M3268, TTV18S3
  
-# Näppäimet
+# Ohjaaminen
 
 ## Näppäimistö
 
@@ -31,7 +35,7 @@ __Tab__ = Näytä tehtäväruutu
 __LeftShift__ = Juokse  
 __X__ = Respawn  
 
-## Xbox Ohjain (testattu Xbox One ohjaimella)
+## Xbox ohjain (testattu Xbox One ohjaimella)
 
 __VasenSauva__ = Liiku  
 __OikeaSauva__ = Kamera  
