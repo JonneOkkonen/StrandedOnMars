@@ -47,6 +47,10 @@ public class PlayerStats : MonoBehaviour
     bool NoAmmoNotificationShown = false;
     bool LowOxygenNotificationShown = false;
     bool LowHealthNotificationShown = false;
+    public AudioClip Hurt1;
+    public AudioClip Hurt2;
+    public AudioClip Death;
+    AudioSource SoundEffect;
 
     void Awake()
     {
@@ -64,6 +68,7 @@ public class PlayerStats : MonoBehaviour
         BeaconController = GetComponent<BeaconLocationController>();
         AmmoText = AmmoTextObject.GetComponent<Text>();
         Notifications = NotificationObject.GetComponent<NotificationController>();
+        SoundEffect = GetComponent<AudioSource>();
 
         // Set Oxygen to Max
         Oxygen = MaxOxygen;
@@ -199,6 +204,14 @@ public class PlayerStats : MonoBehaviour
         if(currentHealth < 0) {
             currentHealth = 0;
         }
+
+        // Play sound effect
+        int random = Random.Range(0, 2);
+        if(random == 0) {
+            SoundEffect.PlayOneShot(Hurt1);
+        }else if(random == 1) {
+            SoundEffect.PlayOneShot(Hurt2);
+        }
 		
 		// If the player dies, call Die();
 		if(currentHealth <= 0 && !IsDead)
@@ -210,6 +223,7 @@ public class PlayerStats : MonoBehaviour
 
     // Player Died
     private void Die() {
+        SoundEffect.PlayOneShot(Death);
         IsDead = true;
         DeadScreen.SetActive(true);
         PlayerController.enabled = false;
