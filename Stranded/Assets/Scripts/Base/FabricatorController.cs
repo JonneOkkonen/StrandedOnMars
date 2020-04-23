@@ -25,6 +25,7 @@ public class FabricatorController : MonoBehaviour
     public GameObject Fabricator;
     AudioSource FabricatorAudio;
     public bool FabricatorActive = false;
+    public bool FirstTimeOpening = true;
 
     void Awake()
     {
@@ -123,8 +124,12 @@ public class FabricatorController : MonoBehaviour
         if(MainCamera.activeSelf) {
             // Activate Fabricator
             FabricatorActive = true;
-            // Play Welcome Message
-            FabricatorAudio.Play();
+            if(!FirstTimeOpening) {
+                // Play Welcome Message
+                FabricatorAudio.Play();
+            }else {
+                FirstTimeOpening = false;
+            }
             // Pause Player
             PlayerStats.Pause();
             // Disable Main Camera
