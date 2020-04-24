@@ -177,9 +177,9 @@ __Ilmaisten resurssien kirjasto:__
 Itse ehdottaisin arvosanaa 5. Tämä projekti on ollut mielekästä tehdä ja siihen on tullut panostettua heposti yli +30 tuntia.
 Projektissa vastasin suurimmaksi osaksi vihollisa, niiden statseista, liikkumisesta, hyökkäämisestä ja teoälystä. sen lisäksi tein osan pelaajan statseista ja interaktiivisuudesta
 kuten elämän logiikan ja osan Ui elementteistä pelaajahahmolle (kuten elämäbaari ja stamina). Sen lisäksi loin suurimman osan partikkeliefekteistä lisäämään pelille enemmän yksityiskohtaisuutta.
-Olin myös vastuussa tarinanluonnista ja dialogeista mitä pelaajahahmo sanoisi missäkin tilante
+Olin myös vastuussa tarinanluonnista ja dialogeista mitä pelaajahahmo sanoisi missäkin tilantessa ja ATM mainospätkä.
 
-ssa ja ATM mainospätkä. Beikkasin myös kuljettavan alueen niin, ettei siinnä tule 
+Beikkasin myös kuljettavan alueen niin, ettei siinnä tule 
 vihoillisten tekoälylle kulkemattomia alueita, tästä poikkeuksena tukokohdan katto jonka maalasin kulkemattomaksi alueeksi. omaksi harmikseni aikaa ei jäänyt vielä toteuttaa
 punaisen vihollistyypin ampuvan projektileä. Skriptilogiikka oli jo tehty, enää olisi pitänyt tehdä tälle projektile partikkeli ja logiikka projektilelle niin, että
 siinnä olisi matkustusaikaa ja pelaaja voisi väistää sen, eikä se olisi hitsan ollut. Projektista jäi hyvä fiilis loppuun, paljon ideoita joita vielä haluaisimme toteuttaa ja
