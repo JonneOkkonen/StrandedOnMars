@@ -203,11 +203,33 @@ __Ilmaisten resurssien kirjasto:__
 ## Scriptien kuvaus
 
 - Base
-    - Script 1
+    - AirlockDoorController
+        - Description
+    - AirlockPressurisationController
+    - DoorTriggerController
+    - FabricatorController
+    - HologramRotate
+    - PlantController
 - Enemy
+    - EnemyAttack
+    - EnemyHealth
+    - EnemyMovement
+    - SlopeHandler
 - GameLogic
+    - BackgroundSoundController
+    - BeaconLocationController
+    - ElectricCableController
+    - GameLogicController
+    - NotificationController
+    - ObjectiveController
 - Player
+    - BulletDestroy
+    - PlayerActionController
+    - PlayerShoot
+    - PlayerStats
+    - RescueController
 - UI
+    - MainMenu
 
 ## Itsearviointi
 
