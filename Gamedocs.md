@@ -144,7 +144,8 @@ audio-tiedosto ja renderöidään näytölle punainenkuolemis-ruutu ja pelaaja j
 Tukikohdan sisällä on myös ostoautomaatti, josta pelaaja voi ostaa lisää pistoolin ammuksia tai pakoon tavittavan pelastusmajakan (beacon). ATM UI renderöidään pelaajalle
 toisella kameralla, joka aktivoituu kun pelaaja vuorovaikuttaa ostoautomaatin kanssa ja siihen on lisätty ohjeistus myös sen käytöstä, jotta pelaaja tietää miten ostaa itselleen 
 resursseja ja miten poistua ostoautomaatista. Pelastusmajakan (beacon) ostettua pelastusmajakka liimautuu ja renderöidään pelaajan UI:ssa indikoimaan, että pelaajalla on nyt se 
-objekti mukana.
+objekti mukana. Tukikohdan takahuoneessa oli alunperin erillainen hologrammi kuin Mars joka vaihettiin tilalle
+(aihetta käistellään lisää Suunnitellut, mutta hylätyt teknologiat - osiossa).
 
 Metalon vihollishirviöt ovat animoitu kävelemään, hyökkäämään kahdella eri animaatiolla ja kuolemaan riippuen pelaajan ja niiden vuorovaikutuksesta. Niille on tehty kontrolleri, joka mahdollistaa myös
 vaihtoehtoisessa maastokorkeudessa liikkumisen suhteellisen sulavasti ja näin pelaaja ei voi hyväksikäyttää maastoa päästäkseen vihollisten ulottumattomiin. Tästä poikkeuksena
@@ -175,6 +176,8 @@ tehty, mutta ominaisuus jätettiin lopullisesta demosta pois aikapuutteen takia.
 - Tukikohdan kasvit tuhottaisiin hetkellisesti ja renderöitäisiin takaisin tietyn aikajakson jälkeen (kasvit tarvitsevat aikaa kasvaa). Hylättiin ajanpuutteen takia.
 - Pelastusmajakka (Beacon) voitaisiin ampua miltä korkeudelta vain, mutta voittaakseen pelaajan pitäisi ampua se tarpeaksi korkealta ja ensimmäisen kerran epäonnistuessa toinen
 maksaisi enemmän. Ominaisuuden todettiin olevan epäedullinen pelattavuudelle, eikä se tuonut lisäarvoa pelimekaanisesti.
+- Tukikohdan takahuoneelle renderöity Mars planeetta hologrammi oli suunniteltu läpikuultavaksi. Tätä yritettiin tehdä useammalla ratkaisulla epäonnistuneesti ja se hylättiin 
+epäolennaisuuden ja ajanakäytön vaatimuksen perusteella (ei siis ollut järkeä käyttää siihen niin paljoa aikaa).
 
 
 ## Optimointi
@@ -182,6 +185,13 @@ maksaisi enemmän. Ominaisuuden todettiin olevan epäedullinen pelattavuudelle, 
 Peli on optimoitu beikkaamalla pelikenttä ja valoistus. Erinäisiä partikkeliefektejä on muokattu ja testattu niin, ettei ne ole olisi liian raskaita renderöidä ja ettei ne 
 vaikuttaisi merkittävän negatiivisesti pelattavuuteen. Myös muutamiin kohtiin on tehty näkymättömiä objekteja, jotka estävät pelaajaa jumittautumasta kokonaan ja jotka on 
 aseteltu kuitenkin niin, ettei pelaaja näe ja tunnista eroa avaruudellisesti.
+
+Peliä ei ole optimoitu eri laitteistoille ja sen on todettu olevan aika raskas pyörittä varsinkin kokonaisuudessaan pienempitehoisilla tietokoneilla (testattu). Sen sijaan
+tarkkoja speksien arvoja ei ole testeissä voitu selvittää. Tämä osittain testattavien laite - ja siihen liittyvien resurssien puutteen takia, ja osittain aikapuutteenkin takia.
+
+Projektille on suoritettu manuaalista testaamista vain pelaamisen tasolla. Suurempia testejä ei ole laadittu, eikä niitä ollut projektiin vaadittu. Pääasia, että suurimmat bugit
+on korjattu ja peliä optimoitu. 
+
 
 ## Ilmaiset resurssit
 
@@ -226,5 +236,7 @@ korjausratkaisua ei ollut onnistuttu selvittämään.
 * Kun pelaaja menee fabrikaattorille (ATM) ostamaan panoksia, lippaan panoksien määrä UI elementin mukaan nollautuu vaikka ne ovat kyllä vielä lippaassa ja pelaaja voi ampua. 
 Ne renderöityy takaisin oikeaan tilaan lataamalla ase R-näppäimestä. Vika on tunnistettu olevan aseen renderöintilogiikan ongelma, ja ratkaisuna pitäisi sitä muuttaa.
 * Kun pelaaja ostaa beaconin, tukilohdan ovien promptit eivät renderöidy. Tämä johtuu siitä, että ne käyttävät samaa UI elementtiä.
+* Metalon viholliset eivät aina animoi hyökkäysanimaatiota. Epäilty syy on assetin muiden animaatioiden kanssa tuleva konflikti, vaikka ne ei olekkaan aktiivisesti kytketty
+Metalon objektiin pelissä.
 
 
