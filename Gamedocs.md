@@ -200,6 +200,14 @@ __Ilmaisten resurssien kirjasto:__
 * [ATM ostoautomaatti](https://assetstore.unity.com/packages/3d/environments/sci-fi/atm-95057)
 * [Text-to-speech NaturalReaders-sivu](https://www.naturalreaders.com/online/)
 
+## Scriptien kuvaus
+
+- Base
+    - Script 1
+- Enemy
+- GameLogic
+- Player
+- UI
 
 ## Itsearviointi
 
