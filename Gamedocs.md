@@ -183,6 +183,9 @@ tarkkoja speksien arvoja ei ole testeissä voitu selvittää. Tämä osittain te
 
 Projektille on suoritettu manuaalista testaamista vain pelaamisen tasolla. Suurempia testejä ei ole laadittu, eikä niitä ollut projektiin vaadittu. Pääasia, että suurimmat bugit on korjattu ja peliä optimoitu. 
 
+OcclusionCulling Demo
+![OcclusionCulling Demo](Img/OcclusionCulling.png)
+
 
 ## Ilmaiset resurssit
 
