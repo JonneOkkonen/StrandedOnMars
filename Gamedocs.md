@@ -178,7 +178,7 @@ epäolennaisuuden ja ajanakäytön vaatimuksen perusteella (ei siis ollut järke
 
 Peli on optimoitu asettamalla liikkumattomat objectit staattisiksi sekä beikkaamalla staattisten objection valaistus, näiden lisäksi peliin on beikattu Occlusion Culling eli pelirenderöidään vain kameran näkökentästä (katso alla oleva kuva). Erinäisiä partikkeliefektejä on muokattu ja testattu niin, ettei ne ole olisi liian raskaita renderöidä ja ettei ne vaikuttaisi merkittävän negatiivisesti pelattavuuteen. Myös muutamiin kohtiin on tehty näkymättömiä objekteja, jotka estävät pelaajaa jumittautumasta kokonaan ja jotka on aseteltu kuitenkin niin, ettei pelaaja näe ja tunnista eroa avaruudellisesti.
 
-Peliä ei ole optimoitu eri laitteistoille ja sen on todettu olevan aika raskas pyörittä varsinkin kokonaisuudessaan pienempitehoisilla tietokoneilla (testattu). Sen sijaan
+Peliä ei ole täysin optimoitu eri laitteistoille ja sen on todettu olevan aika raskas pyörittä varsinkin kokonaisuudessaan pienempitehoisilla tietokoneilla (testattu). Sen sijaan
 tarkkoja speksien arvoja ei ole testeissä voitu selvittää. Tämä osittain testattavien laite - ja siihen liittyvien resurssien puutteen takia, ja osittain aikapuutteenkin takia.
 
 Projektille on suoritettu manuaalista testaamista vain pelaamisen tasolla. Suurempia testejä ei ole laadittu, eikä niitä ollut projektiin vaadittu. Pääasia, että suurimmat bugit on korjattu ja peliä optimoitu. 
@@ -201,6 +201,8 @@ __Ilmaisten resurssien kirjasto:__
 * [Text-to-speech NaturalReaders-sivu](https://www.naturalreaders.com/online/)
 
 ## Scriptien kuvaus
+
+    Scriptin päätekijä mainittu scriptin nimen jälkeen.  
 
 - Base
     - AirlockDoorController (Jonne)
@@ -255,6 +257,8 @@ __Ilmaisten resurssien kirjasto:__
 ## Itsearviointi
 
 ### Jonne Okkonen (M2235)
+
+Ehdotan arvosanaa 5. Projekti on laaja, kattaa hyvin sillä annetut vaatimukset, pelin toimintalogiikkaa on tehty runsaasti ja peliä on myös optimoitu aiemmin dokumentissa mainituilla tavoilla. Pelin tehtiin kuukauden aikana ja sen tekoon on käytetty reilusti yli 30 tuntia. Vastasin pelin pääkehityksestä ja pääosin pelin toimintalogiikan tekemisestä. Pelissä hyödynnettiin paljon ilmaisia valmiita assetteja Unityn Asset Storesta, jolloin pystyimme keskittymään pelin logiikan ja toiminnallisuuden kehitykseen. Ainoastaan pelaajan FirstPersonController on valmis scripti, joka otettiin ja muokattiin käyttöönsopivaksi Unityn Standard Asset packistä. Se sisältää pelaajan liikkumisen ja kameran ohjauksen. Muu pelin logiikka on toteutettu täysin itse. 
 
 ### Joonas Niinimaki (M3268)
 
