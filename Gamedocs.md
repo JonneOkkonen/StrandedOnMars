@@ -176,9 +176,7 @@ epäolennaisuuden ja ajanakäytön vaatimuksen perusteella (ei siis ollut järke
 
 ## Optimointi
 
-Peli on optimoitu beikkaamalla pelikenttä ja valoistus. Erinäisiä partikkeliefektejä on muokattu ja testattu niin, ettei ne ole olisi liian raskaita renderöidä ja ettei ne 
-vaikuttaisi merkittävän negatiivisesti pelattavuuteen. Myös muutamiin kohtiin on tehty näkymättömiä objekteja, jotka estävät pelaajaa jumittautumasta kokonaan ja jotka on 
-aseteltu kuitenkin niin, ettei pelaaja näe ja tunnista eroa avaruudellisesti.
+Peli on optimoitu asettamalla liikkumattomat objectit staattisiksi sekä beikkaamalla staattisten objection valaistus, näiden lisäksi peliin on beikattu Occlusion Culling eli pelirenderöidään vain kameran näkökentästä (katso alla oleva kuva). Erinäisiä partikkeliefektejä on muokattu ja testattu niin, ettei ne ole olisi liian raskaita renderöidä ja ettei ne vaikuttaisi merkittävän negatiivisesti pelattavuuteen. Myös muutamiin kohtiin on tehty näkymättömiä objekteja, jotka estävät pelaajaa jumittautumasta kokonaan ja jotka on aseteltu kuitenkin niin, ettei pelaaja näe ja tunnista eroa avaruudellisesti.
 
 Peliä ei ole optimoitu eri laitteistoille ja sen on todettu olevan aika raskas pyörittä varsinkin kokonaisuudessaan pienempitehoisilla tietokoneilla (testattu). Sen sijaan
 tarkkoja speksien arvoja ei ole testeissä voitu selvittää. Tämä osittain testattavien laite - ja siihen liittyvien resurssien puutteen takia, ja osittain aikapuutteenkin takia.
