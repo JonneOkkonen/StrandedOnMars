@@ -1,4 +1,4 @@
-# Stranded peli
+# StrandedOnMars peli
 
 * V1.0.0.0 Pre-Alpha Demo  
 * TTOS0700 Peliohjelmointi  
@@ -203,33 +203,54 @@ __Ilmaisten resurssien kirjasto:__
 ## Scriptien kuvaus
 
 - Base
-    - AirlockDoorController
-        - Description
-    - AirlockPressurisationController
-    - DoorTriggerController
-    - FabricatorController
-    - HologramRotate
-    - PlantController
+    - AirlockDoorController (Jonne)
+        - Hallinnoi ilmalukon ovien avausta
+    - AirlockPressurisationController (Jonne)
+        - Ilmalukon paineistuksen ja hallinnoinnin päälogiikka. Ohjaa AirlockDoorController objekteja.
+    - DoorTriggerController (Jonne)
+        - Tunnistaa pelaajan ilmalukon ovilla ja antaa palautetta AirlockDoorControllerille.
+    - FabricatorController (Jonne)
+        - Fabrikaattorin/ATM ohjaus logiikka, hallinnoi ostamisen ja kameran vaihtamisen.
+    - HologramRotate (Jonne)
+        - Pyörittää karttahuoneen mars hologrammia.
+    - PlantController (Jonne)
+        - Sisältää kasvien syömisen logiikan.
 - Enemy
-    - EnemyAttack
-    - EnemyHealth
-    - EnemyMovement
-    - SlopeHandler
+    - EnemyAttack (Joonas)
+        - Metalonien hyökkäyslogiikka
+    - EnemyHealth (Joonas)
+        - Metalonien health logiikka
+    - EnemyMovement (Joonas)
+        - Metalonien liikkumis logiikka
+    - SlopeHandler (Jonne)
+        - Pitää metalonit samalla etäisyydellä maasta ja kallistaa niitä maanpinnan muotojen mukaan.
 - GameLogic
-    - BackgroundSoundController
-    - BeaconLocationController
-    - ElectricCableController
-    - GameLogicController
-    - NotificationController
-    - ObjectiveController
+    - BackgroundSoundController (Jonne)
+        - Säätää taustalla kuuluvan tuulen äänen tasoa satunnaisesti tietyllä alueella, luoden vaihtelua.
+    - BeaconLocationController (Jonne)
+        - Beaconin asetus logiikka
+    - ElectricCableController (Jonne)
+        - Sähkökaapelin korjauksen logiikka
+    - GameLogicController (Jonne)
+        - Sisältää pelilogiikan, objectivet ja voicelinet
+    - NotificationController (Jonne)
+        - Notification paneelin logiikka
+    - ObjectiveController (Jonne)
+        - Objective paneelin logiikka
 - Player
-    - BulletDestroy
-    - PlayerActionController
-    - PlayerShoot
-    - PlayerStats
-    - RescueController
+    - BulletDestroy (Jonne)
+        - Tuhoaa luodin osuessa metaloniin tai viimeistään 2 sekunnin kuluttua
+    - PlayerActionController (Jonne)
+        - Sisältää aseen näyttämisen/piilottamisen koodin
+    - PlayerShoot (Jonne)
+        - Aseen toimintalogiikka, ampuminen ja lataaminen
+    - PlayerStats (Jonne)
+        - Sisältää pelaajan statsit elämäpisteet, hapenmäärän ja staminan. Sekä panoksien ja pisteiden lisäyksen ja muut pelaajaan liittyvät toiminnot.
+    - RescueController (Jonne)
+        - Pelaajan pelastukseen liittyvä logiikka
 - UI
-    - MainMenu
+    - MainMenu (Jonne)
+        - Päävalikon nappien toiminta logiikka
 
 ## Itsearviointi
 
