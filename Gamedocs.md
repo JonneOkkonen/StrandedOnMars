@@ -246,7 +246,7 @@ __Ilmaisten resurssien kirjasto:__
         - Sisältää aseen näyttämisen/piilottamisen koodin
     - PlayerShoot (Jonne)
         - Aseen toimintalogiikka, ampuminen ja lataaminen
-    - PlayerStats (Jonne)
+    - PlayerStats (Jonne & Joonas)
         - Sisältää pelaajan statsit elämäpisteet, hapenmäärän ja staminan. Sekä panoksien ja pisteiden lisäyksen ja muut pelaajaan liittyvät toiminnot.
     - RescueController (Jonne)
         - Pelaajan pelastukseen liittyvä logiikka
