@@ -25,16 +25,14 @@
 
 ## Johdanto
 
-Stranded peli on sekä FPS, että survival shooter kategorian peli, jossa pelaajan tavoitteena on päästä pelaustautua vieraalta planeetalta, johon hän on tehnyt hätärikon.
+Stranded peli on sekä FPS, että survival shooter kategorian peli, jossa pelaajan tavoitteena on päästä pelastautumaan vieraalta planeetalta, johon hän on tehnyt pakkolaskun.
 Vieraalla planeetalla on mysteerinen tyhjä rakennus ja jokapuolella on outoja tuntemattomia hirviöitä. Pelaajamme on keksittävä tapa päästä planeetalta pois ehjin nahoin. 
-Stranded peli on kevään 2020 aikana kehitetty peliprojekti osana TTOS0700 peliohjelmoinnin kurssia. Se on kehittänyt Jyväskylän Ammattikorkeakoulun kaksi 2. vuoden
+Stranded peli on kevään 2020 aikana kehitetty peliprojekti osana TTOS0700 peliohjelmoinnin kurssia. Sen on kehittänyt Jyväskylän Ammattikorkeakoulun kaksi 2. vuoden
 ohjelmistotekniikan opiskelijaa Jonne Okkonen (M2235) ja Joonas Niinimäki (M3268).
 
 ## Pelin tarina
 
-On vuosi 8 452, ihmiskunta on onnistunut kehittämään planeettojenvälisen avaruusmatkailun ja on nopeasti laajentanut ja kolonisoinut muita mailmoja. Meidän matkaaja oli osana 
-kauppa-saattuetta joka joutui avaruuspiraattien hyökkäyksen kohteeksi ja kaaoksen aikana jolloin kaikki menetettiin, matkaajamme onnistui pääsemään pelastushätäkapseliin ja 
-pakoon. Matkaajamme haaksirikkoutui Marssiin ja on Jätetty sinne.
+On vuosi 8 452, ihmiskunta on onnistunut kehittämään planeettojenvälisen avaruusmatkailun ja on nopeasti laajentanut ja kolonisoinut muita mailmoja. Meidän matkaaja oli osana kauppa-saattuetta joka joutui avaruuspiraattien hyökkäyksen kohteeksi ja kaaoksen aikana jolloin kaikki menetettiin, matkaajamme onnistui pääsemään pelastushätäkapseliin ja pakoon. Matkaajamme haaksirikkoutui Marssiin ja on jätetty sinne.
 
 ## Keybinds
 
@@ -80,12 +78,12 @@ Pelaajalla on rajalliset resurssit käytössään ja hänen tulee miettiä tarkk
 happea 300 sekunniksi (s = seconds), staminabaari jossa on rajallimen määrä staminaa jouksemiseksi, sekä pistooli jossa on rajallinen määrä ammuksia.
 Näistä ainoastaan stamina latautuu itsestään tietyllä nopeudella, muut resurssit on pelaajan itse haettava tukikohdasta eri toimintoja suorittamalla.
 
-Sitä ennen on pelaajan kuitenkin ensin löydettävä tukikohta ja pistoolinsa avulla hänen on ensin puhdistettava tukikohdan ympärillä olevat hirviöt. Sen jälkeen hänen on
+Sitä ennen on pelaajan kuitenkin ensin löydettävä tukikohta ja pistoolinsa avulla hänen on ensin hoidettava tukikohdan ympärillä olevat hirviöt. Sen jälkeen hänen on
 vielä löydettävä rikki olevan tukikohdan vialla oleva komponentti ja käydä korjaamassa tämä ennen kuin häneltä loppuu happi ja ammukset. Tämän jälkeen pelaaja saa tukikohdan
 käyttöönsä.
 
-Tämän jälkeen pelaaja voi käyttää tukikohtaa niin paljon kuin hän haluaa ja se toimii eräänlaisena ankkurina ja tukimajakkana, jonka kautta pelaaja voi operoida ympäristössään.
-Tukikohdasta pelaaja saa aina happipullonsa mittarin täyteen tukikohtaan astuessaan sisään ja paineistamalla oven ja astumalla sisään tutkikohtaan. Tukikohdassa ikkunan äärellä 
+Tämän jälkeen pelaaja voi käyttää tukikohtaa niin paljon kuin hän haluaa ja se toimii eräänlaisena ankkurina ja tukipaikkana, jonka kautta pelaaja voi operoida ympäristössään.
+Tukikohdasta pelaaja saa aina happipullonsa mittarin täyteen tukikohtaan astuessaan sisään ja paineistamalla ilmalukon ja astumalla sisään tutkikohtaan. Tukikohdassa ikkunan äärellä 
 on kasveja, jotka generoituvat ajan kanssa uudelleen ja niitä syömällä pelaaja saa lisää elämäpisteitä jos hän on menettänyt niitä. Tulokulmasta vasemmalla oven vieressä on
 ostoautomaatti, jota kautta pelaaja voi ostaa pistoolinsa luoteja ja pelastumiseen vaaditun pelustusmerkkimajakan.
 
@@ -107,9 +105,7 @@ arvoja, joita ne olisi julkaisuversiossakin.
 
 ### Mekaaninen teknologia
 
-Peliä voi pelata sekä tietokoneen näppäimistöllä, että Xbox-peliohjaimella
-
-# 
+Peliä voi pelata sekä tietokoneen näppäimistöllä, että Xbox-peliohjaimella.
 
 ### Pelin teknolgia
 
@@ -120,7 +116,7 @@ Pelaaja on käytännössä pelkästään kamera, joka seuraa pelaajan näkymää
 voi nostaa pistoolin näkymäänsä, jolloinka pistooli renderöidään näkyviin ja pois näkyvistä nappia painamalla. Samalla kun pistooli renderöidään näkyviin, pelaajan ruudun
 keskelle renderöidään crosshair-tähtäin, jonka mukaan pelaaja voi navigoida tähtäintään ampuakseen kohdetta.
 
-Pelaajan muita UI elementtejä on elkkupisteet, joiden arvot riippuvat pelaajan ottamasta vahingosta, jatkuvasti laskeva happimittari, sekä stamina baari, joista ainoastaan
+Pelaajan muita UI elementtejä on elämäpisteet, joiden arvot riippuvat pelaajan ottamasta vahingosta, jatkuvasti laskeva happimittari, sekä stamina baari, joista ainoastaan
 staminabaari generoi arvoaan itsestään tiettyä vauhtia sen jälkeen kun pelaaja päästää Shfit-näppäimestä irti. Muita pelaajan ja UI:n elementtien arvojen manipulaatiota
 käsitellään möyhemmässä vaiheessa tätä osiota.
 
@@ -134,7 +130,7 @@ ohjeistuksen tarpeen mukaan. Esimerkiksi asetta ladatessa näytetään ruudulla 
 ammusmäärän ja varastossa olevien luotien määrän reaaliaikaisesti näkymässä.
 
 Pelaajan UI näyttää reaaliajassa pelaajalla käytettävät resurssit, joita pelaaja saa lisää tukikohdasta lisää. Happilukema päivittyy samantien kun pelaaja paineistaa
-happiluukun onnistuneesti ja menee sisälle tukikohtaan. Elämäpisteitä pelaaja saa lisää menemällä kasvien luokse, painamalla toimintonäppäintä syödäkseen kasveja. Kun pelaaja 
+ilmalukon onnistuneesti ja menee sisälle tukikohtaan. Elämäpisteitä pelaaja saa lisää menemällä kasvien luokse, painamalla toimintonäppäintä syödäkseen kasveja. Kun pelaaja 
 vuorovaikuttaa ase-objektin kanssa, aseen nostettuaan pelaajalle renderöidään yksinkertainen tähtäin elemenetti UI:hin. Sen lisäksi UI:ssa näkyy oikeassa alakulmassa pelaajan 
 lipas (x)-merkin sisällä ja varastossa olevat ammuslukemat sen vieressä.
 
@@ -143,15 +139,14 @@ audio-tiedosto ja renderöidään näytölle punainenkuolemis-ruutu ja pelaaja j
 
 Tukikohdan sisällä on myös ostoautomaatti, josta pelaaja voi ostaa lisää pistoolin ammuksia tai pakoon tavittavan pelastusmajakan (beacon). ATM UI renderöidään pelaajalle
 toisella kameralla, joka aktivoituu kun pelaaja vuorovaikuttaa ostoautomaatin kanssa ja siihen on lisätty ohjeistus myös sen käytöstä, jotta pelaaja tietää miten ostaa itselleen 
-resursseja ja miten poistua ostoautomaatista. Pelastusmajakan (beacon) ostettua pelastusmajakka liimautuu ja renderöidään pelaajan UI:ssa indikoimaan, että pelaajalla on nyt se 
+resursseja ja miten poistua ostoautomaatista. Pelastusmajakan (beacon) ostettua pelastusmajakka renderöidään pelaajan UI:ssa indikoimaan, että pelaajalla on nyt se 
 objekti mukana. Tukikohdan takahuoneessa oli alunperin erillainen hologrammi kuin Mars joka vaihettiin tilalle
 (aihetta käistellään lisää Suunnitellut, mutta hylätyt teknologiat - osiossa).
 
 Metalon vihollishirviöt ovat animoitu kävelemään, hyökkäämään kahdella eri animaatiolla ja kuolemaan riippuen pelaajan ja niiden vuorovaikutuksesta. Niille on tehty kontrolleri, joka mahdollistaa myös
 vaihtoehtoisessa maastokorkeudessa liikkumisen suhteellisen sulavasti ja näin pelaaja ei voi hyväksikäyttää maastoa päästäkseen vihollisten ulottumattomiin. Tästä poikkeuksena
 on itse tukikohta, jonka katto on erikseen maalattu kulkemattomaksi alueeksi keneltäkään. Jokaiselle Metalonille on annettu eri arvot ja esiintymismäärät, joiden tarkoitus on 
-lisätä vihollistyypin monipuolisuutta. Sen lisäksi viholliset agroutuvat pelaajaa päin jos pelaaja tulee tietylle etäisyydelle vihollisista tai pelaaja ampuu yhtäkään vihollista 
-tietyllä etäisyydellä (ympärillä olevat myös aggroutuvat). Kun pelaaja osuu onnistuneesti Metalon viholliseen, niiden osumakohtaan renderöidään vihreä yksinkertainen
+lisätä vihollistyypin monipuolisuutta. Sen lisäksi viholliset agroutuvat pelaajaa päin jos pelaaja tulee tietylle etäisyydelle vihollisista tai pelaaja ampuu vihollista. Kun pelaaja osuu onnistuneesti Metalon viholliseen, niiden osumakohtaan renderöidään vihreä yksinkertainen
 veripartikkeli efekti.
 
 Pelastusmajakka (beacon) elementti voidaan ainoastaan laittaa tietyllä korkeudella, eli sen asettamisen UI-kehotetta ei renderöidä ennen kuin peli saa tarkistettua, että pelaaja on 
@@ -169,16 +164,15 @@ Tässä dokumentissa käsitellään teknologioita ja ominaisuuksia, joita projek
 
 - Pelaaja-hahmolle renderöidään punainen välähdysruutu joka kerta kun hän ottaa vahinkoa. Ratkaisuksi päädyttiin toisenlaiseen toteutukseen.
 - Punainen Metalon vihollinen voisi ampua projektilejä, joilla olisi oma partikkeliefektinsä, tarkkuus ja matkustusaika (ei hitscan). Koodilogiikka oli suurimmaksi osaksi jo
-tehty, mutta ominaisuus jätettiin lopullisesta demosta pois aikapuutteen takia.
+tehty, mutta ominaisuus jätettiin lopullisesta demosta pois ajanpuutteen takia.
 - Vihollisilla olisi random-alue spawneri, joka loisi lisää vihollisia randomiin kohtiin alueessa kun tsekkaus huomaisi niiden lukeman olevan tarpeeksi pieni.
 - Beaconin ympärille renderöitäisiin alue jonka sisällä tämän olisi pysyttävä voittaakseen pelin. Toteutuksessa päädyttiin toiseen ratkaisumalliin.
-- Loppuskenaariossa loitaisiin lisää vihollisia. Ratkaisu hylättiin tarpeettomana lisänä (ottaen huomioon muut ominaisuudet ja suunnitellut ominaisuudet).
+- Loppuskenaariossa luotaisiin lisää vihollisia. Ratkaisu hylättiin tarpeettomana lisänä (ottaen huomioon muut ominaisuudet ja suunnitellut ominaisuudet).
 - Tukikohdan kasvit tuhottaisiin hetkellisesti ja renderöitäisiin takaisin tietyn aikajakson jälkeen (kasvit tarvitsevat aikaa kasvaa). Hylättiin ajanpuutteen takia.
 - Pelastusmajakka (Beacon) voitaisiin ampua miltä korkeudelta vain, mutta voittaakseen pelaajan pitäisi ampua se tarpeaksi korkealta ja ensimmäisen kerran epäonnistuessa toinen
 maksaisi enemmän. Ominaisuuden todettiin olevan epäedullinen pelattavuudelle, eikä se tuonut lisäarvoa pelimekaanisesti.
 - Tukikohdan takahuoneelle renderöity Mars planeetta hologrammi oli suunniteltu läpikuultavaksi. Tätä yritettiin tehdä useammalla ratkaisulla epäonnistuneesti ja se hylättiin 
 epäolennaisuuden ja ajanakäytön vaatimuksen perusteella (ei siis ollut järkeä käyttää siihen niin paljoa aikaa).
-
 
 ## Optimointi
 
@@ -189,8 +183,7 @@ aseteltu kuitenkin niin, ettei pelaaja näe ja tunnista eroa avaruudellisesti.
 Peliä ei ole optimoitu eri laitteistoille ja sen on todettu olevan aika raskas pyörittä varsinkin kokonaisuudessaan pienempitehoisilla tietokoneilla (testattu). Sen sijaan
 tarkkoja speksien arvoja ei ole testeissä voitu selvittää. Tämä osittain testattavien laite - ja siihen liittyvien resurssien puutteen takia, ja osittain aikapuutteenkin takia.
 
-Projektille on suoritettu manuaalista testaamista vain pelaamisen tasolla. Suurempia testejä ei ole laadittu, eikä niitä ollut projektiin vaadittu. Pääasia, että suurimmat bugit
-on korjattu ja peliä optimoitu. 
+Projektille on suoritettu manuaalista testaamista vain pelaamisen tasolla. Suurempia testejä ei ole laadittu, eikä niitä ollut projektiin vaadittu. Pääasia, että suurimmat bugit on korjattu ja peliä optimoitu. 
 
 
 ## Ilmaiset resurssit
@@ -231,12 +224,8 @@ Tässä osioissa dokumentoidaan peliprojektissa tunnistetut bugit:
 * Beaconille on luotu animaatio ja sininen rinkulaefekti. Mutta Web GL-versiossa jostain vielä tunnistamattomasta syystä viimeisen kahden buildin aikana se lopetti niiden
 renderöinnin ja aikaa tarpeelliselle korjaamiselle ei enää niin loppuvaiheessa ollut. Se toimii oikein standalone versiossa.
 * Pelaaja-objekti voi joskus jäädä jumiin eri elementteihin pelikentällä ja siitä pääsee irti hyppimällä. Syyksi on tunnistettu yleinen Unityssa kohdattu ongelma, mutta 
-korjausratkaisua ei ollut onnistuttu selvittämään.
+korjausratkaisua ei ollut keritty selvittämään.
 * On pieni mahdollisuus, että Metalon vihollinen voi hyökätessään työntää pelaajan pelikentän läpi. Ratkaisua ei keretty tutkimaan.
 * Kun pelaaja menee fabrikaattorille (ATM) ostamaan panoksia, lippaan panoksien määrä UI elementin mukaan nollautuu vaikka ne ovat kyllä vielä lippaassa ja pelaaja voi ampua. 
 Ne renderöityy takaisin oikeaan tilaan lataamalla ase R-näppäimestä. Vika on tunnistettu olevan aseen renderöintilogiikan ongelma, ja ratkaisuna pitäisi sitä muuttaa.
 * Kun pelaaja ostaa beaconin, tukilohdan ovien promptit eivät renderöidy. Tämä johtuu siitä, että ne käyttävät samaa UI elementtiä.
-* Metalon viholliset eivät aina animoi hyökkäysanimaatiota. Epäilty syy on assetin muiden animaatioiden kanssa tuleva konflikti, vaikka ne ei olekkaan aktiivisesti kytketty
-Metalon objektiin pelissä.
-
-
