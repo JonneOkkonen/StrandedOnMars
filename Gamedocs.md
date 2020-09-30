@@ -19,7 +19,6 @@
 1. [Käytetyt teknologiat](#käytetyt-teknologiat)
 1. [Optimointi](#optimointi) 
 1. [Ilmaiset resurssit](#käytetyt-teknologiat)
-1. [Itsearviointi](#itsearviointi)
 1. [Tunnetut bugit](#tunnetut-bugit)
 
 
@@ -253,25 +252,6 @@ __Ilmaisten resurssien kirjasto:__
 - UI
     - MainMenu (Jonne)
         - Päävalikon nappien toiminta logiikka
-
-## Itsearviointi
-
-### Jonne Okkonen (M2235)
-
-Ehdotan arvosanaa 5. Projekti on laaja, kattaa hyvin sillä annetut vaatimukset, pelin toimintalogiikkaa on tehty runsaasti ja peliä on myös optimoitu aiemmin dokumentissa mainituilla tavoilla. Pelin tehtiin kuukauden aikana ja sen tekoon on käytetty reilusti yli 30 tuntia. Vastasin pelin pääkehityksestä ja pääosin pelin toimintalogiikan tekemisestä. Pelissä hyödynnettiin paljon ilmaisia valmiita assetteja Unityn Asset Storesta, jolloin pystyimme keskittymään pelin logiikan ja toiminnallisuuden kehitykseen. Ainoastaan pelaajan FirstPersonController on valmis scripti, joka otettiin ja muokattiin käyttöönsopivaksi Unityn Standard Asset packistä. Se sisältää pelaajan liikkumisen ja kameran ohjauksen. Muu pelin logiikka on toteutettu täysin itse. 
-
-### Joonas Niinimaki (M3268)
-
-Itse ehdottaisin arvosanaa 5. Tämä projekti on ollut mielekästä tehdä ja siihen on tullut panostettua heposti yli +30 tuntia.
-Projektissa vastasin suurimmaksi osaksi vihollisa, niiden statseista, liikkumisesta, hyökkäämisestä ja teoälystä. sen lisäksi tein osan pelaajan statseista ja interaktiivisuudesta
-kuten elämän logiikan ja osan Ui elementteistä pelaajahahmolle (kuten elämäbaari ja stamina). Sen lisäksi loin suurimman osan partikkeliefekteistä lisäämään pelille enemmän yksityiskohtaisuutta.
-Olin myös vastuussa tarinanluonnista ja dialogeista mitä pelaajahahmo sanoisi missäkin tilantessa ja ATM mainospätkä.
-
-Beikkasin myös kuljettavan alueen niin, ettei siinnä tule 
-vihoillisten tekoälylle kulkemattomia alueita, tästä poikkeuksena tukokohdan katto jonka maalasin kulkemattomaksi alueeksi. omaksi harmikseni aikaa ei jäänyt vielä toteuttaa
-punaisen vihollistyypin ampuvan projektileä. Skriptilogiikka oli jo tehty, enää olisi pitänyt tehdä tälle projektile partikkeli ja logiikka projektilelle niin, että
-siinnä olisi matkustusaikaa ja pelaaja voisi väistää sen, eikä se olisi hitsan ollut. Projektista jäi hyvä fiilis loppuun, paljon ideoita joita vielä haluaisimme toteuttaa ja
-pelikurssi on ollut kokonaisuudessaan mukava, opettavainen ja kiinnostava.
 
 ## Tunnetut bugit
 
